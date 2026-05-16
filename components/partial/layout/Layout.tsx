@@ -10,7 +10,8 @@ type LayoutPropsType = {
 
 function Layout({ children }: LayoutPropsType) {
   const pathName = usePathname();
-  const registerPage = pathName.startsWith("/login");
+  const includesPages: [string, string] = ["/login", "/signup"];
+  const registerPage = includesPages.includes(pathName);
   return (
     <>
       <header>{registerPage ? <RegistrationHeader /> : <Header />}</header>
