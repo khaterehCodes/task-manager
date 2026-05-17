@@ -2,7 +2,6 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 

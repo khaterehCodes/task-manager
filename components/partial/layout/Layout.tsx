@@ -10,7 +10,7 @@ type LayoutPropsType = {
 
 function Layout({ children }: LayoutPropsType) {
   const pathName = usePathname();
-  const includesPages: [string, string] = ["/login", "/signup"];
+  const includesPages: Array<string> = ["/login", "/signup", "/forgot"];
   const registerPage = includesPages.includes(pathName);
   return (
     <>

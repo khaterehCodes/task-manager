@@ -3,6 +3,7 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 import { useForm } from "react-hook-form";
 import z from "zod";
 const loginSchema = z.object({
@@ -61,9 +62,12 @@ function LoginForm() {
             {errors.password.message}
           </span>
         )}
-        <P className="text-[12px] cursor-pointer w-full h-8">
-          رمز عبور خود را فراموش کرده‌اید؟
-        </P>
+        <Link
+          href={"/forgot"}
+          className="text-[12px] cursor-pointer w-full h-8"
+        >
+          <P>رمز عبور خود را فراموش کرده‌اید؟</P>
+        </Link>
         <Button
           type="submit"
           className="w-full h-10 bg-[#208D8E] rounded-md text-white cursor-pointer text-[14px] font-extrabold"
