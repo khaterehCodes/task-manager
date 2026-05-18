@@ -37,7 +37,7 @@ function LoginForm() {
       >
         <div className="w-150 h-18 flex flex-col gap-1">
           <label htmlFor="userName" className="text-[14px]">
-            نام کاربری
+           رمز عبور جدید را وارد کنید
           </label>
           <Input
             id="userName"
@@ -47,7 +47,7 @@ function LoginForm() {
           />
         </div>
         <div className="w-150 h-18 flex flex-col gap-1">
-          <label htmlFor="userName" className="text-[14px]">
+          <label htmlFor="password" className="text-[14px]">
             رمز عبور
           </label>
           <Input
@@ -75,6 +75,14 @@ function LoginForm() {
         >
           {isSubmitting ? "در حال ورود..." : "ورود"}
         </Button>
+        <div className="w-42 h-6 flex items-center justify-center gap-2">
+          <P className="font-medium">ثبت‌نام نکرده‌ای؟</P>
+          <Link href={"/signup"}>
+            <P className="text-[#208D8E] font-extrabold cursor-pointer">
+              ثبت‌نام
+            </P>
+          </Link>
+        </div>
       </form>
     </div>
   );

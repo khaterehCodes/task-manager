@@ -5,6 +5,7 @@ import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -28,9 +29,9 @@ function ForgotPassword() {
       email: "",
     },
   });
+  const router = useRouter();
   const formHandler = (data: emailData) => {
-    console.log(data);
-    alert("forgot");
+    router.push("/confirmPassword");
   };
   return (
     <div className="w-160 h-76 bg-white shadow-2xl/30 absolute right-110 bottom-60 rounded-[20px] p-6 flex flex-col items-center justify-center">
@@ -40,7 +41,7 @@ function ForgotPassword() {
         className="w-full h-85 flex flex-col items-center justify-center gap-3"
       >
         <div className="w-150 h-18 flex flex-col gap-1">
-          <label htmlFor="userName" className="text-[14px]">
+          <label htmlFor="email" className="text-[14px]">
             ایمیل خود را وارد کنید
           </label>
           <Input
