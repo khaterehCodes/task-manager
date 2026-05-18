@@ -1,5 +1,5 @@
 import IMG from "@/components/ui/customIMG/IMG";
-import ForgotPassword from "./forgotPassword/ForgotPassword";
+import ForgotPassword from "./components/forgotPassword/ForgotPassword";
 
 function page() {
   return (
