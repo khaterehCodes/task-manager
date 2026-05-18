@@ -4,15 +4,17 @@ import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import z from "zod";
 const loginSchema = z.object({
   userName: z.string().min(1, "وارد کردن نام کاربری الزامی است"),
-  password: z.string().min(1, "وارد کردن نام کاربری الزامی است"),
+  password: z.string().min(4, "حداقل ۴ کاراکتر"),
 });
 
 type loginFormData = z.infer<typeof loginSchema>;
 function LoginForm() {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -26,10 +28,10 @@ function LoginForm() {
   });
   const formHandler = (data: loginFormData) => {
     console.log(data);
-    alert("test");
+    router.push("/");
   };
   return (
-    <div className="w-160 h-106 bg-white shadow-2xl/30 absolute right-110 rounded-[20px] p-6 flex flex-col items-center justify-center">
+    <div className="w-160 h-106 bg-white shadow-2xl/30 absolute top-10 right-110 rounded-[20px] p-6 flex flex-col items-center justify-center">
       <P className="text-[32px]">{"به تسک منیجر خوش برگشتی :)"}</P>
       <form
         onSubmit={handleSubmit(formHandler)}
@@ -37,7 +39,7 @@ function LoginForm() {
       >
         <div className="w-150 h-18 flex flex-col gap-1">
           <label htmlFor="userName" className="text-[14px]">
-           رمز عبور جدید را وارد کنید
+            رمز عبور جدید را وارد کنید
           </label>
           <Input
             id="userName"
@@ -45,6 +47,11 @@ function LoginForm() {
             {...register("userName")}
             className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
           />
+          {errors.userName && (
+            <P className="text-red-500 text-[10px] block w-full">
+              {errors.userName.message}
+            </P>
+          )}
         </div>
         <div className="w-150 h-18 flex flex-col gap-1">
           <label htmlFor="password" className="text-[14px]">
@@ -56,17 +63,17 @@ function LoginForm() {
             {...register("password")}
             className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
           />
+          {errors.password && (
+            <P className="text-red-500 text-[10px] block w-full">
+              {errors.password.message}
+            </P>
+          )}
         </div>
-        {errors.password && (
-          <span className="text-red-500 text-xs mt-1 block text-left w-full">
-            {errors.password.message}
-          </span>
-        )}
         <Link
           href={"/forgot"}
-          className="text-[12px] cursor-pointer w-full h-8"
+          className="text-[12px] cursor-pointer w-full h-8 mt-3"
         >
-          <P>رمز عبور خود را فراموش کرده‌اید؟</P>
+          <P className="border-b w-fit">رمز عبور خود را فراموش کرده‌اید؟</P>
         </Link>
         <Button
           type="submit"

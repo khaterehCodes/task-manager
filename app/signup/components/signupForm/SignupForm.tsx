@@ -11,7 +11,7 @@ const signupSchema = z.object({
     .string()
     .min(1, "وارد کردن ایمیل الزامی است")
     .email("ایمیل وارد شده صحیح نیست"),
-  password: z.string().min(1, "وارد کردن رمز عبور الزامی است"),
+  password: z.string().min(4, "حداقل ۴ کاراکتر"),
 });
 type signupFormData = z.infer<typeof signupSchema>;
 function SignupForm() {
