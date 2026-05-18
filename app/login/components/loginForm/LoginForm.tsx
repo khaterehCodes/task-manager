@@ -39,7 +39,7 @@ function LoginForm() {
       >
         <div className="w-150 h-18 flex flex-col gap-1">
           <label htmlFor="userName" className="text-[14px]">
-            رمز عبور جدید را وارد کنید
+            نام کاربری
           </label>
           <Input
             id="userName"

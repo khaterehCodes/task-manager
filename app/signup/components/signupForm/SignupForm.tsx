@@ -32,13 +32,13 @@ function SignupForm() {
     alert("signup");
   };
   return (
-    <div className="w-160 h-119 bg-white shadow-2xl/30 absolute right-110 rounded-[20px] p-6 flex flex-col items-center justify-center">
+    <div className="w-160 h-120 bg-white shadow-2xl/30 absolute right-110 rounded-[20px] p-6 flex flex-col items-center justify-center">
       <P className="text-[32px]">به ثبت نام تسک منیجر خوش آمدید</P>
       <form
         onSubmit={handleSubmit(formHandler)}
-        className="w-full h-85 flex flex-col items-center justify-center gap-3"
+        className="w-full h-90 flex flex-col items-center justify-center gap-3"
       >
-        <div className="w-150 h-18 flex flex-col gap-1">
+        <div className="w-150 h-19 flex flex-col gap-1">
           <label htmlFor="userName" className="text-[14px]">
             نام کاربری
           </label>
@@ -48,8 +48,13 @@ function SignupForm() {
             {...register("userName")}
             className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
           />
+          {errors.userName && (
+            <P className="text-red-500 text-[10px] block w-full">
+              {errors.userName.message}
+            </P>
+          )}
         </div>
-        <div className="w-150 h-18 flex flex-col gap-1">
+        <div className="w-150 h-19 flex flex-col gap-1">
           <label htmlFor="email" className="text-[14px]">
             ایمیل
           </label>
@@ -59,8 +64,13 @@ function SignupForm() {
             {...register("email")}
             className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
           />
+          {errors.email && (
+            <P className="text-red-500 text-[10px] block w-full">
+              {errors.email.message}
+            </P>
+          )}
         </div>
-        <div className="w-150 h-18 flex flex-col gap-1">
+        <div className="w-150 h-19 flex flex-col gap-1">
           <label htmlFor="password" className="text-[14px]">
             رمز عبور
           </label>
@@ -70,8 +80,13 @@ function SignupForm() {
             {...register("password")}
             className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
           />
+          {errors.password && (
+            <P className="text-red-500 text-[10px] block w-full">
+              {errors.password.message}
+            </P>
+          )}
         </div>
-        <div className="w-full h-10 font-medium flex items-center justify-start gap-2">
+        <div className="w-full h-13 font-medium flex items-center justify-start gap-2">
           <Input type="checkbox" className="cursor-pointer w-5 h-3" />
           <Button className="border-b w-fit cursor-pointer">
             قوانین و مقررات

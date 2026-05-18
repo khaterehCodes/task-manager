@@ -3,13 +3,19 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-const confirmPasswordSchema = z.object({
-  password: z.string().min(1, "وارد کردن رمز عبور جدید الزامی است"),
-  confirmPassword: z.string().min(1, "تکرار رمز عبور الزامی است"),
-});
+const confirmPasswordSchema = z
+  .object({
+    password: z.string().min(1, "وارد کردن رمز عبور جدید الزامی است"),
+    confirmPassword: z.string().min(1, "تکرار رمز عبور الزامی است"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "رمز عبور و تکرار آن یکسان نیستند",
+    path: ["confirmPassword"],
+  });
 type confirmPasswordData = z.infer<typeof confirmPasswordSchema>;
 function ConfirmPasswordForm() {
   const {
@@ -23,11 +29,19 @@ function ConfirmPasswordForm() {
       confirmPassword: "",
     },
   });
+  const router = useRouter();
+  const formHandler = (data: confirmPasswordData) => {
+    console.log(data);
+    router.push("/login");
+  };
   return (
     <div className="w-160 h-88 bg-white shadow-2xl/30 absolute top-15 right-110 rounded-[20px] p-6 flex flex-col items-center justify-center">
       <P className="text-[32px] font-extrabold">تغییر رمز عبور</P>
-      <form className="w-full h-85 flex flex-col items-center justify-center gap-3">
-        <div className="w-150 h-18 flex flex-col gap-1">
+      <form
+        className="w-full h-85 flex flex-col items-center justify-center gap-3"
+        onSubmit={handleSubmit(formHandler)}
+      >
+        <div className="w-150 h-20 flex flex-col gap-1">
           <label htmlFor="password" className="text-[14px]">
             رمز عبور جدید را وارد کنید
           </label>
@@ -37,8 +51,13 @@ function ConfirmPasswordForm() {
             {...register("password")}
             className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
           />
+          {errors.password && (
+            <P className="text-red-500 text-[10px] block w-full">
+              {errors.password.message}
+            </P>
+          )}
         </div>
-        <div className="w-150 h-18 flex flex-col gap-1">
+        <div className="w-150 h-20 flex flex-col gap-1">
           <label htmlFor="confirmPassword" className="text-[14px]">
             تکرار رمز عبور
           </label>
@@ -48,13 +67,18 @@ function ConfirmPasswordForm() {
             {...register("confirmPassword")}
             className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
           />
+          {errors.confirmPassword && (
+            <P className="text-red-500 text-[10px] block w-full">
+              {errors.confirmPassword.message}
+            </P>
+          )}
         </div>
         <Button
           type="submit"
           className="w-full h-10 bg-[#208D8E] rounded-md text-white cursor-pointer text-[14px] font-extrabold"
           disabled={isSubmitting}
         >
-         اعمال تغییرات
+          اعمال تغییرات
         </Button>
       </form>
     </div>
