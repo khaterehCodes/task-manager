@@ -2,8 +2,10 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
+import Terms from "../terms/Terms";
 
 const signupSchema = z.object({
   userName: z.string().min(1, "وارد کردن نام کاربری الزامی است"),
@@ -27,11 +29,13 @@ function SignupForm() {
       password: "",
     },
   });
+  const [showTerms, setShowTerms] = useState<boolean>(false);
   const formHandler = (data: signupFormData) => {
     console.log(data);
     alert("signup");
   };
   return (
+  <>
     <div className="w-160 h-120 bg-white shadow-2xl/30 absolute right-110 rounded-[20px] p-6 flex flex-col items-center justify-center">
       <P className="text-[32px]">به ثبت نام تسک منیجر خوش آمدید</P>
       <form
@@ -88,7 +92,10 @@ function SignupForm() {
         </div>
         <div className="w-full h-13 font-medium flex items-center justify-start gap-2">
           <Input type="checkbox" className="cursor-pointer w-5 h-3" />
-          <Button className="border-b w-fit cursor-pointer">
+          <Button
+            onClick={() => setShowTerms(!showTerms)}
+            className="border-b w-fit cursor-pointer"
+          >
             قوانین و مقررات
           </Button>
           <P>را می‌پذیرم.</P>
@@ -102,6 +109,8 @@ function SignupForm() {
         </Button>
       </form>
     </div>
+    {showTerms && <Terms setShowTerms={setShowTerms}/>}
+  </>
   );
 }
 
