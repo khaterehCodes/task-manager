@@ -4,6 +4,7 @@ import React, { ReactNode } from "react";
 import Header from "../header/Header";
 import { usePathname } from "next/navigation";
 import RegistrationHeader from "../registrationHeader/RegistrationHeader";
+import SideBar from "../sideBar/SideBar";
 type LayoutPropsType = {
   children: ReactNode;
 };
@@ -19,7 +20,9 @@ function Layout({ children }: LayoutPropsType) {
   const registerPage = includesPages.includes(pathName);
   return (
     <div className="w-full h-auto flex">
-      {registerPage ? "" : <div className="w-85 h-screen bg-olive-500"></div>}
+      {registerPage ? "" : <div className="w-85 h-screen">
+        <SideBar/>
+        </div>}
       <div
         className={`${registerPage ? "w-full" : "w-300 h-auto"}`}
       >

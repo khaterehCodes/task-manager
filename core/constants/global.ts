@@ -26,3 +26,15 @@ export const termsList: TermsListType[] = [
     list: `جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.`,
   },
 ];
+
+interface NavbarItems {
+  id: number;
+  title: string;
+  icon: string;
+}
+
+export const navItems: NavbarItems[] = [
+  { id: 1, title: "نمایش لیستی", icon: "listview" },
+  { id: 2, title: "نمایش ستونی", icon: "columnViem" },
+  { id: 3, title: "تقویم", icon: "calendarNav" },
+];
