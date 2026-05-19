@@ -3,11 +3,12 @@ import P from "@/components/ui/customP/P";
 import DropDown from "@/components/partial/sideBar/DropDown";
 import Icon from "@/components/ui/icons/Icon";
 import { useState } from "react";
+import Profile from "./Profile";
 
 function SideBar() {
   const [openDropDown, setOpenDropDown] = useState<boolean>(false);
   return (
-    <div className="w-full h-full flex flex-col items-center border-l-[0.5px] border-[#AAAAAA]">
+    <div className="w-full h-full flex flex-col items-center border-l-[0.5px] border-[#AAAAAA] relative">
       <P className="text-[38px] font-medium p-5">تسک منیجر</P>
       <div className="w-69 h-6 flex items-center justify-between">
         <P className="font-extrabold">ورک‌اسپیس‌ها</P>
@@ -19,6 +20,7 @@ function SideBar() {
         </Button>
       </div>
       {openDropDown && <DropDown />}
+      <Profile />
     </div>
   );
 }
