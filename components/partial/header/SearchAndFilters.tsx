@@ -2,7 +2,6 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
-import React from "react";
 
 function SearchAndFilters() {
   return (

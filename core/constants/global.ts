@@ -38,3 +38,46 @@ export const navItems: NavbarItems[] = [
   { id: 2, title: "نمایش ستونی", icon: "columnViem" },
   { id: 3, title: "تقویم", icon: "calendarNav" },
 ];
+
+interface ProjectsType {
+  id: number;
+  title: string;
+}
+interface WorkSpaceType {
+  id: number;
+  title: string;
+  color: string;
+  projects?: ProjectsType[];
+}
+
+export const workSpaceItems: WorkSpaceType[] = [
+  {
+    id: 1,
+    title: "درس مدیریت پروژه",
+    color: "#40C057",
+    projects: [{ id: 1, title: "پروژه اول" }],
+  },
+  {
+    id: 2,
+    title: "کارهای شخصی",
+    color: "#FAB005",
+    projects: [
+      { id: 1, title: "پروژه اول" },
+      { id: 2, title: "پروژه دوم" },
+    ],
+  },
+  {
+    id: 3,
+    title: "درس کامپایلر",
+    color: "#FA5252",
+  },
+  {
+    id: 4,
+    title: "درس طراحی الگوریتم",
+    color: "#228BE6",
+    projects: [
+      { id: 1, title: "پروژه اول" },
+      { id: 2, title: "پروژه دوم" },
+    ],
+  },
+];
