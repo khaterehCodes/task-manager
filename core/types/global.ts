@@ -20,3 +20,9 @@ export type NewProjectType = {
   newProject: boolean;
   setNewProject: (value: boolean) => void;
 };
+
+export type NavLinkType={
+  children:ReactNode
+  className:string
+  href:string
+}
