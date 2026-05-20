@@ -107,3 +107,35 @@ export const shareContacts: ShareContactsType[] = [
     canOpen: true,
   },
 ];
+
+interface PermissionTypes {
+  id: number;
+  title: string;
+  permission: string;
+}
+
+export const permissions: PermissionTypes[] = [
+  {
+    id: 1,
+    title: "دسترسی کامل",
+    permission:
+      "توانایی ساختن تسک در این پروژه، ویرایش تنظیمات پروژه و حذف پروژه",
+  },
+  {
+    id: 2,
+    title: "دسترسی ویرایش",
+    permission:
+      "توانایی ویرایش تسک در این پروژه و ویرایش تنظیمات پروژه. نمی‌تواند پروژه را حذف یا تسک جدید بسازد.",
+  },
+  {
+    id: 3,
+    title: "دسترسی کامنت",
+    permission:
+      "توانایی کامنت گذاشتن دارد. می‌تواند ستون تسک‌ها را تغییر دهد اما توانایی ویرایش تنظیمات پروژه را ندارد.",
+  },
+  {
+    id: 4,
+    title: "فقط دسترسی مشاهده",
+    permission: "توانایی گذاشتن کامنت یا ویرایش تسک‌ها را ندارد.",
+  },
+];

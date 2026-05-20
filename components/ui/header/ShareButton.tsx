@@ -5,10 +5,17 @@ import Button from "../customButton/Button";
 import Icon from "../icons/Icon";
 import Input from "../customInput/Input";
 import { shareContacts } from "@/core/constants/global";
-import React from "react";
+import React, { useState } from "react";
 import IMG from "../customIMG/IMG";
+import Permissions from "./Permissions";
 
 function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
+  const [openPermission, setOpenPermissions] = useState<boolean>(false);
+  const [showPermission, setShowPermission] = useState<string>("دسترسی کامل");
+  const clickHandler = () => {
+    setOpenShare(false);
+    setOpenPermissions(!openPermission);
+  };
   return (
     <>
       <ModalHook openModal={openShare}>
@@ -69,8 +76,16 @@ function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
                       )}
                     </div>
                     {item.canOpen ? (
-                      <Button className="w-30 h-7 border border-[#E9EBF0] cursor-pointer flex items-center justify-center text-[12px] rounded-md">
-                        {item.access}
+                      <Button
+                        onClick={() => clickHandler()}
+                        className="w-30 h-7 border border-[#E9EBF0] cursor-pointer flex items-center justify-center text-[12px] rounded-md"
+                      >
+                        {showPermission}
+                        {openPermission ? (
+                          <Icon name="upArrow" />
+                        ) : (
+                          <Icon name="downArrow" />
+                        )}
                       </Button>
                     ) : (
                       <div className="w-22 h-7 border border-[#E9EBF0] cursor-pointer flex items-center justify-center text-[12px] rounded-md">
@@ -84,6 +99,11 @@ function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
           </div>
         </div>
       </ModalHook>
+      <Permissions
+        openPermission={openPermission}
+        setOpenPermissions={setOpenPermissions}
+        setShowPermission={setShowPermission}
+      />
     </>
   );
 }

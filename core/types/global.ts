@@ -9,3 +9,9 @@ export type ShareButtonType = {
   openShare: boolean;
   setOpenShare: (value: boolean) => void;
 };
+
+export type PermissionsHeader = {
+  openPermission: boolean;
+  setOpenPermissions: (value: boolean) => void;
+  setShowPermission: (value: string) => void;
+};
