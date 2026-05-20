@@ -1,6 +1,6 @@
 import IMG from "@/components/ui/customIMG/IMG";
 import React from "react";
-import ConfirmPasswordForm from "./components/confirmPasswordForm/ConfirmPasswordForm";
+import ConfirmPasswordForm from "./(components)/confirmPasswordForm/ConfirmPasswordForm";
 
 function ConfirmPassword() {
   return (
