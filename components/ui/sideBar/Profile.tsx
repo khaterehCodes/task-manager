@@ -1,35 +1,19 @@
 import Button from "@/components/ui/customButton/Button";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import DarkMode from "../darkMode/DarkMode";
 
 function Profile() {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saveMode = localStorage.getItem("darkMode");
-      if (saveMode !== null) {
-        const isDark = saveMode === "true";
-        setDarkMode(isDark);
-      }
-    }
-  }, []);
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add("dark");
-      localStorage.setItem("darkMode", "true");
-    } else {
-      document.body.classList.remove("dark");
-      localStorage.setItem("darkMode", "false");
-    }
-  }, [darkMode]);
   return (
     <div className="w-full h-22 flex items-center justify-center absolute bottom-5">
       <div className="w-69 h-full flex flex-col justify-between">
         <div className="w-full h-9 flex items-center justify-start gap-2">
-          <div className="w-9 h-9 rounded-full bg-pink-200 flex items-center justify-center">
-            <P className="text-pink-500 text-[12px]">KN</P>
-          </div>
+          <Link href={"/profile"}>
+            <div className="w-9 h-9 rounded-full bg-pink-200 flex items-center justify-center">
+              <P className="text-pink-500 text-[12px]">KN</P>
+            </div>
+          </Link>
           <P className="font-medium">خاطره ناصری</P>
         </div>
         <div className="w-full h-9 flex items-center justify-between">
@@ -37,20 +21,7 @@ function Profile() {
             <Icon name="logout" />
             خروج
           </Button>
-          <Button
-            onClick={() => setDarkMode(!darkMode)}
-            className={`w-16 h-full rounded-lg relative ${darkMode ? "bg-[#F1F3F5]" : "bg-[#343A40]"}`}
-          >
-            {darkMode ? (
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center cursor-pointer">
-                <Icon name="lightMode" />
-              </div>
-            ) : (
-              <div className="w-8 h-8 bg-[#868E96] rounded-lg flex items-center justify-center cursor-pointer absolute left-0.5 top-0.5">
-                <Icon name="darkMode" />
-              </div>
-            )}
-          </Button>
+          <DarkMode />
         </div>
       </div>
     </div>

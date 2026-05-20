@@ -44,21 +44,45 @@ function UserInformation() {
           </P>
         </div>
       </div>
-      <form onSubmit={handleSubmit(formHandler)} className="flex flex-col gap-7">
+      <form
+        onSubmit={handleSubmit(formHandler)}
+        className="flex flex-col gap-7"
+      >
         <div>
-            <label htmlFor="firstName" className="text-[14px]">نام</label>
-            <Input name="firstNam" className="w-89 h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"/>
+          <label htmlFor="firstName" className="text-[14px]">
+            نام
+          </label>
+          <Input
+            id="firstName"
+            type="firstName"
+            {...register("firstName")}
+            className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
+          />
         </div>
-         <div>
-            <label htmlFor="lastName" className="text-[14px]">نام خانوادگی</label>
-            <Input name="lastNam" className="w-89 h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"/>
+        <div>
+          <label htmlFor="lastName" className="text-[14px]">
+            نام خانوادگی
+          </label>
+          <Input
+            id="lastName"
+            type="lastName"
+            {...register("lastName")}
+            className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
+          />
         </div>
-         <div>
-            <label htmlFor="phone" className="text-[14px]">شماره موبایل </label>
-            <Input name="phone" className="w-89 h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"/>
+        <div>
+          <label htmlFor="phone" className="text-[14px]">
+            شماره موبایل{" "}
+          </label>
+          <Input
+            id="phone"
+            type="phone"
+            {...register("phone")}
+            className="w-full h-10 border border-[#AAAAAA] rounded-md p-2 outline-0"
+          />
         </div>
         <Button className="w-89 h-8 bg-[#208D8E] text-white font-extrabold text-[14px] rounded-md cursor-pointer">
-            ثبت تغییرات
+          ثبت تغییرات
         </Button>
       </form>
     </div>
