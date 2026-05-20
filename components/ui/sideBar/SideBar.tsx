@@ -5,6 +5,7 @@ import Icon from "@/components/ui/icons/Icon";
 import { useState } from "react";
 import Profile from "./Profile";
 import { usePathname } from "next/navigation";
+import SideBarProfile from "@/app/profile/(components)/sidebarProfile/SideBarProfile";
 
 function SideBar() {
   const pathName = usePathname();
@@ -15,6 +16,9 @@ function SideBar() {
       {profileSidebar ? (
         <div className="w-full h-full flex flex-col items-center border-l-[0.5px] border-[#AAAAAA] relative">
           <P className="text-[38px] font-medium p-5">تسک منیجر</P>
+          <div className="w-48 h-100 flex items-center justify-between">
+            <SideBarProfile />
+          </div>
         </div>
       ) : (
         <div className="w-full h-full flex flex-col items-center border-l-[0.5px] border-[#AAAAAA] relative">

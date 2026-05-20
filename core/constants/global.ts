@@ -139,3 +139,15 @@ export const permissions: PermissionTypes[] = [
     permission: "توانایی گذاشتن کامنت یا ویرایش تسک‌ها را ندارد.",
   },
 ];
+
+interface ProfileNavType {
+  id: number;
+  title: string;
+  icon: string;
+}
+
+export const profileNav: ProfileNavType[] = [
+  { id: 1, title: "اطلاعات فردی", icon: "userInfo" },
+  { id: 2, title: "اطلاعات حساب", icon: "accountInfo" },
+  { id: 3, title: "تنظیمات", icon: "setting" },
+];
