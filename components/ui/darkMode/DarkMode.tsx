@@ -26,14 +26,14 @@ function DarkMode() {
     <div className="relative">
       <Button
         onClick={() => setDarkMode(!darkMode)}
-        className={`w-16 h-full rounded-lg relative ${darkMode ? "bg-[#F1F3F5]" : "bg-[#343A40]"}`}
+        className={`w-18 h-10 rounded-lg relative ${darkMode ? "bg-[#F1F3F5]" : "bg-[#343A40]"}`}
       >
         {darkMode ? (
-          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center cursor-pointer">
+          <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] cursor-pointer flex items-center justify-center absolute bottom-1 right-1">
             <Icon name="lightMode" />
           </div>
         ) : (
-          <div className="w-8 h-8 bg-[#868E96] rounded-lg flex items-center justify-center cursor-pointer absolute left-0 bottom-0">
+          <div className="w-8 h-8 rounded-lg bg-[#868E96] cursor-pointer flex items-center justify-center absolute bottom-1 left-1">
             <Icon name="darkMode" />
           </div>
         )}
