@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import Button from "../customButton/Button";
 import Icon from "../icons/Icon";
