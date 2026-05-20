@@ -30,6 +30,7 @@ function Icon({ name, ...props }: IconType) {
     case "listview":
       return (
         <svg
+        {...props}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -83,6 +84,7 @@ function Icon({ name, ...props }: IconType) {
     case "columnViem":
       return (
         <svg
+        {...props}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -124,6 +126,7 @@ function Icon({ name, ...props }: IconType) {
     case "calendarNav":
       return (
         <svg
+        {...props}
           width="24"
           height="24"
           viewBox="0 0 24 24"

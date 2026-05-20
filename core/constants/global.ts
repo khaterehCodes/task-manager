@@ -31,12 +31,13 @@ interface NavbarItems {
   id: number;
   title: string;
   icon: string;
+  path:string
 }
 
 export const navItems: NavbarItems[] = [
-  { id: 1, title: "نمایش لیستی", icon: "listview" },
-  { id: 2, title: "نمایش ستونی", icon: "columnViem" },
-  { id: 3, title: "تقویم", icon: "calendarNav" },
+  { id: 1, title: "نمایش لیستی", icon: "listview" ,path:'/board/listView'},
+  { id: 2, title: "نمایش ستونی", icon: "columnViem" ,path:'/board/boardView'},
+  { id: 3, title: "تقویم", icon: "calendarNav" ,path:'/board'},
 ];
 
 interface ProjectsType {

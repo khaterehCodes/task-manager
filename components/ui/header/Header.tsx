@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import SearchAndFilters from "./SearchAndFilters";
 import ShareButton from "./ShareButton";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 function Header() {
   const [openShare, setOpenShare] = useState<boolean>(false);
@@ -24,14 +25,28 @@ function Header() {
                 <P className="text-[20px] font-extrabold p-3 border-l w-fit border-[#999999] h-6 flex items-center justify-between">
                   پروژه اول
                 </P>
-                {navItems.map((item) => (
-                  <React.Fragment key={item.id}>
-                    <div className="w-fit h-6 border-l border-[#999999] p-3 flex items-center justify-center cursor-pointer gap-2">
-                      <Icon name={item.icon} />
-                      <P>{item.title}</P>
-                    </div>
-                  </React.Fragment>
-                ))}
+                {navItems.map((item) => {
+                  const isNav = pathName === item.path;
+                  return (
+                    <React.Fragment key={item.id}>
+                      <Link href={item.path}>
+                        <div className="w-fit h-6 border-l border-[#999999] p-3 flex items-center justify-center cursor-pointer gap-2">
+                          {isNav ? (
+                            <>
+                              <Icon name={item.icon} className="text-[#208D8E]"/>
+                              <P className="font-extrabold text-[#208D8E]">{item.title}</P>
+                            </>
+                          ) : (
+                            <>
+                              <Icon name={item.icon} />
+                              <P>{item.title}</P>
+                            </>
+                          )}
+                        </div>
+                      </Link>
+                    </React.Fragment>
+                  );
+                })}
               </div>
               <Button
                 onClick={() => setOpenShare(!openShare)}
