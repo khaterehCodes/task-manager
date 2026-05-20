@@ -1,10 +1,10 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import Header from "../header/Header";
+import Header from "../../ui/header/Header";
 import { usePathname } from "next/navigation";
-import RegistrationHeader from "../registrationHeader/RegistrationHeader";
-import SideBar from "../sideBar/SideBar";
+import RegistrationHeader from "../../ui/registrationHeader/RegistrationHeader";
+import SideBar from "../../ui/sideBar/SideBar";
 type LayoutPropsType = {
   children: ReactNode;
 };

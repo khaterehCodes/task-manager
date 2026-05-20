@@ -2,11 +2,14 @@ import Button from "@/components/ui/customButton/Button";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import { navItems } from "@/core/constants/global";
-import React from "react";
+import React, { useState } from "react";
 import SearchAndFilters from "./SearchAndFilters";
+import ShareButton from "./ShareButton";
 
 function Header() {
+  const [openShare, setOpenShare] = useState<boolean>(false);
   return (
+    <>
     <div className="h-34 w-full flex flex-col justify-center gap-2 p-5">
       <div className="w-full h-15 flex items-center justify-between border-b-[0.5px] border-[#AAAAAA]">
         <div className="w-fit h-full flex items-center gap-5">
@@ -22,7 +25,10 @@ function Header() {
             </React.Fragment>
           ))}
         </div>
-        <Button className="font-medium flex items-center justify-center gap-1 cursor-pointer">
+        <Button
+          onClick={() => setOpenShare(!openShare)}
+          className="font-medium flex items-center justify-center gap-1 cursor-pointer"
+        >
           <Icon name="share" />
           اشتراک گذاری
         </Button>
@@ -31,6 +37,8 @@ function Header() {
         <SearchAndFilters />
       </div>
     </div>
+    <ShareButton openShare={openShare} setOpenShare={setOpenShare}/>
+    </>
   );
 }
 

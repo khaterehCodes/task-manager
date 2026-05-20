@@ -81,3 +81,29 @@ export const workSpaceItems: WorkSpaceType[] = [
     ],
   },
 ];
+
+interface ShareContactsType {
+  id: number;
+  profile?: string;
+  owner?: string;
+  access: string;
+  email: string;
+  canOpen: boolean;
+}
+
+export const shareContacts: ShareContactsType[] = [
+  {
+    id: 1,
+    profile: "/assets/images/profile1.jpg",
+    owner: "مالک ورک‌اسپیس",
+    access: "دسترسی کامل",
+    email: "من",
+    canOpen: false,
+  },
+  {
+    id: 2,
+    access: "دسترسی کامل",
+    email: "khaterehnaseri@gmail.com",
+    canOpen: true,
+  },
+];

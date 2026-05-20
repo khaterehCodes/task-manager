@@ -3,6 +3,8 @@ import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import ModalHook from "@/core/hooks/modalHook/ModalHook";
+import { useState } from "react";
+import SelectColorWorkSpace from "./SelectColorWorkSpace";
 function NewWorkSpace({
   openWorkSpace,
   setOpenWorkSpace,
@@ -10,6 +12,11 @@ function NewWorkSpace({
   openWorkSpace: boolean;
   setOpenWorkSpace: (value: boolean) => void;
 }) {
+  const [workspaceColor, setWorkspaceColor] = useState<boolean>(false);
+  const modalHandler = () => {
+    setWorkspaceColor(!workspaceColor);
+    setOpenWorkSpace(false);
+  };
   return (
     <div>
       <ModalHook openModal={openWorkSpace}>
@@ -35,9 +42,16 @@ function NewWorkSpace({
                 className="w-full h-10 border border-[#AAAAAA] rounded-lg outline-0 p-2"
               />
             </div>
-            <Button className="w-104 h-10 bg-[#208D8E] rounded-md text-white cursor-pointer">
+            <Button
+              onClick={modalHandler}
+              className="w-104 h-10 bg-[#208D8E] rounded-md text-white cursor-pointer"
+            >
               ادامه
             </Button>
+            <SelectColorWorkSpace
+              workspaceColor={workspaceColor}
+              setWorkspaceColor={setWorkspaceColor}
+            />
           </div>
         </div>
       </ModalHook>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Icon from "../../ui/icons/Icon";
-import Input from "../../ui/customInput/Input";
-import Button from "../../ui/customButton/Button";
-import P from "../../ui/customP/P";
+import Icon from "../icons/Icon";
+import Input from "../customInput/Input";
+import Button from "../customButton/Button";
+import P from "../customP/P";
 import { workSpaceItems } from "@/core/constants/global";
 import ModalHook from "@/core/hooks/modalHook/ModalHook";
 import NewWorkSpace from "./NewWorkSpace";
