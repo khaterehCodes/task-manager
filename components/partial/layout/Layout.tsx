@@ -19,17 +19,21 @@ function Layout({ children }: LayoutPropsType) {
   ];
   const registerPage = includesPages.includes(pathName);
   return (
-    <div className="w-full h-auto flex">
-      {registerPage ? "" : <div className="w-85 h-screen">
-        <SideBar/>
-        </div>}
-      <div
-        className={`${registerPage ? "w-full" : "w-300 h-auto"}`}
-      >
-        <header>{registerPage ? <RegistrationHeader /> : <Header />}</header>
-        <main>{children}</main>
+    <>
+      <div className="w-full h-auto flex">
+        {registerPage ? (
+          ""
+        ) : (
+          <div className="w-85 h-screen">
+            <SideBar />
+          </div>
+        )}
+        <div className={`${registerPage ? "w-full" : "w-300 h-auto"}`}>
+          <header>{registerPage ? <RegistrationHeader /> : <Header />}</header>
+          <main>{children}</main>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
