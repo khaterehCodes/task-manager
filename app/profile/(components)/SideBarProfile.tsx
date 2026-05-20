@@ -4,14 +4,10 @@ import Icon from "@/components/ui/icons/Icon";
 import { profileNav } from "@/core/constants/global";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { useProfileNav } from "../../context/ProfileContext";
+import Link from "next/link";
 
 function SideBarProfile() {
-  const { setSelectedNav } = useProfileNav();
   const router = useRouter();
-  const navHandler = (id: number) => {
-    setSelectedNav(id);
-  };
   return (
     <>
       <div className="w-full h-full flex flex-col items-start justify-evenly">
@@ -25,13 +21,14 @@ function SideBarProfile() {
         <div className="w-full h-44 flex flex-col justify-between">
           {profileNav.map((nav) => (
             <React.Fragment key={nav.id}>
-              <div
-                onClick={() => navHandler(nav.id)}
-                className={`w-full h-10 flex items-center gap-2 cursor-pointer`}
-              >
-                <Icon name={nav.icon} />
-                <P className={`text-[20px] font-medium`}>{nav.title}</P>
-              </div>
+              <Link href={nav.path}>
+                <div
+                  className={`w-full h-10 flex items-center gap-2 cursor-pointer`}
+                >
+                  <Icon name={nav.icon} />
+                  <P className={`text-[20px] font-medium`}>{nav.title}</P>
+                </div>
+              </Link>
             </React.Fragment>
           ))}
         </div>

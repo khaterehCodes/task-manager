@@ -5,7 +5,7 @@ import Icon from "@/components/ui/icons/Icon";
 import { useState } from "react";
 import Profile from "./Profile";
 import { usePathname } from "next/navigation";
-import SideBarProfile from "@/app/profile/(components)/sidebarProfile/SideBarProfile";
+import SideBarProfile from "@/app/profile/(components)/SideBarProfile";
 
 function SideBar() {
   const pathName = usePathname();
