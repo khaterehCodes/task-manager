@@ -15,3 +15,8 @@ export type PermissionsHeader = {
   setOpenPermissions: (value: boolean) => void;
   setShowPermission: (value: string) => void;
 };
+
+export type NewProjectType = {
+  newProject: boolean;
+  setNewProject: (value: boolean) => void;
+};

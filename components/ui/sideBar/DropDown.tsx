@@ -4,12 +4,13 @@ import Input from "../customInput/Input";
 import Button from "../customButton/Button";
 import P from "../customP/P";
 import { workSpaceItems } from "@/core/constants/global";
-import ModalHook from "@/core/hooks/modalHook/ModalHook";
 import NewWorkSpace from "./NewWorkSpace";
+import NewProject from "./NewProject";
 
 function DropDown() {
   const [openWorkSpace, setOpenWorkSpace] = useState<boolean>(false);
   const [showTodos, setShowTodos] = useState<number[]>([]);
+  const [newProject, setNewProject] = useState<boolean>(false);
   const toggleTodos = (id: number) => {
     setShowTodos((prev) => {
       if (prev.includes(id)) {
@@ -63,7 +64,10 @@ function DropDown() {
                       ))}
                     </div>
                   ) : (
-                    <Button className="w-full h-9 border-2 border-[#208D8E] rounded-md text-[#208D8E] cursor-pointer text-[14px]">
+                    <Button
+                      onClick={() => setNewProject(!newProject)}
+                      className="w-full h-9 border-2 border-[#208D8E] rounded-md text-[#208D8E] cursor-pointer text-[14px]"
+                    >
                       ساختن پروژه جدید
                     </Button>
                   )}
@@ -77,6 +81,7 @@ function DropDown() {
         openWorkSpace={openWorkSpace}
         setOpenWorkSpace={setOpenWorkSpace}
       />
+      <NewProject newProject={newProject} setNewProject={setNewProject} />
     </>
   );
 }
