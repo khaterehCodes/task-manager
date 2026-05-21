@@ -9,7 +9,7 @@ function Profile() {
     <div className="w-full h-22 flex items-center justify-center absolute bottom-5">
       <div className="w-69 h-full flex flex-col justify-between">
         <div className="w-full h-9 flex items-center justify-start gap-2">
-          <Link href={"/profile"}>
+          <Link href={"/profile/user"}>
             <div className="w-9 h-9 rounded-full bg-pink-200 flex items-center justify-center">
               <P className="text-pink-500 text-[12px]">KN</P>
             </div>

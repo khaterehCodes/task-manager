@@ -31,13 +31,13 @@ interface NavbarItems {
   id: number;
   title: string;
   icon: string;
-  path:string
+  path: string;
 }
 
 export const navItems: NavbarItems[] = [
-  { id: 1, title: "نمایش لیستی", icon: "listview" ,path:'/board/listView'},
-  { id: 2, title: "نمایش ستونی", icon: "columnViem" ,path:'/board/boardView'},
-  { id: 3, title: "تقویم", icon: "calendarNav" ,path:'/board'},
+  { id: 1, title: "نمایش لیستی", icon: "listview", path: "/board/listView" },
+  { id: 2, title: "نمایش ستونی", icon: "columnViem", path: "/board/boardView" },
+  { id: 3, title: "تقویم", icon: "calendarNav", path: "/board" },
 ];
 
 interface ProjectsType {
@@ -179,4 +179,25 @@ export const themes: ThemesType[] = [
   { id: 11, color: "#82C91E", selected: false },
   { id: 12, color: "#FAB005", selected: false },
   { id: 13, color: "#FD7E14", selected: false },
+];
+
+interface ColumnsType {
+  id: number;
+  tilte: string;
+  tasks: [{ id: number; img?: string }];
+}
+
+interface BoardViewtype {
+  id: number;
+  columns: ColumnsType;
+}
+
+export const boardItems: BoardViewtype[] = [
+  { id: 1, columns: { id: 1, tilte: "Open", tasks: [{ id: 1 }] } },
+  {
+    id: 2,
+    columns: { id: 2, tilte: "In progress", tasks: [{ id: 2, img: "" }] },
+  },
+  { id: 3, columns: { id: 3, tilte: "To Do", tasks: [{ id: 3, img: "" }] } },
+  { id: 4, columns: { id: 4, tilte: "Done", tasks: [{ id: 4, img: "" }] } },
 ];

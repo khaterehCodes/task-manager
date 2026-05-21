@@ -12,7 +12,7 @@ function SideBarProfile() {
     <>
       <div className="w-full h-full flex flex-col items-start justify-evenly">
         <Button
-          onClick={() => router.push("/")}
+          onClick={() => router.push("/board/boardView")}
           className="w-29 h-9 bg-[#208D8E] rounded-lg text-white cursor-pointer text-[20px] font-medium flex items-center justify-center gap-1"
         >
           <Icon name="return" />

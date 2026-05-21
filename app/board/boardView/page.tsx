@@ -2,8 +2,8 @@ import React from 'react';
 
 function BoardView() {
     return (
-        <div>
-            boardddddd
+        <div className='w-full h-148 bg-olive-400'>
+            
         </div>
     );
 }
