@@ -1,5 +1,4 @@
 import IMG from "@/components/ui/customIMG/IMG";
-import React from "react";
 import LoginForm from "./components/loginForm/LoginForm";
 
 function Login() {
