@@ -1,11 +1,13 @@
 "use client";
 import Button from "@/components/ui/customButton/Button";
 import P from "@/components/ui/customP/P";
-import DarkMode from "@/components/ui/darkMode/DarkMode";
+import Icon from "@/components/ui/icons/Icon";
 import { themes } from "@/core/constants/global";
+import { useDark } from "@/core/provider/DarkModeProvider";
 import { useState } from "react";
 
 function Setting() {
+  const { darkMode, buttonDarkMode } = useDark();
   const [colorId, setColorId] = useState<number>(9);
   const getColorId = (id: number) => {
     setColorId(id);
@@ -32,7 +34,20 @@ function Setting() {
               ))}
             </div>
           </div>
-          <DarkMode />
+          <Button
+            onClick={buttonDarkMode}
+            className={`w-18 h-10 rounded-lg relative ${darkMode ? "bg-[#343A40]" : "bg-[#F1F3F5]"}`}
+          >
+            {darkMode ? (
+              <div className="w-8 h-8 rounded-lg bg-[#868E96] cursor-pointer flex items-center justify-center absolute bottom-1 left-1">
+                <Icon name="darkMode" />
+              </div>
+            ) : (
+              <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] cursor-pointer flex items-center justify-center absolute bottom-1 right-1">
+                <Icon name="lightMode" />
+              </div>
+            )}
+          </Button>
           <Button className="w-89 h-8 bg-[#208D8E] text-white font-extrabold text-[14px] rounded-md cursor-pointer">
             ثبت تغییرات
           </Button>

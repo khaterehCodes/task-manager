@@ -2,9 +2,10 @@ import Button from "@/components/ui/customButton/Button";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import Link from "next/link";
-import DarkMode from "../darkMode/DarkMode";
+import { useDark } from "@/core/provider/DarkModeProvider";
 
 function Profile() {
+  const { darkMode, buttonDarkMode } = useDark();
   return (
     <div className="w-full h-22 flex items-center justify-center absolute bottom-5">
       <div className="w-69 h-full flex flex-col justify-between">
@@ -21,7 +22,22 @@ function Profile() {
             <Icon name="logout" />
             خروج
           </Button>
-          <DarkMode />
+          <div className="relative">
+            <Button
+              onClick={buttonDarkMode}
+              className={`w-18 h-10 rounded-lg relative ${darkMode ? "bg-[#343A40]" : "bg-[#F1F3F5]"}`}
+            >
+              {darkMode ? (
+                <div className="w-8 h-8 rounded-lg bg-[#868E96] cursor-pointer flex items-center justify-center absolute bottom-1 left-1">
+                  <Icon name="darkMode" />
+                </div>
+              ) : (
+                <div className="w-8 h-8 rounded-lg bg-[#FFFFFF] cursor-pointer flex items-center justify-center absolute bottom-1 right-1">
+                  <Icon name="lightMode" />
+                </div>
+              )}
+            </Button>
+          </div>
         </div>
       </div>
     </div>
