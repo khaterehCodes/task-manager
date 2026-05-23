@@ -10,6 +10,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import EmailConfirmMessage from "../emailConfirmMessage/EmailConfirmMessage";
+import { useTheme } from "@/core/provider/ThemeContext";
 
 const emailSchema = z.object({
   email: z
@@ -32,6 +33,7 @@ function ForgotPassword() {
     },
   });
   const router = useRouter();
+  const {currentTheme}=useTheme()
   const [showConfirmMessage, setShowConfirmMessage] = useState<boolean>(false);
   const formHandler = (data: emailData) => {
     setShowConfirmMessage(true);
@@ -68,7 +70,7 @@ function ForgotPassword() {
             </div>
             <Button
               type="submit"
-              className="w-full h-10 bg-[#208D8E] rounded-md text-white cursor-pointer text-[14px] font-extrabold"
+              className="w-full h-10 rounded-md text-white cursor-pointer text-[14px] font-extrabold"
               disabled={isSubmitting}
             >
               {isSubmitting
@@ -76,9 +78,9 @@ function ForgotPassword() {
                 : "دریافت ایمیل بازیابی رمز عبور"}
             </Button>
             <Link href={"/login"}>
-              <Button className="h-10 text-[#2999A1] font-extrabold cursor-pointer">
+              <div className="h-10 font-extrabold cursor-pointer" style={{color:currentTheme}}>
                 بازگشت
-              </Button>
+              </div>
             </Link>
           </form>
         </div>

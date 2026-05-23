@@ -94,12 +94,12 @@ function SignupForm() {
           </div>
           <div className="w-full h-13 font-medium flex items-center justify-start gap-2">
             <Input type="checkbox" className="cursor-pointer w-5 h-3" />
-            <Button
+            <div
               onClick={() => setShowTerms(!showTerms)}
               className="border-b w-fit cursor-pointer"
             >
               قوانین و مقررات
-            </Button>
+            </div>
             <P>را می‌پذیرم.</P>
           </div>
           <Button

@@ -2,6 +2,7 @@
 import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
+import { useTheme } from "@/core/provider/ThemeContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -26,6 +27,7 @@ function LoginForm() {
       password: "",
     },
   });
+  const { currentTheme } = useTheme();
   const formHandler = (data: loginFormData) => {
     console.log(data);
     router.push("/");
@@ -77,7 +79,7 @@ function LoginForm() {
         </Link>
         <Button
           type="submit"
-          className="w-full h-10 bg-[#208D8E] rounded-md text-white cursor-pointer text-[14px] font-extrabold"
+          className="w-full h-10 rounded-md text-white cursor-pointer text-[14px] font-extrabold"
           disabled={isSubmitting}
         >
           {isSubmitting ? "در حال ورود..." : "ورود"}
@@ -85,7 +87,10 @@ function LoginForm() {
         <div className="w-42 h-6 flex items-center justify-center gap-2">
           <P className="font-medium">ثبت‌نام نکرده‌ای؟</P>
           <Link href={"/signup"}>
-            <P className="text-[#208D8E] font-extrabold cursor-pointer">
+            <P
+              className="font-extrabold cursor-pointer"
+              style={{ color: currentTheme }}
+            >
               ثبت‌نام
             </P>
           </Link>

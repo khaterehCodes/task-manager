@@ -1,7 +1,7 @@
-'use client'
+"use client";
 import Button from "@/components/ui/customButton/Button";
 import P from "@/components/ui/customP/P";
-import { usePathname,useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 function RegistrationHeader() {
   const router = useRouter();
@@ -20,9 +20,10 @@ function RegistrationHeader() {
         <P className="text-[32px] font-medium">تسک منیجر</P>
         <div className="w-55 h-full flex items-center justify-between cursor-pointer">
           <P className="font-bold">ثبت‌نام نکرده‌ای؟</P>
-          <Button 
-          onClick={registerButtonHandler}
-          className="w-24 h-10 rounded-md cursor-pointer text-white text-[14px] font-extrabold bg-[#208D8E]">
+          <Button
+            onClick={registerButtonHandler}
+            className="w-24 h-10 rounded-md cursor-pointer text-white text-[14px] font-extrabold"
+          >
             {isLogin ? " ثبت نام" : "ورورد"}
           </Button>
         </div>

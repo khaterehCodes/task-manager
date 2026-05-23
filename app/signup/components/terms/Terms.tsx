@@ -17,12 +17,12 @@ function Terms({ setShowTerms }: TermsPropsType) {
             <P className="text-[32px] font-extrabold w-190 flex items-center justify-center">
               قوانین و مقررات
             </P>
-            <Button
+            <div
               onClick={() => setShowTerms(false)}
               className="w-10 h-10 cursor-pointer"
             >
               <Icon name="closeTerms" />
-            </Button>
+            </div>
           </div>
           <div className="w-full h-94 flex flex-col items-start justify-center leading-8 text-[14px]">
             <P>
