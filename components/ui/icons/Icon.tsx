@@ -1,7 +1,7 @@
 import { IconType } from "./iconType";
 
 function Icon({ name, style, ...props }: IconType) {
-  const iconColor = style?.color || "black";
+  const iconColor = style?.color || "currentColor";
   switch (name) {
     case "closeTerms":
       return (

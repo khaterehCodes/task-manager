@@ -35,7 +35,7 @@ function Setting() {
               ))}
             </div>
           </div>
-          <Button
+          <div
             onClick={buttonDarkMode}
             className={`w-18 h-10 rounded-lg relative ${darkMode ? "bg-[#343A40]" : "bg-[#F1F3F5]"}`}
           >
@@ -48,7 +48,7 @@ function Setting() {
                 <Icon name="lightMode" />
               </div>
             )}
-          </Button>
+          </div>
           <Button
           onClick={showAlert}
           className="w-89 h-8 text-white font-extrabold text-[14px] rounded-md cursor-pointer" style={{backgroundColor:currentTheme}}>
