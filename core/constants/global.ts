@@ -37,7 +37,7 @@ interface NavbarItems {
 export const navItems: NavbarItems[] = [
   { id: 1, title: "نمایش لیستی", icon: "listview", path: "/board/listView" },
   { id: 2, title: "نمایش ستونی", icon: "columnViem", path: "/board/boardView" },
-  { id: 3, title: "تقویم", icon: "calendarNav", path: "/board" },
+  { id: 3, title: "تقویم", icon: "calendarNav", path: "/board/calendar" },
 ];
 
 interface ProjectsType {
@@ -162,23 +162,22 @@ export const profileNav: ProfileNavType[] = [
 interface ThemesType {
   id: number;
   color: string;
-  selected: boolean;
 }
 
 export const themes: ThemesType[] = [
-  { id: 1, color: "#FA5252", selected: false },
-  { id: 2, color: "#E64980", selected: false },
-  { id: 3, color: "#BE4BDB", selected: false },
-  { id: 4, color: "#7950F2", selected: false },
-  { id: 5, color: "#4C6EF5", selected: false },
-  { id: 6, color: "#228BE6", selected: false },
-  { id: 7, color: "#15AABF", selected: false },
-  { id: 8, color: "#12B886", selected: false },
-  { id: 9, color: "#208D8E", selected: true },
-  { id: 10, color: "#40C057", selected: false },
-  { id: 11, color: "#82C91E", selected: false },
-  { id: 12, color: "#FAB005", selected: false },
-  { id: 13, color: "#FD7E14", selected: false },
+  { id: 1, color: "#FA5252" },
+  { id: 2, color: "#E64980" },
+  { id: 3, color: "#BE4BDB" },
+  { id: 4, color: "#7950F2" },
+  { id: 5, color: "#4C6EF5" },
+  { id: 6, color: "#228BE6" },
+  { id: 7, color: "#15AABF" },
+  { id: 8, color: "#12B886" },
+  { id: 9, color: "#208D8E" },
+  { id: 10, color: "#40C057" },
+  { id: 11, color: "#82C91E" },
+  { id: 12, color: "#FAB005" },
+  { id: 13, color: "#FD7E14" },
 ];
 
 interface ColumnsType {

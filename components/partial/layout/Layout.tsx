@@ -20,7 +20,7 @@ function Layout({ children }: LayoutPropsType) {
   const registerPage = includesPages.includes(pathName);
   return (
     <>
-      <div className="w-full h-auto flex">
+      <div className="w-full h-screen flex overflow-hidden">
         {registerPage ? (
           ""
         ) : (
@@ -28,9 +28,9 @@ function Layout({ children }: LayoutPropsType) {
             <SideBar />
           </div>
         )}
-        <div className={`${registerPage ? "w-full" : "w-300 h-auto"}`}>
+        <div className={`${registerPage ? "w-full" : "w-300 h-screen"}`}>
           <header>{registerPage ? <RegistrationHeader /> : <Header />}</header>
-          <main>{children}</main>
+          <main className="h-screen overflow-y-auto">{children}</main>
         </div>
       </div>
     </>
