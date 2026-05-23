@@ -4,14 +4,15 @@ import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import { themes } from "@/core/constants/global";
 import { useDark } from "@/core/provider/DarkModeProvider";
+import { useTheme } from "@/core/provider/ThemeContext";
 import { useState } from "react";
 
 function Setting() {
   const { darkMode, buttonDarkMode } = useDark();
-  const [colorId, setColorId] = useState<number>(9);
-  const getColorId = (id: number) => {
-    setColorId(id);
-  };
+  const {selectedColor,setSelectedColor,currentTheme}=useTheme()
+  const showAlert=()=>{
+    alert('تم انتخابی شما با موفقیت ثبت شد')
+  }
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-[88%] h-auto">
@@ -21,16 +22,16 @@ function Setting() {
             <P className="text-[14px]">انتخاب تم</P>
             <div className="w-fit flex items-center gap-3">
               {themes.map((c) => (
-                <Button
-                  onClick={() => getColorId(c.id)}
+                <div
+                  onClick={() => setSelectedColor(c.id)}
                   key={c.id}
-                  className={`rounded-full flex items-center justify-center cursor-pointer ${colorId === c.id ? "w-8 h-8" : "w-5 h-5"}`}
+                  className={`rounded-full flex items-center justify-center cursor-pointer ${selectedColor === c.id ? "w-8 h-8" : "w-5 h-5"}`}
                   style={{ backgroundColor: c.color }}
                 >
-                  {colorId === c.id && (
+                  {selectedColor === c.id && (
                     <div className="w-3 h-3 bg-white rounded-full"></div>
                   )}
-                </Button>
+                </div>
               ))}
             </div>
           </div>
@@ -48,7 +49,9 @@ function Setting() {
               </div>
             )}
           </Button>
-          <Button className="w-89 h-8 bg-[#208D8E] text-white font-extrabold text-[14px] rounded-md cursor-pointer">
+          <Button
+          onClick={showAlert}
+          className="w-89 h-8 text-white font-extrabold text-[14px] rounded-md cursor-pointer" style={{backgroundColor:currentTheme}}>
             ثبت تغییرات
           </Button>
         </div>

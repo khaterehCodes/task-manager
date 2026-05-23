@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/partial/layout/Layout";
 import { DarkModeProvider } from "@/core/provider/DarkModeProvider";
+import { ThemeProvider } from "@/core/provider/ThemeContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,9 +32,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <DarkModeProvider>
-          <Layout>{children}</Layout>
-        </DarkModeProvider>
+        <ThemeProvider>
+          <DarkModeProvider>
+            <Layout>{children}</Layout>
+          </DarkModeProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

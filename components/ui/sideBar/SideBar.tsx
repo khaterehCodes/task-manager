@@ -30,7 +30,7 @@ function SideBar() {
           </Link>
           <div className="w-69 h-6 flex items-center justify-between">
             <P className="font-extrabold">ورک‌اسپیس‌ها</P>
-            <Button
+            <div
               onClick={() => setOpenDropDown(!openDropDown)}
               className="cursor-pointer"
             >
@@ -39,7 +39,7 @@ function SideBar() {
               ) : (
                 <Icon name="downArrow" />
               )}
-            </Button>
+            </div>
           </div>
           {openDropDown && <DropDown />}
           <Profile />

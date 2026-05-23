@@ -45,9 +45,9 @@ function UserInformation() {
               KN
             </div>
             <div className="flex flex-col items-center gap-3">
-              <Button className="w-53 h-12 rounded-lg border border-[#208D8E] text-[20px] font-medium text-[#208D8E] cursor-pointer">
+              <div className="w-53 h-12 rounded-lg border border-[#208D8E] text-[20px] flex items-center justify-center font-medium text-[#208D8E] cursor-pointer">
                 ویرایش تصویر پروفایل
-              </Button>
+              </div>
               <P className="text-[12px] text-[#8A8989]">
                 این تصویر برای عموم قابل نمایش است.
               </P>

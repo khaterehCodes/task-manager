@@ -1,6 +1,7 @@
 import { IconType } from "./iconType";
 
-function Icon({ name, ...props }: IconType) {
+function Icon({ name, style, ...props }: IconType) {
+  const iconColor = style?.color || "black";
   switch (name) {
     case "closeTerms":
       return (
@@ -30,7 +31,10 @@ function Icon({ name, ...props }: IconType) {
     case "listview":
       return (
         <svg
-        {...props}
+          {...props}
+          style={{
+            color: iconColor,
+          }}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -84,7 +88,10 @@ function Icon({ name, ...props }: IconType) {
     case "columnViem":
       return (
         <svg
-        {...props}
+          {...props}
+          style={{
+            color: iconColor,
+          }}
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -126,7 +133,10 @@ function Icon({ name, ...props }: IconType) {
     case "calendarNav":
       return (
         <svg
-        {...props}
+          {...props}
+          style={{
+            color: iconColor,
+          }}
           width="24"
           height="24"
           viewBox="0 0 24 24"

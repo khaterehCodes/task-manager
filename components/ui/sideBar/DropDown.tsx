@@ -31,13 +31,13 @@ function DropDown() {
             className="text-[#AAAAAA] text-[12px] w-[80%] h-full outline-0"
           />
         </div>
-        <Button
+        <div
           onClick={() => setOpenWorkSpace(!openWorkSpace)}
           className="w-full h-8 bg-[#D3D3D3] rounded-md flex items-center justify-center gap-1 cursor-pointer"
         >
           <Icon name="add" />
           <P className="text-[12px]">ساختن ورک‌اسپیس جدید</P>
-        </Button>
+        </div>
         <div className="w-full h-auto flex flex-col gap-1">
           {workSpaceItems.map((item) => (
             <React.Fragment key={item.id}>
@@ -64,12 +64,12 @@ function DropDown() {
                       ))}
                     </div>
                   ) : (
-                    <Button
+                    <div
                       onClick={() => setNewProject(!newProject)}
-                      className="w-full h-9 border-2 border-[#208D8E] rounded-md text-[#208D8E] cursor-pointer text-[14px]"
+                      className="w-full h-9 border-2 border-[#208D8E] rounded-md text-[#208D8E] flex items-center justify-center cursor-pointer text-[14px]"
                     >
                       ساختن پروژه جدید
-                    </Button>
+                    </div>
                   )}
                 </>
               )}

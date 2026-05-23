@@ -7,8 +7,10 @@ import SearchAndFilters from "./SearchAndFilters";
 import ShareButton from "./ShareButton";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useTheme } from "@/core/provider/ThemeContext";
 
 function Header() {
+  const {currentTheme}=useTheme()
   const [openShare, setOpenShare] = useState<boolean>(false);
   const pathName = usePathname();
   const profileHeader = pathName.startsWith("/profile");
@@ -33,8 +35,8 @@ function Header() {
                         <div className="w-fit h-6 border-l border-[#999999] p-3 flex items-center justify-center cursor-pointer gap-2">
                           {isNav ? (
                             <>
-                              <Icon name={item.icon} className="text-[#208D8E]"/>
-                              <P className="font-extrabold text-[#208D8E]">{item.title}</P>
+                              <Icon name={item.icon} style={{color:currentTheme}}/>
+                              <P className="font-extrabold" style={{color:currentTheme}}>{item.title}</P>
                             </>
                           ) : (
                             <>
@@ -48,13 +50,13 @@ function Header() {
                   );
                 })}
               </div>
-              <Button
+              <div
                 onClick={() => setOpenShare(!openShare)}
                 className="font-medium flex items-center justify-center gap-1 cursor-pointer"
               >
                 <Icon name="share" />
                 اشتراک گذاری
-              </Button>
+              </div>
             </div>
             <div className="w-full h-7">
               <SearchAndFilters />

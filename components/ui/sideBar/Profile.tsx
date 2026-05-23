@@ -18,12 +18,12 @@ function Profile() {
           <P className="font-medium">خاطره ناصری</P>
         </div>
         <div className="w-full h-9 flex items-center justify-between">
-          <Button className="w-16 flex items-center justify-center gap-2 cursor-pointer text-[#818181] font-medium">
+          <div className="w-16 flex items-center justify-center gap-2 cursor-pointer text-[#818181] font-medium">
             <Icon name="logout" />
             خروج
-          </Button>
+          </div>
           <div className="relative">
-            <Button
+            <div
               onClick={buttonDarkMode}
               className={`w-18 h-10 rounded-lg relative ${darkMode ? "bg-[#343A40]" : "bg-[#F1F3F5]"}`}
             >
@@ -36,7 +36,7 @@ function Profile() {
                   <Icon name="lightMode" />
                 </div>
               )}
-            </Button>
+            </div>
           </div>
         </div>
       </div>

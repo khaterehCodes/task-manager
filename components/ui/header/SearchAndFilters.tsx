@@ -15,20 +15,20 @@ function SearchAndFilters() {
           />
         </div>
         <div className="w-60 h-full flex items-center justify-between">
-          <Button className="flex items-center gap-2 cursor-pointer">
+          <div className="flex items-center gap-2 cursor-pointer">
             <Icon name="filter" />
             <P className="text-[12px]">فیلترها</P>
-          </Button>
+          </div>
           <div className="w-39 h-7 rounded-sm bg-[#D0EBFF] text-[12px] text-[#228BE6] flex items-center justify-center gap-1">
             <P>دسته‌بندی‌شده با :</P>
             <P>وضعیت</P>
           </div>
         </div>
       </div>
-      <Button className="w-50 h-7 border border-[#208D8E] flex items-center justify-center gap-2 cursor-pointer rounded-lg text-[12px]">
+      <div className="w-50 h-7 border border-[#208D8E] flex items-center justify-center gap-2 cursor-pointer rounded-lg text-[12px]">
         <Icon name="restore" />
         بازگردانی تسک های آرشیو شده
-      </Button>
+      </div>
     </div>
   );
 }

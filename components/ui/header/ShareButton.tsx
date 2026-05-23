@@ -21,12 +21,12 @@ function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
       <ModalHook openModal={openShare}>
         <div className="w-118 h-83 bg-white rounded-xl p-10 flex items-center justify-center flex-col gap-5">
           <div className="w-108 h-8 flex items-center justify-between">
-            <Button
+            <div
               onClick={() => setOpenShare(false)}
               className="cursor-pointer w-5 h-5 flex items-center justify-center"
             >
               <Icon name="closeTerms" />
-            </Button>
+            </div>
             <P className="text-[20px] font-extrabold w-[90%] flex items-center justify-center">
               به اشتراک‌گذاری پروژه‌
             </P>
@@ -46,9 +46,9 @@ function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
                 <Icon name="link" />
                 <P className="text-[14px]">لینک خصوصی</P>
               </div>
-              <Button className="w-19 h-full border border-[#E9EBF0] text-[12px] cursor-pointer rounded-md">
+              <div className="w-19 h-full border border-[#E9EBF0] text-[12px] cursor-pointer rounded-md">
                 کپی لینک
-              </Button>
+              </div>
             </div>
             <div className="w-108 h-28 flex flex-col gap-2">
               <P className="text-[14px] text-[#7D828C]">اشتراک‌گذاشته شده با</P>
@@ -76,7 +76,7 @@ function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
                       )}
                     </div>
                     {item.canOpen ? (
-                      <Button
+                      <div
                         onClick={() => clickHandler()}
                         className="w-30 h-7 border border-[#E9EBF0] cursor-pointer flex items-center justify-center text-[12px] rounded-md"
                       >
@@ -86,7 +86,7 @@ function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
                         ) : (
                           <Icon name="downArrow" />
                         )}
-                      </Button>
+                      </div>
                     ) : (
                       <div className="w-22 h-7 border border-[#E9EBF0] cursor-pointer flex items-center justify-center text-[12px] rounded-md">
                         {item.access}
