@@ -200,3 +200,18 @@ export const boardItems: BoardViewtype[] = [
   { id: 3, columns: { id: 3, tilte: "To Do", tasks: [{ id: 3, img: "" }] } },
   { id: 4, columns: { id: 4, tilte: "Done", tasks: [{ id: 4, img: "" }] } },
 ];
+
+interface DaysNameType {
+  id: number;
+  day: string;
+}
+
+export const daysName: DaysNameType[] = [
+  { id: 1, day: "شنبه" },
+  { id: 2, day: "یکشنبه" },
+  { id: 3, day: "دوشنبه" },
+  { id: 4, day: "سه شنبه" },
+  { id: 5, day: "چهارشنبه" },
+  { id: 6, day: "پنجشنبه" },
+  { id: 7, day: "جمعه" },
+];

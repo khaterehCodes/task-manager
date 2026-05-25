@@ -22,12 +22,12 @@ function NewWorkSpace({
       <ModalHook openModal={openWorkSpace}>
         <div className="w-125 h-68 bg-white dark:bg-[#868E96] rounded-lg p-5 flex flex-col items-center justify-center gap-5">
           <div className="w-full h-10 flex items-center text-black">
-            <Button
+            <div
               onClick={() => setOpenWorkSpace(false)}
               className="w-5 h-5 cursor-pointer"
             >
               <Icon name="closeTerms" />
-            </Button>
+            </div>
             <P className="text-[24px] font-extrabold w-[90%] items-center justify-center flex">
               ساختن ورک‌اسپیس جدید‌
             </P>
