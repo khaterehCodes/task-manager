@@ -28,9 +28,9 @@ function Layout({ children }: LayoutPropsType) {
             <SideBar />
           </div>
         )}
-        <div className={`${registerPage ? "w-full" : "w-300 h-screen"}`}>
+        <div className={`${registerPage ? "w-full" : "w-300 h-auto"}`}>
           <header>{registerPage ? <RegistrationHeader /> : <Header />}</header>
-          <main className="h-screen overflow-y-auto">{children}</main>
+          <main className="h-auto overflow-y-auto">{children}</main>
         </div>
       </div>
     </>

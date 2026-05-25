@@ -4,6 +4,7 @@ import "./globals.css";
 import Layout from "@/components/partial/layout/Layout";
 import { DarkModeProvider } from "@/core/provider/DarkModeProvider";
 import { ThemeProvider } from "@/core/provider/ThemeContext";
+import { CalendarProvider } from "@/core/provider/CalendarContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,9 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
           <DarkModeProvider>
-            <Layout>{children}</Layout>
+            <CalendarProvider>
+              <Layout>{children}</Layout>
+            </CalendarProvider>
           </DarkModeProvider>
         </ThemeProvider>
       </body>
