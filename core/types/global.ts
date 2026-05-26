@@ -27,7 +27,7 @@ export type NavLinkType = {
   href: string;
 };
 
-export type OpenInformationType = {
-  openInfo: boolean;
-  setOpenInfo: (value: boolean) => void;
+export type CalendarNavType = {
+  modalCalandar: boolean;
+  setModalCalendar: (value: boolean) => void;
 };

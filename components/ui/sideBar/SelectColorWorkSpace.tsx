@@ -1,8 +1,8 @@
 import ModalHook from "@/core/hooks/modalHook/ModalHook";
 import P from "../customP/P";
 import Icon from "../icons/Icon";
-import { themes, workSpaceColor } from "@/core/constants/global";
-import React, { useState } from "react";
+import { workSpaceColor } from "@/core/constants/global";
+import React from "react";
 import FinalInformation from "./FinalInformation";
 import Button from "../customButton/Button";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
