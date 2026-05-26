@@ -215,3 +215,26 @@ export const daysName: DaysNameType[] = [
   { id: 6, day: "پنجشنبه" },
   { id: 7, day: "جمعه" },
 ];
+
+interface WorkSpaceColorType {
+  id: number;
+  color?: string;
+  icon?: string;
+}
+
+export const workSpaceColor: WorkSpaceColorType[] = [
+  { id: 1, icon: "noColor" },
+  { id: 2, color: "#FA5252" },
+  { id: 3, color: "#E64980" },
+  { id: 4, color: "#BE4BDB" },
+  { id: 5, color: "#7950F2" },
+  { id: 6, color: "#4C6EF5" },
+  { id: 7, color: "#228BE6" },
+  { id: 8, color: "#15AABF" },
+  { id: 9, color: "#12B886" },
+  { id: 10, color: "#208D8E" },
+  { id: 11, color: "#40C057" },
+  { id: 12, color: "#82C91E" },
+  { id: 13, color: "#FAB005" },
+  { id: 14, color: "#FD7E14" },
+];

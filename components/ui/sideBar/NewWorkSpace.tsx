@@ -13,10 +13,7 @@ function NewWorkSpace({
   setOpenWorkSpace: (value: boolean) => void;
 }) {
   const [workspaceColor, setWorkspaceColor] = useState<boolean>(false);
-  const modalHandler = () => {
-    setWorkspaceColor(!workspaceColor);
-    setOpenWorkSpace(false);
-  };
+
   return (
     <div>
       <ModalHook openModal={openWorkSpace}>
@@ -43,7 +40,7 @@ function NewWorkSpace({
               />
             </div>
             <Button
-              onClick={modalHandler}
+              onClick={()=>setWorkspaceColor(!workspaceColor)}
               className="w-104 h-10 bg-[#208D8E] rounded-md text-white cursor-pointer"
             >
               ادامه

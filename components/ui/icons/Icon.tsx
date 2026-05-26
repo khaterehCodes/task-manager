@@ -632,6 +632,50 @@ function Icon({ name, style, ...props }: IconType) {
           />
         </svg>
       );
+    case "backIcon":
+      return (
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.01001 11.98H19"
+            stroke="#323232"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M10.013 5.988L4.00201 12L10.013 18.012"
+            stroke="#323232"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "noColor":
+      return (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 15 15"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="7.5" cy="7.5" r="7" stroke="black" />
+          <line
+            x1="12.3536"
+            y1="2.35355"
+            x2="2.35355"
+            y2="12.3536"
+            stroke="black"
+          />
+        </svg>
+      );
   }
 }
 
