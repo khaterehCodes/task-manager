@@ -5,6 +5,7 @@ import Layout from "@/components/partial/layout/Layout";
 import { DarkModeProvider } from "@/core/provider/DarkModeProvider";
 import { ThemeProvider } from "@/core/provider/ThemeContext";
 import { CalendarProvider } from "@/core/provider/CalendarContext";
+import { WorkSpaceProvider } from "@/core/provider/WorkSpaceContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,9 @@ export default function RootLayout({
         <ThemeProvider>
           <DarkModeProvider>
             <CalendarProvider>
-              <Layout>{children}</Layout>
+              <WorkSpaceProvider>
+                <Layout>{children}</Layout>
+              </WorkSpaceProvider>
             </CalendarProvider>
           </DarkModeProvider>
         </ThemeProvider>

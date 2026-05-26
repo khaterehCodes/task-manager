@@ -21,8 +21,13 @@ export type NewProjectType = {
   setNewProject: (value: boolean) => void;
 };
 
-export type NavLinkType={
-  children:ReactNode
-  className:string
-  href:string
-}
+export type NavLinkType = {
+  children: ReactNode;
+  className: string;
+  href: string;
+};
+
+export type OpenInformationType = {
+  openInfo: boolean;
+  setOpenInfo: (value: boolean) => void;
+};

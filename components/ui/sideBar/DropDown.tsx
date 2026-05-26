@@ -6,9 +6,10 @@ import P from "../customP/P";
 import { workSpaceItems } from "@/core/constants/global";
 import NewWorkSpace from "./NewWorkSpace";
 import NewProject from "./NewProject";
+import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
 
 function DropDown() {
-  const [openWorkSpace, setOpenWorkSpace] = useState<boolean>(false);
+  const { openWorkSpace, setOpenWorkSpace } = useWorkSpace();
   const [showTodos, setShowTodos] = useState<number[]>([]);
   const [newProject, setNewProject] = useState<boolean>(false);
   const toggleTodos = (id: number) => {
@@ -77,10 +78,7 @@ function DropDown() {
           ))}
         </div>
       </div>
-      <NewWorkSpace
-        openWorkSpace={openWorkSpace}
-        setOpenWorkSpace={setOpenWorkSpace}
-      />
+      <NewWorkSpace />
       <NewProject newProject={newProject} setNewProject={setNewProject} />
     </>
   );

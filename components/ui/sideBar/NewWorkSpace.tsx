@@ -5,14 +5,25 @@ import Icon from "@/components/ui/icons/Icon";
 import ModalHook from "@/core/hooks/modalHook/ModalHook";
 import { useState } from "react";
 import SelectColorWorkSpace from "./SelectColorWorkSpace";
-function NewWorkSpace({
-  openWorkSpace,
-  setOpenWorkSpace,
-}: {
-  openWorkSpace: boolean;
-  setOpenWorkSpace: (value: boolean) => void;
-}) {
-  const [workspaceColor, setWorkspaceColor] = useState<boolean>(false);
+import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
+function NewWorkSpace() {
+  const {
+    workSpaceName,
+    setWorkSpaceName,
+    setOpenWorkSpace,
+    openWorkSpace,
+    setWorkspaceColor,
+    workspaceColor,
+  } = useWorkSpace();
+  const [error, setError] = useState<string>("");
+  const addWorkSpace = () => {
+    if (!workSpaceName || workSpaceName.trim() === "") {
+      setError("وارد کردن نام ورک اسپیس الزامی است");
+      return;
+    }
+    setError("");
+    setWorkspaceColor(true);
+  };
 
   return (
     <div>
@@ -29,26 +40,34 @@ function NewWorkSpace({
               ساختن ورک‌اسپیس جدید‌
             </P>
           </div>
-          <div className="w-full h-40 flex flex-col items-center justify-center gap-7">
-            <div className="w-104 h-17 flex flex-col gap-1">
+          <div className="w-full h-45 flex flex-col items-center justify-center gap-7">
+            <div className="w-104 h-20 flex flex-col gap-1">
               <label htmlFor="workspace" className="text-[14px]">
                 نام ورک‌اسپیس
               </label>
               <Input
                 name="workspace"
-                className="w-full h-10 border border-[#AAAAAA] rounded-lg outline-0 p-2"
+                onChange={(e) => {
+                  setWorkSpaceName(e.target.value);
+                  if (error) setError("");
+                }}
+                value={workSpaceName}
+                className={`w-full h-10 border rounded-lg outline-0 p-2 ${error ? "border-red-500" : "border-[#AAAAAA]"}`}
+                required
               />
+              {error && (
+                <P className="w-full flex items-start text-[10px] text-red-500">
+                  {error}
+                </P>
+              )}
             </div>
             <Button
-              onClick={()=>setWorkspaceColor(!workspaceColor)}
-              className="w-104 h-10 bg-[#208D8E] rounded-md text-white cursor-pointer"
+              onClick={addWorkSpace}
+              className="w-104 h-10 rounded-md text-white cursor-pointer"
             >
               ادامه
             </Button>
-            <SelectColorWorkSpace
-              workspaceColor={workspaceColor}
-              setWorkspaceColor={setWorkspaceColor}
-            />
+            <SelectColorWorkSpace />
           </div>
         </div>
       </ModalHook>
