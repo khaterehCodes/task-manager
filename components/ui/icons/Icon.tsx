@@ -737,6 +737,45 @@ function Icon({ name, style, ...props }: IconType) {
           />
         </svg>
       );
+    case "grayFlag":
+      return (
+        <svg
+          width="30"
+          height="30"
+          viewBox="0 0 30 30"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.12739 25.7352V4.81616"
+            stroke="#C1C1C1"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M23.2841 17.1813V4.90192"
+            stroke="#C1C1C1"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M6.12744 17.1568C6.12744 17.1568 7.19974 16.2659 10.4166 16.2659C13.6335 16.2659 15.7781 18.3823 18.995 18.3823C22.2119 18.3823 23.2842 17.185 23.2842 17.185"
+            stroke="#C1C1C1"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M6.12744 4.81861C6.12744 4.81861 7.19974 3.67645 10.4166 3.67645C13.6335 3.67645 15.7781 5.79287 18.995 5.79287C22.2119 5.79287 23.2842 4.90194 23.2842 4.90194"
+            stroke="#C1C1C1"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
   }
 }
 

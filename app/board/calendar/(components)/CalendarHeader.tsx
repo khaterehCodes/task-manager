@@ -9,7 +9,7 @@ function CalendarHeader() {
   const todayFormat = format(currentDate, "EEEE ", { locale: faIR });
   return (
     <div className="w-55 h-6 flex items-center justify-between">
-      <P className="text-[12px]">{todayFormat}</P>
+      <P className="text-[12px] w-10">{todayFormat}</P>
       <div className="w-12 h-full flex items-center justify-between">
         <div onClick={prevMonth} className="cursor-pointer">
           <Icon name="prevMonth" />
@@ -18,7 +18,7 @@ function CalendarHeader() {
           <Icon name="nextMonth" />
         </div>
       </div>
-      <div className="w-fit flex items-center justify-center">
+      <div className="w-30 flex items-center justify-center">
         {format(currentDate, "MMMM yyyy", { locale: faIR })}
       </div>
     </div>
