@@ -2,7 +2,7 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
-import ModalHook from "@/core/hooks/modalHook/ModalHook";
+import ModalHook from "@/core/hooks/ModalHook";
 import { useState } from "react";
 import SelectColorWorkSpace from "./SelectColorWorkSpace";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";

@@ -2,7 +2,7 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
-import ModalHook from "@/core/hooks/modalHook/ModalHook";
+import ModalHook from "@/core/hooks/ModalHook";
 import { useCalendar } from "@/core/provider/CalendarContext";
 import { useTheme } from "@/core/provider/ThemeContext";
 import { CalendarNavType } from "@/core/types/global";

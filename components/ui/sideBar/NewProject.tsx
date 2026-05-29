@@ -1,4 +1,4 @@
-import ModalHook from "@/core/hooks/modalHook/ModalHook";
+import ModalHook from "@/core/hooks/ModalHook";
 import { NewProjectType } from "@/core/types/global";
 import P from "../customP/P";
 import Button from "../customButton/Button";

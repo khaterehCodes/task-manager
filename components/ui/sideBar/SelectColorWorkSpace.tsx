@@ -1,4 +1,4 @@
-import ModalHook from "@/core/hooks/modalHook/ModalHook";
+import ModalHook from "@/core/hooks/ModalHook";
 import P from "../customP/P";
 import Icon from "../icons/Icon";
 import { workSpaceColor } from "@/core/constants/global";
