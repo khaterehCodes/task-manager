@@ -133,11 +133,11 @@ function Icon({ name, style, ...props }: IconType) {
     case "calendarNav":
       return (
         <svg
-          {...props}
-          style={{
-            color: iconColor,
-          }}
-          width="24"
+        {...props}
+        style={{
+          color: iconColor,
+        }}
+        width="24"
           height="24"
           viewBox="0 0 24 24"
           fill="none"

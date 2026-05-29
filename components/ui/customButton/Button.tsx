@@ -1,3 +1,4 @@
+'use client';
 import { useTheme } from "@/core/provider/ThemeContext";
 import { ButtonType } from "./ButtonType";
 
