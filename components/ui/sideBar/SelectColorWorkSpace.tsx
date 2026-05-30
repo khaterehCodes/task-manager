@@ -7,11 +7,6 @@ import FinalInformation from "./FinalInformation";
 import Button from "../customButton/Button";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
 
-type ModalType = {
-  workspaceColor: boolean;
-  setWorkspaceColor: (value: boolean) => void;
-};
-
 function SelectColorWorkSpace() {
   const {
     workSpaceName,

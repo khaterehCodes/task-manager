@@ -57,3 +57,7 @@ body {
   color: var(--foreground);
   font-family: "modam";
 }
+
+@layer components{
+  
+}

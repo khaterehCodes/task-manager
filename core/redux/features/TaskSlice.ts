@@ -1,22 +1,38 @@
-import { TaskStateType } from "@/core/types/global";
+import { TaskStateType, TaskStatusType, TaskType } from "@/core/types/global";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: TaskStateType = {
-  filter: {},
+  items: [],
 };
 
 const taskSlice = createSlice({
-  name: "task",
+  name: "taskSlice",
   initialState,
   reducers: {
-    filterTask: (
+    addTask: (state, action: PayloadAction<TaskType>) => {
+      state.items.push(action.payload);
+    },
+    removeTask: (state, action: PayloadAction<string>) => {
+      state.items = state.items.filter((t) => t.id !== action.payload);
+    },
+    editTask: (state, action: PayloadAction<TaskType & { id: string }>) => {
+      const findTask = state.items.find((t) => t.id === action.payload.id);
+      if (findTask) {
+        Object.assign(findTask, action.payload);
+      }
+    },
+    changeStatus: (
       state,
-      action: PayloadAction<Partial<TaskStateType["filter"]>>,
+      action: PayloadAction<{ id: string; status: TaskStatusType }>,
     ) => {
-      state.filter = { ...state.filter, ...action.payload };
+      const findTask = state.items.find((t) => t.id === action.payload.id);
+      if (findTask) {
+        findTask.status = action.payload.status;
+      }
     },
   },
 });
 
-export const { filterTask } = taskSlice.actions;
+export const { addTask, removeTask, editTask, changeStatus } =
+  taskSlice.actions;
 export default taskSlice.reducer;

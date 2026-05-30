@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Icon from "../icons/Icon";
 import Input from "../customInput/Input";
-import Button from "../customButton/Button";
 import P from "../customP/P";
 import { workSpaceItems } from "@/core/constants/global";
 import NewWorkSpace from "./NewWorkSpace";

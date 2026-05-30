@@ -1,3 +1,4 @@
+'use client'
 import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
@@ -23,6 +24,7 @@ function NewWorkSpace() {
     }
     setError("");
     setWorkspaceColor(true);
+    // dispatch(addWorkSpace({}));
   };
 
   return (

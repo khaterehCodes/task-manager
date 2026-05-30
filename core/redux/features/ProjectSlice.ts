@@ -2,21 +2,31 @@ import { ProjectStateType, ProjectType } from "@/core/types/global";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: ProjectStateType = {
-  selectedProject: null,
+  items: [],
+  selectProjectId: null,
 };
 
 const projectSlice = createSlice({
-  name: "project",
+  name: "projectSlice",
   initialState,
   reducers: {
     addProject: (state, action: PayloadAction<ProjectType>) => {
-      return state;
+      state.items.push(action.payload);
     },
-    selectProject: (state, action: PayloadAction<number>) => {
-      state.selectedProject = action.payload;
+    deleteProject: (state, action: PayloadAction<string>) => {
+      state.items = state.items.filter((p) => p.id !== action.payload);
+    },
+    editProject: (
+      state,
+      action: PayloadAction<{ id: string; name: string }>,
+    ) => {
+      const findProject = state.items.find((p) => p.id === action.payload.id);
+      if (findProject) {
+        findProject.name = action.payload.name;
+      }
     },
   },
 });
 
-export const { addProject, selectProject } = projectSlice.actions;
+export const { addProject, deleteProject, editProject } = projectSlice.actions;
 export default projectSlice.reducer;

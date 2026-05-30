@@ -32,44 +32,40 @@ export type CalendarNavType = {
   setModalCalendar: (value: boolean) => void;
 };
 
-export interface TaskType {
-  id: number;
-  title: string;
-  description: string;
-  status: "done" | "todo" | "in-progress";
-  priority: "h" | "m" | "l";
-  createdAt: string;
-  dueDate: string;
-  projectId: number;
+export interface WorkSpaceType {
+  id: string;
+  name: string;
+  color: string;
 }
+
+export type WorkSpaceStateType = {
+  items: WorkSpaceType[];
+  selectedWorkSpaceId: string | null;
+};
 
 export interface ProjectType {
-  id: number;
+  id: string;
+  workSpaceId: string;
   name: string;
-  workSpaceId: number;
-  tasks: TaskType[];
 }
 
-export interface WorkSpaceType {
-  id: number;
-  name: string;
-  workSpaceId: number;
-  projects: ProjectType[];
-}
+export type ProjectStateType = {
+  items: ProjectType[];
+  selectProjectId: string | null;
+};
 
-export interface TaskStateType {
-  filter: {
-    status?: TaskType["status"];
-    priority?: TaskType["priority"];
-    search?: string;
-  };
-}
+export type TaskStatusType = "todo" | "done" | "in-progress";
+export type PriorityType = "l" | "m" | "s";
 
-export interface ProjectStateType {
-  selectedProject: number | null;
-}
+export type TaskType = {
+  id: string;
+  projectId: string;
+  title: string;
+  description?: string;
+  status: TaskStatusType;
+  priority: PriorityType;
+};
 
-export interface WorkSpaceStateType {
-  workSpaces: WorkSpaceType[];
-  selectedWorkSpace: number | null;
-}
+export type TaskStateType = {
+  items: TaskType[];
+};
