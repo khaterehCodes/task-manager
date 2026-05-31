@@ -14,8 +14,8 @@ interface WorkSpaceContextType {
   setWorkspaceColor: (value: boolean) => void;
   openInfo: boolean;
   setOpenInfo: (value: boolean) => void;
-  selectWorkSpaceColor: number;
-  setSelectWorkSpaceColor: (value: number) => void;
+  selectWorkSpaceColor: string;
+  setSelectWorkSpaceColor: (value: string) => void;
 }
 
 const WorkSpaceContext = createContext<WorkSpaceContextType>({
@@ -27,7 +27,7 @@ const WorkSpaceContext = createContext<WorkSpaceContextType>({
   setWorkspaceColor: () => {},
   openInfo: false,
   setOpenInfo: () => {},
-  selectWorkSpaceColor: 0,
+  selectWorkSpaceColor: "#7D828C",
   setSelectWorkSpaceColor: () => {},
 });
 
@@ -36,7 +36,8 @@ export const WorkSpaceProvider = ({ children }: WorkSpaceProps) => {
   const [workspaceColor, setWorkspaceColor] = useState<boolean>(false);
   const [openWorkSpace, setOpenWorkSpace] = useState<boolean>(false);
   const [openInfo, setOpenInfo] = useState<boolean>(false);
-  const [selectWorkSpaceColor, setSelectWorkSpaceColor] = useState<number>(1);
+  const [selectWorkSpaceColor, setSelectWorkSpaceColor] =
+    useState<string>("#7D828C");
   return (
     <WorkSpaceContext.Provider
       value={{

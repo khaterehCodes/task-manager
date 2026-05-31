@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import Icon from "../icons/Icon";
 import Input from "../customInput/Input";
 import P from "../customP/P";
-import { workSpaceItems } from "@/core/constants/global";
 import NewWorkSpace from "./NewWorkSpace";
 import NewProject from "./NewProject";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
+import { useAppSelector } from "@/core/hooks/ReduxHook";
 
 function DropDown() {
+  const workSpaceItems = useAppSelector((state) => state.workSpace.items);
+  console.log("WorkSpace Items:", workSpaceItems);
   const { openWorkSpace, setOpenWorkSpace } = useWorkSpace();
-  const [showTodos, setShowTodos] = useState<number[]>([]);
+  const [showTodos, setShowTodos] = useState<string[]>([]);
   const [newProject, setNewProject] = useState<boolean>(false);
-  const toggleTodos = (id: number) => {
+  const toggleTodos = (id: string) => {
     setShowTodos((prev) => {
       if (prev.includes(id)) {
         return prev.filter((i) => i !== id);
@@ -49,16 +51,16 @@ function DropDown() {
                   className="w-5 h-5 rounded-sm"
                   style={{ backgroundColor: item.color }}
                 ></div>
-                <P className="font-medium cursor-pointer">{item.title}</P>
+                <P className="font-medium cursor-pointer">{item.name}</P>
               </div>
               {showTodos.includes(item.id) && (
                 <>
-                  {item.projects ? (
+                  {item.projects && item.projects.length > 0 ? (
                     <div className="w-[80%] h-auto flex flex-col gap-3">
                       {item.projects?.map((pro) => (
                         <React.Fragment key={pro.id}>
                           <div className="w-62 h-8 mr-6 flex items-center">
-                            <P className="font-medium">{pro.title}</P>
+                            <P className="font-medium">{pro.name}</P>
                           </div>
                         </React.Fragment>
                       ))}

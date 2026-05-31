@@ -34,8 +34,9 @@ export type CalendarNavType = {
 
 export interface WorkSpaceType {
   id: string;
-  name: string;
-  color: string;
+  name?: string;
+  color?: string;
+  projects?: { name: string; id: number }[];
 }
 
 export type WorkSpaceStateType = {

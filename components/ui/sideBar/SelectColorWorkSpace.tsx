@@ -6,6 +6,7 @@ import React from "react";
 import FinalInformation from "./FinalInformation";
 import Button from "../customButton/Button";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
+import { useAppDispatch } from "@/core/hooks/ReduxHook";
 
 function SelectColorWorkSpace() {
   const {
@@ -17,7 +18,9 @@ function SelectColorWorkSpace() {
     selectWorkSpaceColor,
     setSelectWorkSpaceColor,
   } = useWorkSpace();
-  const selectedBG = workSpaceColor.find((c) => c.id === selectWorkSpaceColor);
+  const selectedBG = workSpaceColor.find(
+    (c) => c.color === selectWorkSpaceColor,
+  );
   const converWords = (name: string) => {
     return name
       .trim()
@@ -25,6 +28,10 @@ function SelectColorWorkSpace() {
       .map((w) => w[0])
       .join(" ")
       .toUpperCase();
+  };
+
+  const getColor = () => {
+    setOpenInfo(!openInfo);
   };
   return (
     <>
@@ -61,18 +68,20 @@ function SelectColorWorkSpace() {
                   <React.Fragment key={c.id}>
                     {c.icon ? (
                       <div
-                        onClick={() => setSelectWorkSpaceColor(0)}
+                        onClick={() => setSelectWorkSpaceColor("#7D828C")}
                         className="cursor-pointer"
                       >
                         <Icon name={c.icon} />
                       </div>
                     ) : (
                       <div
-                        onClick={() => setSelectWorkSpaceColor(c.id)}
-                        className={`flex items-center justify-center cursor-pointer ${selectWorkSpaceColor === c.id ? "w-8 h-8 rounded-xl" : "w-6 h-6 rounded-lg"}`}
+                        onClick={() =>
+                          setSelectWorkSpaceColor(c.color || "#7D828C")
+                        }
+                        className={`flex items-center justify-center cursor-pointer ${selectWorkSpaceColor === c.id.toString() ? "w-8 h-8 rounded-xl" : "w-6 h-6 rounded-lg"}`}
                         style={{ backgroundColor: c.color }}
                       >
-                        {selectWorkSpaceColor === c.id && (
+                        {selectWorkSpaceColor === c.color && (
                           <div className="w-4 h-4 bg-white rounded-full"></div>
                         )}
                       </div>
@@ -83,7 +92,7 @@ function SelectColorWorkSpace() {
             </div>
           </div>
           <Button
-            onClick={() => setOpenInfo(!openInfo)}
+            onClick={() => getColor()}
             className="w-104 h-10 rounded-md text-white cursor-pointer"
           >
             ادامه

@@ -4,8 +4,11 @@ import P from "../customP/P";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
 import Button from "../customButton/Button";
 import { workSpaceColor } from "@/core/constants/global";
+import { useAppDispatch } from "@/core/hooks/ReduxHook";
+import { addWorkSpace } from "@/core/redux/features/WorkSpaceSlice";
 
 function FinalInformation() {
+  const dispatch = useAppDispatch();
   const {
     workSpaceName,
     openInfo,
@@ -19,8 +22,17 @@ function FinalInformation() {
     setOpenInfo(false);
     setWorkspaceColor(false);
     setOpenWorkSpace(false);
+    dispatch(
+      addWorkSpace({
+        id: Date.now().toString(),
+        color: selectWorkSpaceColor,
+        name: workSpaceName,
+      }),
+    );
   };
-  const colorButton = workSpaceColor.find((c) => c.id === selectWorkSpaceColor);
+  const colorButton = workSpaceColor.find(
+    (c) => c.color === selectWorkSpaceColor,
+  );
   console.log(colorButton);
   return (
     <div>

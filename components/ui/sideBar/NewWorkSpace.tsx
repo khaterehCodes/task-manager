@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
@@ -14,17 +14,15 @@ function NewWorkSpace() {
     setOpenWorkSpace,
     openWorkSpace,
     setWorkspaceColor,
-    workspaceColor,
   } = useWorkSpace();
   const [error, setError] = useState<string>("");
-  const addWorkSpace = () => {
+  const addWorkSpaceFunction = () => {
     if (!workSpaceName || workSpaceName.trim() === "") {
       setError("وارد کردن نام ورک اسپیس الزامی است");
       return;
     }
     setError("");
     setWorkspaceColor(true);
-    // dispatch(addWorkSpace({}));
   };
 
   return (
@@ -64,7 +62,7 @@ function NewWorkSpace() {
               )}
             </div>
             <Button
-              onClick={addWorkSpace}
+              onClick={addWorkSpaceFunction}
               className="w-104 h-10 rounded-md text-white cursor-pointer"
             >
               ادامه
