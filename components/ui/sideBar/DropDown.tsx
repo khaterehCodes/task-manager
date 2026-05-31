@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
 import { selectProject } from "@/core/redux/features/ProjectSlice";
 import { selectWorkSpace } from "@/core/redux/features/WorkSpaceSlice";
 import MoreDetails from "./MoreDetails";
+import MoreProjects from "./MoreProjects";
 
 function DropDown() {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ function DropDown() {
   const [showTodos, setShowTodos] = useState<string[]>([]);
   const [newProject, setNewProject] = useState<boolean>(false);
   const [moreWorkSpace, setMoreWorkSpace] = useState<boolean>(false);
+  const [moreProjects, setMoreProjects] = useState<boolean>(false);
   const toggleTodos = (id: string) => {
     setShowTodos((prev) => {
       if (prev.includes(id)) {
@@ -59,9 +61,10 @@ function DropDown() {
                   ></div>
                   <P className="font-medium cursor-pointer">{item.name}</P>
                 </div>
-                <div 
-                className="w-10 h-full flex items-center justify-center cursor-pointer"
-                onClick={() => setMoreWorkSpace(!moreWorkSpace)}>
+                <div
+                  className="w-10 h-full flex items-center justify-center cursor-pointer"
+                  onClick={() => setMoreWorkSpace(!moreWorkSpace)}
+                >
                   <Icon name="more" />
                 </div>
               </div>
@@ -77,7 +80,10 @@ function DropDown() {
                             className="w-62 h-8 mr-6 cursor-pointer flex items-center justify-between hover:bg-[#FAFAFA] hover:rounded-sm"
                           >
                             <P className="font-medium">{pro.name}</P>
-                            <div>
+                            <div
+                              className="w-10 h-full flex items-center justify-center cursor-pointer"
+                              onClick={() => setMoreProjects(!moreProjects)}
+                            >
                               <Icon name="more" />
                             </div>
                           </div>
@@ -105,6 +111,7 @@ function DropDown() {
         openWorkSpace={moreWorkSpace}
         setOpenWorkSpace={setMoreWorkSpace}
       />
+      <MoreProjects moreProjects={moreProjects} setMoreProjects={setMoreProjects}/>
     </>
   );
 }

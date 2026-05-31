@@ -75,3 +75,13 @@ export type WorkSpaceDtailProps = {
   openWorkSpace: boolean;
   setOpenWorkSpace: (value: boolean) => void;
 };
+
+export type ProjectsDetailProps = {
+  moreProjects: boolean;
+  setMoreProjects: (value: boolean) => void;
+};
+
+export type TasksModalType = {
+  newTaskModal: boolean;
+  setNewTaskModal: (value: boolean) => void;
+};

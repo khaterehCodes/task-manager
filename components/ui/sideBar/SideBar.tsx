@@ -10,7 +10,7 @@ import Link from "next/link";
 function SideBar() {
   const pathName = usePathname();
   const profileSidebar = pathName.startsWith("/profile");
-  const [openDropDown, setOpenDropDown] = useState<boolean>(false);
+  const [openDropDown, setOpenDropDown] = useState<boolean>(true);
   return (
     <>
       {profileSidebar ? (
