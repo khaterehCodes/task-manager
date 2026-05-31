@@ -25,8 +25,12 @@ const projectSlice = createSlice({
         findProject.name = action.payload.name;
       }
     },
+    selectProject: (state, action: PayloadAction<string>) => {
+      state.selectProjectId = action.payload;
+    },
   },
 });
 
-export const { addProject, deleteProject, editProject } = projectSlice.actions;
+export const { addProject, deleteProject, editProject, selectProject } =
+  projectSlice.actions;
 export default projectSlice.reducer;

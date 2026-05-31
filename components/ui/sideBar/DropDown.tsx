@@ -5,14 +5,19 @@ import P from "../customP/P";
 import NewWorkSpace from "./NewWorkSpace";
 import NewProject from "./NewProject";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
-import { useAppSelector } from "@/core/hooks/ReduxHook";
+import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
+import { selectProject } from "@/core/redux/features/ProjectSlice";
+import { selectWorkSpace } from "@/core/redux/features/WorkSpaceSlice";
+import MoreDetails from "./MoreDetails";
 
 function DropDown() {
+  const dispatch = useAppDispatch();
   const workSpaceItems = useAppSelector((state) => state.workSpace.items);
-  console.log("WorkSpace Items:", workSpaceItems);
+  const projects = useAppSelector((state) => state.projectSlice.items);
   const { openWorkSpace, setOpenWorkSpace } = useWorkSpace();
   const [showTodos, setShowTodos] = useState<string[]>([]);
   const [newProject, setNewProject] = useState<boolean>(false);
+  const [moreWorkSpace, setMoreWorkSpace] = useState<boolean>(false);
   const toggleTodos = (id: string) => {
     setShowTodos((prev) => {
       if (prev.includes(id)) {
@@ -45,34 +50,49 @@ function DropDown() {
             <React.Fragment key={item.id}>
               <div
                 onClick={() => toggleTodos(item.id)}
-                className="w-full h-10 flex items-center justify-start gap-2"
+                className="w-full h-10 flex items-center justify-between"
               >
-                <div
-                  className="w-5 h-5 rounded-sm"
-                  style={{ backgroundColor: item.color }}
-                ></div>
-                <P className="font-medium cursor-pointer">{item.name}</P>
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-5 h-5 rounded-sm"
+                    style={{ backgroundColor: item.color }}
+                  ></div>
+                  <P className="font-medium cursor-pointer">{item.name}</P>
+                </div>
+                <div 
+                className="w-10 h-full flex items-center justify-center cursor-pointer"
+                onClick={() => setMoreWorkSpace(!moreWorkSpace)}>
+                  <Icon name="more" />
+                </div>
               </div>
               {showTodos.includes(item.id) && (
                 <>
-                  {item.projects && item.projects.length > 0 ? (
-                    <div className="w-[80%] h-auto flex flex-col gap-3">
-                      {item.projects?.map((pro) => (
+                  <div className="w-[80%] h-auto flex flex-col gap-3">
+                    {projects
+                      .filter((p) => p.workSpaceId === item.id)
+                      ?.map((pro) => (
                         <React.Fragment key={pro.id}>
-                          <div className="w-62 h-8 mr-6 flex items-center">
+                          <div
+                            onClick={() => dispatch(selectProject(pro.id))}
+                            className="w-62 h-8 mr-6 cursor-pointer flex items-center justify-between hover:bg-[#FAFAFA] hover:rounded-sm"
+                          >
                             <P className="font-medium">{pro.name}</P>
+                            <div>
+                              <Icon name="more" />
+                            </div>
                           </div>
                         </React.Fragment>
                       ))}
-                    </div>
-                  ) : (
-                    <div
-                      onClick={() => setNewProject(!newProject)}
-                      className="w-full h-9 border-2 border-[#208D8E] rounded-md text-[#208D8E] flex items-center justify-center cursor-pointer text-[14px]"
-                    >
-                      ساختن پروژه جدید
-                    </div>
-                  )}
+                  </div>
+                  <div
+                    onClick={() => {
+                      setNewProject(!newProject);
+                      dispatch(selectWorkSpace(item.id));
+                    }}
+                    className="w-full h-9 border-2 border-[#208D8E] rounded-md text-[#208D8E] flex items-center justify-center cursor-pointer text-[14px]"
+                  >
+                    ساختن پروژه جدید
+                  </div>
                 </>
               )}
             </React.Fragment>
@@ -81,6 +101,10 @@ function DropDown() {
       </div>
       <NewWorkSpace />
       <NewProject newProject={newProject} setNewProject={setNewProject} />
+      <MoreDetails
+        openWorkSpace={moreWorkSpace}
+        setOpenWorkSpace={setMoreWorkSpace}
+      />
     </>
   );
 }

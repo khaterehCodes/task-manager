@@ -70,3 +70,8 @@ export type TaskType = {
 export type TaskStateType = {
   items: TaskType[];
 };
+
+export type WorkSpaceDtailProps = {
+  openWorkSpace: boolean;
+  setOpenWorkSpace: (value: boolean) => void;
+};
