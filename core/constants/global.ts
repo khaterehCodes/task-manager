@@ -1,4 +1,4 @@
-import { PriorityFlagTypes } from "../types/global";
+import { PriorityFlagTypes, TagsColorType, TagsTyep } from "../types/global";
 
 interface TermsListType {
   id: number;
@@ -246,4 +246,26 @@ export const priorityFlags: PriorityFlagTypes[] = [
   { id: 2, title: "بالا", flag: "yellowFlag" },
   { id: 3, title: "متوسط", flag: "greenFlag" },
   { id: 4, title: "پایین", flag: "grayFlagL" },
+];
+
+export const tags: TagsTyep[] = [
+  { id: 1, name: "درس", color: "#D0EBFF", textColor: "#228BE6" },
+  { id: 2, name: "کار", color: "#F3D9FA", textColor: "#BE4BDB" },
+  { id: 3, name: "پروژه", color: "#C5F6FA", textColor: "#15AABF" },
+];
+
+export const tagsColorArray: TagsColorType[] = [
+  { id: 1, textColor: "#208D8E", color: "" },
+  { id: 2, textColor: "#40C057", color: "" },
+  { id: 3, textColor: "#82C91E", color: "" },
+  { id: 4, textColor: "#FAB005", color: "" },
+  { id: 5, textColor: "#FD7E14", color: "" },
+  { id: 6, textColor: "#7950F2", color: "" },
+  { id: 7, textColor: "#4C6EF5", color: "" },
+  { id: 8, textColor: "#228BE6", color: "" },
+  { id: 9, textColor: "#15AABF", color: "" },
+  { id: 10, textColor: "#12B886", color: "" },
+  { id: 11, textColor: "#FA5252", color: "" },
+  { id: 12, textColor: "#E64980", color: "" },
+  { id: 13, textColor: "#BE4BDB", color: "" },
 ];

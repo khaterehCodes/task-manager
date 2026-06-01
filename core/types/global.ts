@@ -93,8 +93,36 @@ export type PrioritiesPropsType = {
   setOpenPriorities: (value: boolean) => void;
 };
 
-export interface PriorityFlagTypes{
-  id:number
-  title:string
-  flag:string
+export interface PriorityFlagTypes {
+  id: number;
+  title: string;
+  flag: string;
+}
+
+export type TagspropsType = {
+  openTag: boolean;
+  setOpenTag: (value: boolean) => void;
+};
+
+export interface TagsTyep {
+  id: number;
+  name: string;
+  color: string;
+  textColor?: string;
+}
+
+export type TagsDetailProps = {
+  tagsDetail: boolean;
+  setTagsDetail: (value: boolean) => void;
+};
+
+export type TagsColorPropsType = {
+  tagsColor: boolean;
+  setTagsColor: (value: boolean) => void;
+};
+
+export interface TagsColorType {
+  id: number;
+  color?: string;
+  textColor: string;
 }

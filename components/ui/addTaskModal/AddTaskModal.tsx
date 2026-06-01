@@ -7,10 +7,12 @@ import { useTheme } from "@/core/provider/ThemeContext";
 import Button from "../customButton/Button";
 import { useState } from "react";
 import Priorities from "./Priorities";
+import TagsModal from "./TagsModal";
 
 function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
   const { currentTheme } = useTheme();
   const [openPriorities, setOpenPriorities] = useState<boolean>(false);
+  const [openTag, setOpenTag] = useState<boolean>(false);
   return (
     <div>
       <ModalHook openModal={newTaskModal}>
@@ -73,7 +75,12 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
                 <Icon name="priority" />
               </div>
               <Icon name="calendarTask" />
-              <Icon name="tag" />
+              <div
+                onClick={() => setOpenTag(!openTag)}
+                className="cursor-pointer"
+              >
+                <Icon name="tag" />
+              </div>
             </div>
             <Button className="w-32 h-8 cursor-pointer text-white text-[12px] rounded-sm">
               ساختن تسک
@@ -84,6 +91,7 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
           openPriorities={openPriorities}
           setOpenPriorities={setOpenPriorities}
         />
+        <TagsModal openTag={openTag} setOpenTag={setOpenTag} />
       </ModalHook>
     </div>
   );
