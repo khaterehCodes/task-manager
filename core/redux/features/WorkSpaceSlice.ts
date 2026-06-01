@@ -22,9 +22,32 @@ const workSpaceSlice = createSlice({
     selectWorkSpace: (state, action: PayloadAction<string>) => {
       state.selectedWorkSpaceId = action.payload;
     },
+    editWorkSpaceName: (
+      state,
+      action: PayloadAction<{ id: string; name: string }>,
+    ) => {
+      const findWS = state.items.find((w) => w.id === action.payload.id);
+      if (findWS) {
+        findWS.name = action.payload.name;
+      }
+    },
+    changeWorkSpaceColor: (
+      state,
+      action: PayloadAction<{ id: string; color: string }>,
+    ) => {
+      const findWS = state.items.find((w) => w.id === action.payload.id);
+      if (findWS) {
+        findWS.color = action.payload.color;
+      }
+    },
   },
 });
 
-export const { addWorkSpace, deleteWorkSpace, selectWorkSpace } =
-  workSpaceSlice.actions;
+export const {
+  addWorkSpace,
+  deleteWorkSpace,
+  selectWorkSpace,
+  changeWorkSpaceColor,
+  editWorkSpaceName,
+} = workSpaceSlice.actions;
 export default workSpaceSlice.reducer;

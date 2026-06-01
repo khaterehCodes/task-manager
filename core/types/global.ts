@@ -74,6 +74,7 @@ export type TaskStateType = {
 export type WorkSpaceDtailProps = {
   openWorkSpace: boolean;
   setOpenWorkSpace: (value: boolean) => void;
+  selectWorkSpaceId: string | null;
 };
 
 export type ProjectsDetailProps = {

@@ -20,6 +20,7 @@ function DropDown() {
   const [newProject, setNewProject] = useState<boolean>(false);
   const [moreWorkSpace, setMoreWorkSpace] = useState<boolean>(false);
   const [moreProjects, setMoreProjects] = useState<boolean>(false);
+  const [selectWorkSpaceId, setSelectWorkSpaceId] = useState<string | null>(null);
   const toggleTodos = (id: string) => {
     setShowTodos((prev) => {
       if (prev.includes(id)) {
@@ -28,6 +29,10 @@ function DropDown() {
         return [...prev, id];
       }
     });
+  };
+  const moreWorkSpaceHandler = (id: string) => {
+    setMoreWorkSpace(!moreWorkSpace);
+    setSelectWorkSpaceId(id);
   };
   return (
     <>
@@ -63,7 +68,7 @@ function DropDown() {
                 </div>
                 <div
                   className="w-10 h-full flex items-center justify-center cursor-pointer"
-                  onClick={() => setMoreWorkSpace(!moreWorkSpace)}
+                  onClick={() => moreWorkSpaceHandler(item.id)}
                 >
                   <Icon name="more" />
                 </div>
@@ -110,8 +115,12 @@ function DropDown() {
       <MoreDetails
         openWorkSpace={moreWorkSpace}
         setOpenWorkSpace={setMoreWorkSpace}
+        selectWorkSpaceId={selectWorkSpaceId}
       />
-      <MoreProjects moreProjects={moreProjects} setMoreProjects={setMoreProjects}/>
+      <MoreProjects
+        moreProjects={moreProjects}
+        setMoreProjects={setMoreProjects}
+      />
     </>
   );
 }
