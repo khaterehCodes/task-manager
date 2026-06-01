@@ -46,7 +46,7 @@ export type WorkSpaceStateType = {
 
 export interface ProjectType {
   id: string;
-  workSpaceId: string;
+  workSpaceId?: string;
   name: string;
 }
 
@@ -80,6 +80,7 @@ export type WorkSpaceDtailProps = {
 export type ProjectsDetailProps = {
   moreProjects: boolean;
   setMoreProjects: (value: boolean) => void;
+  projectId: string | null;
 };
 
 export type TasksModalType = {

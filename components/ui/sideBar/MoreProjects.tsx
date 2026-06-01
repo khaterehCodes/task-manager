@@ -5,16 +5,37 @@ import P from "../customP/P";
 import Button from "../customButton/Button";
 import { useState } from "react";
 import ShareButton from "../header/ShareButton";
+import { useAppDispatch } from "@/core/hooks/ReduxHook";
+import { deleteProject } from "@/core/redux/features/ProjectSlice";
+import AddTaskModal from "../addTaskModal/AddTaskModal";
 
-function MoreProjects({ moreProjects, setMoreProjects }: ProjectsDetailProps) {
+function MoreProjects({
+  moreProjects,
+  setMoreProjects,
+  projectId,
+}: ProjectsDetailProps) {
+  const dispatch = useAppDispatch();
   const [openShare, setOpenShare] = useState<boolean>(false);
+  const [newTaskModal, setNewTaskModal] = useState<boolean>(false);
+  const deleteProjectHandler = () => {
+    if (projectId) {
+      dispatch(deleteProject(projectId));
+    }
+    setMoreProjects(false);
+  };
+  const createNewTask = () => {
+    setNewTaskModal(!newTaskModal);
+  };
   return (
     <div>
       <ModalHook openModal={moreProjects}>
         <div className="w-46 h-51 bg-white flex flex-col items-center justify-between p-3 rounded-lg">
-          <div className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer">
+          <div
+            onClick={() => createNewTask()}
+            className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer"
+          >
             <Icon name="add" />
-            <P className="text-[14px]">ساختن پروژه جدید</P>
+            <P className="text-[14px]">ساختن تسک جدید</P>
           </div>
           <div className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer">
             <Icon name="edit" />
@@ -24,7 +45,10 @@ function MoreProjects({ moreProjects, setMoreProjects }: ProjectsDetailProps) {
             <Icon name="link" />
             <P className="text-[14px]">کپی لینک</P>
           </div>
-          <div className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer">
+          <div
+            onClick={() => deleteProjectHandler()}
+            className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer"
+          >
             <Icon name="delete" />
             <P className="text-[14px] text-red-500">حذف</P>
           </div>
@@ -38,6 +62,10 @@ function MoreProjects({ moreProjects, setMoreProjects }: ProjectsDetailProps) {
         </div>
         <ShareButton openShare={openShare} setOpenShare={setOpenShare} />
       </ModalHook>
+      <AddTaskModal
+        newTaskModal={newTaskModal}
+        setNewTaskModal={setNewTaskModal}
+      />
     </div>
   );
 }

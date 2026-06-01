@@ -11,6 +11,7 @@ import {
   deleteWorkSpace,
   editWorkSpaceName,
 } from "@/core/redux/features/WorkSpaceSlice";
+import NewProject from "./NewProject";
 
 function MoreDetails({
   openWorkSpace,
@@ -20,6 +21,7 @@ function MoreDetails({
   const [openShare, setOpenShare] = useState<boolean>(false);
   const [changeWSName, setChangeWSName] = useState<string>("");
   const [newColor, setNewColor] = useState<string>("");
+  const [newProject, setNewProject] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const deleteHandler = () => {
     if (selectWorkSpaceId) {
@@ -42,11 +44,19 @@ function MoreDetails({
       );
     }
   };
+  const createNewProject = () => {
+    if (selectWorkSpaceId) {
+      setNewProject(true);
+    }
+  };
   return (
     <div>
       <ModalHook openModal={openWorkSpace}>
         <div className="w-50 h-60 rounded-lg bg-white p-3 flex flex-col items-center justify-evenly">
-          <div className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer">
+          <div
+            onClick={() => createNewProject()}
+            className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer"
+          >
             <Icon name="add" />
             <P className="text-[14px]">ساختن پروژه جدید</P>
           </div>
@@ -85,6 +95,7 @@ function MoreDetails({
         </div>
       </ModalHook>
       <ShareButton openShare={openShare} setOpenShare={setOpenShare} />
+      <NewProject newProject={newProject} setNewProject={setNewProject} />
     </div>
   );
 }

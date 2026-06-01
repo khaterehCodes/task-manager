@@ -16,7 +16,13 @@ function Header() {
     setMounted(true);
   }, []);
   const pathName = usePathname();
-  const profileHeader = pathName.startsWith("/profile");
+  const nonHeaderPages = [
+    "/profile/setting",
+    "/profile/account",
+    "/profile/user",
+    "/",
+  ];
+  const nonHeader = nonHeaderPages.includes(pathName);
   const calendarHeader = pathName.startsWith("/board/calendar");
   const findProjectName = useAppSelector(
     (state) => state.projectSlice.selectProjectId,
@@ -26,7 +32,7 @@ function Header() {
   const projectName = projects.find((p) => p.id === findProjectName);
   return (
     <>
-      {profileHeader ? (
+      {nonHeader ? (
         ""
       ) : (
         <>
