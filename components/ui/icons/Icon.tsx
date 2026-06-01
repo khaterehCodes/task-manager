@@ -1174,6 +1174,187 @@ function Icon({ name, style, ...props }: IconType) {
           />
         </svg>
       );
+    case "redFlag":
+      return (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.16667 17.4998V3.2749"
+            stroke="#FB0606"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M15.8333 11.6832V3.33325"
+            stroke="#FB0606"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 11.6666C4.16663 11.6666 4.89579 11.0608 7.08328 11.0608C9.27077 11.0608 10.7291 12.5 12.9166 12.5C15.1041 12.5 15.8332 11.6858 15.8332 11.6858"
+            stroke="#FB0606"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 3.27666C4.16663 3.27666 4.89579 2.5 7.08328 2.5C9.27077 2.5 10.7291 3.93916 12.9166 3.93916C15.1041 3.93916 15.8332 3.33333 15.8332 3.33333"
+            stroke="#FB0606"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "yellowFlag":
+      return (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.16667 17.4998V3.2749"
+            stroke="#FFE605"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M15.8333 11.6832V3.33325"
+            stroke="#FFE605"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 11.6666C4.16663 11.6666 4.89579 11.0608 7.08328 11.0608C9.27077 11.0608 10.7291 12.5 12.9166 12.5C15.1041 12.5 15.8332 11.6858 15.8332 11.6858"
+            stroke="#FFE605"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 3.27666C4.16663 3.27666 4.89579 2.5 7.08328 2.5C9.27077 2.5 10.7291 3.93916 12.9166 3.93916C15.1041 3.93916 15.8332 3.33333 15.8332 3.33333"
+            stroke="#FFE605"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "greenFlag":
+      return (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.16667 17.4998V3.2749"
+            stroke="#09DBCE"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M15.8333 11.6832V3.33325"
+            stroke="#09DBCE"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 11.6666C4.16663 11.6666 4.89579 11.0608 7.08328 11.0608C9.27077 11.0608 10.7291 12.5 12.9166 12.5C15.1041 12.5 15.8332 11.6858 15.8332 11.6858"
+            stroke="#09DBCE"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 3.27666C4.16663 3.27666 4.89579 2.5 7.08328 2.5C9.27077 2.5 10.7291 3.93916 12.9166 3.93916C15.1041 3.93916 15.8332 3.33333 15.8332 3.33333"
+            stroke="#09DBCE"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "grayFlagL":
+      return (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.16667 17.4998V3.2749"
+            stroke="#B3ACAC"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M15.8333 11.6832V3.33325"
+            stroke="#B3ACAC"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 11.6666C4.16663 11.6666 4.89579 11.0608 7.08328 11.0608C9.27077 11.0608 10.7291 12.5 12.9166 12.5C15.1041 12.5 15.8332 11.6858 15.8332 11.6858"
+            stroke="#B3ACAC"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M4.16663 3.27666C4.16663 3.27666 4.89579 2.5 7.08328 2.5C9.27077 2.5 10.7291 3.93916 12.9166 3.93916C15.1041 3.93916 15.8332 3.33333 15.8332 3.33333"
+            stroke="#B3ACAC"
+            strokeWidth="1.62499"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "deletePrioperty":
+      return (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.66663 6.66675L13.3333 13.3334"
+            stroke="#E45454"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M13.3333 6.66675L6.66663 13.3334"
+            stroke="#E45454"
+            strokeWidth="1.25"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
   }
 }
 

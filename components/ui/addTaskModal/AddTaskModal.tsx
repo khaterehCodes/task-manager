@@ -5,13 +5,16 @@ import Input from "../customInput/Input";
 import P from "../customP/P";
 import { useTheme } from "@/core/provider/ThemeContext";
 import Button from "../customButton/Button";
+import { useState } from "react";
+import Priorities from "./Priorities";
 
 function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
   const { currentTheme } = useTheme();
+  const [openPriorities, setOpenPriorities] = useState<boolean>(false);
   return (
     <div>
       <ModalHook openModal={newTaskModal}>
-        <div className="w-290 h-160 bg-white rounded-lg flex flex-col items-center justify-center gap-9 p-5">
+        <div className="w-290 h-160 bg-white rounded-lg flex flex-col items-center justify-center gap-9 p-5 relative">
           <div className="w-full h-9 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 bg-[#D9D9D9] rounded-xs"></div>
@@ -63,7 +66,12 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
           </div>
           <div className="w-full h-13 flex items-center justify-between">
             <div className="w-50 h-full flex items-center justify-between">
-              <Icon name="priority" />
+              <div
+                onClick={() => setOpenPriorities(!openPriorities)}
+                className="cursor-pointer"
+              >
+                <Icon name="priority" />
+              </div>
               <Icon name="calendarTask" />
               <Icon name="tag" />
             </div>
@@ -72,6 +80,10 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
             </Button>
           </div>
         </div>
+        <Priorities
+          openPriorities={openPriorities}
+          setOpenPriorities={setOpenPriorities}
+        />
       </ModalHook>
     </div>
   );

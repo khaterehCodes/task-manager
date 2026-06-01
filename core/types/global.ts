@@ -87,3 +87,14 @@ export type TasksModalType = {
   newTaskModal: boolean;
   setNewTaskModal: (value: boolean) => void;
 };
+
+export type PrioritiesPropsType = {
+  openPriorities: boolean;
+  setOpenPriorities: (value: boolean) => void;
+};
+
+export interface PriorityFlagTypes{
+  id:number
+  title:string
+  flag:string
+}

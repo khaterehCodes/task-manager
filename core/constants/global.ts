@@ -1,3 +1,5 @@
+import { PriorityFlagTypes } from "../types/global";
+
 interface TermsListType {
   id: number;
   list: string;
@@ -237,4 +239,11 @@ export const workSpaceColor: WorkSpaceColorType[] = [
   { id: 12, color: "#82C91E" },
   { id: 13, color: "#FAB005" },
   { id: 14, color: "#FD7E14" },
+];
+
+export const priorityFlags: PriorityFlagTypes[] = [
+  { id: 1, title: "فوری", flag: "redFlag" },
+  { id: 2, title: "بالا", flag: "yellowFlag" },
+  { id: 3, title: "متوسط", flag: "greenFlag" },
+  { id: 4, title: "پایین", flag: "grayFlagL" },
 ];
