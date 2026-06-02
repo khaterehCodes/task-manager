@@ -5,6 +5,7 @@ import Icon from "@/components/ui/icons/Icon";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
 import React, { useState } from "react";
 import TodoTasks from "./(components)/TodoTasks";
+import InProgressTasks from "./(components)/InProgressTasks";
 
 function ListView() {
   const selectedProject = useAppSelector(
@@ -15,7 +16,6 @@ function ListView() {
   const currentProject = wholeProjects.find((p) => p.id === selectedProject);
   const tasks = wholeTasks.filter((t) => t.projectId === selectedProject);
   const [showTasks, setShowTasks] = useState<boolean>(false);
-  const inprogressTasks = tasks.filter((t) => t.status === "in-progress");
   const doneTasks = tasks.filter((t) => t.status === "done");
   if (!selectedProject) {
     return <P>به تسک منیجر خوش آمدید</P>;
@@ -40,6 +40,7 @@ function ListView() {
         {showTasks && (
           <div className="mr-3 mt-2">
             <TodoTasks />
+            <InProgressTasks />
           </div>
         )}
       </div>
