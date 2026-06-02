@@ -132,3 +132,8 @@ export interface TagsColorType {
   color?: string;
   textColor: string;
 }
+
+export interface TasksHeadeType {
+  id: number;
+  title: string;
+}

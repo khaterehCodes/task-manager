@@ -74,7 +74,7 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
                 <Input
                   id="taskTitle"
                   {...register("taskTitle")}
-                  className={`text-[24px] font-medium w-200 h-full rounded-lg p-1 outline-0 ${errors ? "border border-red-500" : ""}`}
+                  className={`text-[24px] font-medium w-200 h-full rounded-lg p-1 outline-0 ${errors.taskTitle ? "border border-red-500" : " border border-[#D9D9D9]"}`}
                   placeholder="عنوان تسک"
                   onChange={(e) => setTaskTitle(e.target.value)}
                 />

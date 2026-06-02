@@ -1,4 +1,9 @@
-import { PriorityFlagTypes, TagsColorType, TagsTyep } from "../types/global";
+import {
+  PriorityFlagTypes,
+  TagsColorType,
+  TagsTyep,
+  TasksHeadeType,
+} from "../types/global";
 
 interface TermsListType {
   id: number;
@@ -268,4 +273,11 @@ export const tagsColorArray: TagsColorType[] = [
   { id: 11, textColor: "#FA5252", color: "" },
   { id: 12, textColor: "#E64980", color: "" },
   { id: 13, textColor: "#BE4BDB", color: "" },
+];
+
+export const tasksHead: TasksHeadeType[] = [
+  { id: 1, title: "اعضا" },
+  { id: 2, title: "ددلاین" },
+  { id: 3, title: "اولویت" },
+  { id: 4, title: "توضیحات" },
 ];

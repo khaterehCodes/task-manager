@@ -1,16 +1,22 @@
 "use client";
 import AddTaskButton from "@/components/ui/addTaskButton/AddTaskButton";
 import P from "@/components/ui/customP/P";
+import Icon from "@/components/ui/icons/Icon";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
-import React from "react";
+import React, { useState } from "react";
+import TodoTasks from "./(components)/TodoTasks";
 
 function ListView() {
   const selectedProject = useAppSelector(
     (state) => state.projectSlice.selectProjectId,
   );
+  const wholeProjects = useAppSelector((state) => state.projectSlice.items);
   const wholeTasks = useAppSelector((state) => state.taskSlice.items);
+  const currentProject = wholeProjects.find((p) => p.id === selectedProject);
   const tasks = wholeTasks.filter((t) => t.projectId === selectedProject);
-  console.log(tasks);
+  const [showTasks, setShowTasks] = useState<boolean>(false);
+  const inprogressTasks = tasks.filter((t) => t.status === "in-progress");
+  const doneTasks = tasks.filter((t) => t.status === "done");
   if (!selectedProject) {
     return <P>به تسک منیجر خوش آمدید</P>;
   }
@@ -19,10 +25,23 @@ function ListView() {
       <div className="absolute bottom-5 left-5">
         <AddTaskButton />
       </div>
-      <div className="w-full h-140 bg-pink-400">
-        {tasks.map((t) => (
-          <React.Fragment key={t.id}>{t.title}</React.Fragment>
-        ))}
+      <div className="w-full h-140">
+        <div className="w-full h-10 flex items-center justify-start gap-2">
+          <div
+            onClick={() => setShowTasks(!showTasks)}
+            className="w-5 h-5 cursor-pointer flex items-center justify-center"
+          >
+            <Icon name="dropDown" />
+          </div>
+          <P className="text-[20px] font-extrabold">
+            {currentProject ? currentProject.name : ""}
+          </P>
+        </div>
+        {showTasks && (
+          <div className="mr-3 mt-2">
+            <TodoTasks />
+          </div>
+        )}
       </div>
     </div>
   );
