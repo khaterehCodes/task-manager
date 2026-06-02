@@ -44,7 +44,7 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
   const [taskTitle, setTaskTitle] = useState<string>("");
   const [taskDesc, setTaskDesc] = useState<string>("");
   const [priority, setPriority] = useState<PriorityType>("بدون اولویت");
-  const [status, setStatus] = useState<TaskStatusType>("in-progress");
+  const [status, setStatus] = useState<TaskStatusType>("done");
   const findPriority = priorityFlags.find((p) => p.title === priority);
   const [tags, setTags] = useState<string>("");
   const dispatch = useAppDispatch();

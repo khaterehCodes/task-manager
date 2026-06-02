@@ -40,7 +40,7 @@ function InProgressTasks() {
         </div>
       </div>
       {showinprogress && (
-        <div className="w-full h-auto flex items-center justify-between mt-5">
+        <div className="w-full h-auto flex items-center justify-between mt-3">
           <div className="w-fit h-auto flex flex-col gap-3">
             {inprogressTasks.map((tt) => {
               const sendPriority = showPriorityIcon(tt.priority);
