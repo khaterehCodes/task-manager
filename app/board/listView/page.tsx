@@ -3,7 +3,7 @@ import AddTaskButton from "@/components/ui/addTaskButton/AddTaskButton";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
-import React, { useState } from "react";
+import { useState } from "react";
 import TodoTasks from "./(components)/TodoTasks";
 import InProgressTasks from "./(components)/InProgressTasks";
 import DoneTasks from "./(components)/DoneTasks";
@@ -13,9 +13,7 @@ function ListView() {
     (state) => state.projectSlice.selectProjectId,
   );
   const wholeProjects = useAppSelector((state) => state.projectSlice.items);
-  const wholeTasks = useAppSelector((state) => state.taskSlice.items);
   const currentProject = wholeProjects.find((p) => p.id === selectedProject);
-  const tasks = wholeTasks.filter((t) => t.projectId === selectedProject);
   const [showTasks, setShowTasks] = useState<boolean>(false);
   if (!selectedProject) {
     return <P>به تسک منیجر خوش آمدید</P>;

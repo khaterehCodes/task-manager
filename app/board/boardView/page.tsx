@@ -1,11 +1,20 @@
-import React from 'react';
+"use client";
+import AddTaskButton from "@/components/ui/addTaskButton/AddTaskButton";
+import DoneCards from "./(components)/DoneCards";
 
 function BoardView() {
-    return (
-        <div className='w-full h-148 bg-olive-400'>
-            
-        </div>
-    );
+  return (
+    <div className="w-full h-148 p-5 relative">
+      <div className="absolute bottom-5 left-5">
+        <AddTaskButton />
+      </div>
+      <div className="w-full h-full flex items-center justify-between">
+        todo
+        <DoneCards />
+        inprogress
+      </div>
+    </div>
+  );
 }
 
 export default BoardView;
