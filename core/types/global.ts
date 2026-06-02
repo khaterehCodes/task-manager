@@ -56,7 +56,7 @@ export type ProjectStateType = {
 };
 
 export type TaskStatusType = "todo" | "done" | "in-progress";
-export type PriorityType = "l" | "m" | "s";
+export type PriorityType = "فوری" | "بالا" | "متوسط" | "پایین" | "بدون اولویت";
 
 export type TaskType = {
   id: string;
@@ -65,6 +65,10 @@ export type TaskType = {
   description?: string;
   status: TaskStatusType;
   priority: PriorityType;
+  coverIMG?: string;
+  startDate?: string;
+  endDate?: string;
+  tags?: string;
 };
 
 export type TaskStateType = {
@@ -91,12 +95,14 @@ export type TasksModalType = {
 export type PrioritiesPropsType = {
   openPriorities: boolean;
   setOpenPriorities: (value: boolean) => void;
+  setPriority: (value: PriorityType) => void;
 };
 
 export interface PriorityFlagTypes {
   id: number;
-  title: string;
+  title: PriorityType;
   flag: string;
+  finalFlag: string;
 }
 
 export type TagspropsType = {

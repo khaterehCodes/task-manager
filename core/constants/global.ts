@@ -242,10 +242,10 @@ export const workSpaceColor: WorkSpaceColorType[] = [
 ];
 
 export const priorityFlags: PriorityFlagTypes[] = [
-  { id: 1, title: "فوری", flag: "redFlag" },
-  { id: 2, title: "بالا", flag: "yellowFlag" },
-  { id: 3, title: "متوسط", flag: "greenFlag" },
-  { id: 4, title: "پایین", flag: "grayFlagL" },
+  { id: 1, title: "فوری", flag: "redFlag", finalFlag: "redP" },
+  { id: 2, title: "بالا", flag: "yellowFlag", finalFlag: "yellowP" },
+  { id: 3, title: "متوسط", flag: "greenFlag", finalFlag: "greenP" },
+  { id: 4, title: "پایین", flag: "grayFlagL", finalFlag: "priority" },
 ];
 
 export const tags: TagsTyep[] = [

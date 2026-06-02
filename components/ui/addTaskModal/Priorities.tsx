@@ -8,7 +8,16 @@ import P from "../customP/P";
 function Priorities({
   openPriorities,
   setOpenPriorities,
+  setPriority,
 }: PrioritiesPropsType) {
+  const priorityHandler = (p: any) => {
+    setPriority(p);
+    setOpenPriorities(false);
+  };
+  const deletepriorityHandler = () => {
+    setPriority("بدون اولویت");
+    setOpenPriorities(false);
+  };
   return (
     <>
       <ModalHook openModal={openPriorities}>
@@ -16,13 +25,19 @@ function Priorities({
           <div className="w-full h-29 flex flex-col justify-between gap-1">
             {priorityFlags.map((p) => (
               <React.Fragment key={p.id}>
-                <div className="w-full h-5 flex items-center justify-start gap-2 cursor-pointer">
+                <div
+                  onClick={() => priorityHandler(p.title)}
+                  className="w-full h-5 flex items-center justify-start gap-2 cursor-pointer"
+                >
                   <Icon name={p.flag} />
                   <P className="text-[14px]">{p.title}</P>
                 </div>
               </React.Fragment>
             ))}
-            <div className="w-full h-5 flex items-center justify-start gap-2 cursor-pointer">
+            <div
+              onClick={() => deletepriorityHandler()}
+              className="w-full h-5 flex items-center justify-start gap-2 cursor-pointer"
+            >
               <Icon name="deletePrioperty" />
               <P className="text-[14px]">حذف اولویت</P>
             </div>

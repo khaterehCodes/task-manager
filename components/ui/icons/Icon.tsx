@@ -1462,6 +1462,153 @@ function Icon({ name, style, ...props }: IconType) {
           />
         </svg>
       );
+    case "redP":
+      return (
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 50 50"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.694444"
+            y="0.694444"
+            width="48.6111"
+            height="48.6111"
+            rx="24.3056"
+            stroke="#FB0606"
+            strokeWidth="1.38889"
+            strokeDasharray="2.78 2.78"
+          />
+          <path
+            d="M16.4216 36.0294V15.1104"
+            stroke="#FB0606"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M33.5784 27.4754V15.196"
+            stroke="#FB0606"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.4216 27.451C16.4216 27.451 17.4939 26.5601 20.7108 26.5601C23.9277 26.5601 26.0723 28.6765 29.2892 28.6765C32.5061 28.6765 33.5784 27.4792 33.5784 27.4792"
+            stroke="#FB0606"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.4216 15.1129C16.4216 15.1129 17.4939 13.9707 20.7108 13.9707C23.9277 13.9707 26.0723 16.0871 29.2892 16.0871C32.5061 16.0871 33.5784 15.1962 33.5784 15.1962"
+            stroke="#FB0606"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "yellowP":
+      return (
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 50 50"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.694444"
+            y="0.694444"
+            width="48.6111"
+            height="48.6111"
+            rx="24.3056"
+            stroke="#FFE605"
+            strokeWidth="1.38889"
+            strokeDasharray="2.78 2.78"
+          />
+          <path
+            d="M16.4216 36.0294V15.1104"
+            stroke="#FFE605"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M33.5784 27.4754V15.196"
+            stroke="#FFE605"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.4216 27.451C16.4216 27.451 17.4939 26.5601 20.7108 26.5601C23.9277 26.5601 26.0723 28.6765 29.2892 28.6765C32.5061 28.6765 33.5784 27.4792 33.5784 27.4792"
+            stroke="#FFE605"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.4216 15.1129C16.4216 15.1129 17.4939 13.9707 20.7108 13.9707C23.9277 13.9707 26.0723 16.0871 29.2892 16.0871C32.5061 16.0871 33.5784 15.1962 33.5784 15.1962"
+            stroke="#FFE605"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
+    case "greenP":
+      return (
+        <svg
+          width="50"
+          height="50"
+          viewBox="0 0 50 50"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.694444"
+            y="0.694444"
+            width="48.6111"
+            height="48.6111"
+            rx="24.3056"
+            stroke="#09DBCE"
+            strokeWidth="1.38889"
+            strokeDasharray="2.78 2.78"
+          />
+          <path
+            d="M16.4216 36.0294V15.1104"
+            stroke="#09DBCE"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M33.5784 27.4754V15.196"
+            stroke="#09DBCE"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.4216 27.451C16.4216 27.451 17.4939 26.5601 20.7108 26.5601C23.9277 26.5601 26.0723 28.6765 29.2892 28.6765C32.5061 28.6765 33.5784 27.4792 33.5784 27.4792"
+            stroke="#09DBCE"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M16.4216 15.1129C16.4216 15.1129 17.4939 13.9707 20.7108 13.9707C23.9277 13.9707 26.0723 16.0871 29.2892 16.0871C32.5061 16.0871 33.5784 15.1962 33.5784 15.1962"
+            stroke="#09DBCE"
+            strokeWidth="2.3897"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
   }
 }
 
