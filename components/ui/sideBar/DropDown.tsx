@@ -24,6 +24,7 @@ function DropDown() {
     null,
   );
   const [projectId, setProjectId] = useState<string | null>(null);
+  const [searchWorkSpace, setSearchWorkSpace] = useState<string>("");
   const toggleTodos = (id: string) => {
     setShowTodos((prev) => {
       if (prev.includes(id)) {
@@ -41,6 +42,9 @@ function DropDown() {
     setMoreProjects(!moreProjects);
     setProjectId(id);
   };
+  const filterWorkSpacesByName = workSpaceItems.filter((w) =>
+    w.name?.toLowerCase().includes(searchWorkSpace.toLowerCase()),
+  );
   return (
     <>
       <div className="w-69 h-auto flex items-center justify-center flex-col mt-6 gap-5">
@@ -48,7 +52,9 @@ function DropDown() {
           <Icon name="search" />
           <Input
             type="text"
+            value={searchWorkSpace}
             placeholder="جستجو کنید"
+            onChange={(e) => setSearchWorkSpace(e.target.value)}
             className="text-[#AAAAAA] text-[12px] w-[80%] h-full outline-0"
           />
         </div>
@@ -60,7 +66,7 @@ function DropDown() {
           <P className="text-[12px]">ساختن ورک‌اسپیس جدید</P>
         </div>
         <div className="w-full h-auto flex flex-col gap-1">
-          {workSpaceItems.map((item) => (
+          {filterWorkSpacesByName.map((item) => (
             <React.Fragment key={item.id}>
               <div
                 onClick={() => toggleTodos(item.id)}
