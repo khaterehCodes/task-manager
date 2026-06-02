@@ -1,6 +1,7 @@
 "use client";
 import AddTaskButton from "@/components/ui/addTaskButton/AddTaskButton";
 import DoneCards from "./(components)/DoneCards";
+import TodoCards from "./(components)/TodoCards";
 
 function BoardView() {
   return (
@@ -9,7 +10,7 @@ function BoardView() {
         <AddTaskButton />
       </div>
       <div className="w-full h-full flex items-center justify-between">
-        todo
+        <TodoCards />
         <DoneCards />
         inprogress
       </div>
