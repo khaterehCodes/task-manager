@@ -18,7 +18,7 @@ function NewProject({
   const workSpaceId = useAppSelector(
     (state) => state.workSpace.selectedWorkSpaceId,
   );
-  const addProjectHandler = (event: React.FormEvent) => {
+  const addProjectHandler = (event: React.SubmitEvent) => {
     event.preventDefault();
     if (!projectName.trim()) return;
     if (!workSpaceId) {
