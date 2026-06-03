@@ -12,12 +12,14 @@ import {
   editWorkSpaceName,
 } from "@/core/redux/features/WorkSpaceSlice";
 import NewProject from "./NewProject";
+import { addProject } from "@/core/redux/features/ProjectSlice";
 
 function MoreDetails({
   openWorkSpace,
   setOpenWorkSpace,
   selectWorkSpaceId,
 }: WorkSpaceDtailProps) {
+  const [projectName, setProjectName] = useState<string>("");
   const [openShare, setOpenShare] = useState<boolean>(false);
   const [changeWSName, setChangeWSName] = useState<string>("");
   const [newColor, setNewColor] = useState<string>("");
@@ -46,8 +48,16 @@ function MoreDetails({
   };
   const createNewProject = () => {
     if (selectWorkSpaceId) {
+      dispatch(
+        addProject({
+          id: Date.now().toString(),
+          name: projectName,
+          workSpaceId: selectWorkSpaceId,
+        }),
+      );
       setNewProject(true);
     }
+    setOpenWorkSpace(false);
   };
   return (
     <div>
@@ -95,7 +105,12 @@ function MoreDetails({
         </div>
       </ModalHook>
       <ShareButton openShare={openShare} setOpenShare={setOpenShare} />
-      <NewProject newProject={newProject} setNewProject={setNewProject} />
+      <NewProject
+        newProject={newProject}
+        setNewProject={setNewProject}
+        projectName={projectName}
+        setProjectName={setProjectName}
+      />
     </div>
   );
 }

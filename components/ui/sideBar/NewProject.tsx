@@ -6,15 +6,21 @@ import Icon from "../icons/Icon";
 import Input from "../customInput/Input";
 import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
 import { addProject } from "@/core/redux/features/ProjectSlice";
-import { useState } from "react";
+import React from "react";
 
-function NewProject({ newProject, setNewProject }: NewProjectType) {
-  const [projectName, setProjectName] = useState<string>("");
+function NewProject({
+  newProject,
+  setNewProject,
+  projectName,
+  setProjectName,
+}: NewProjectType) {
   const dispatch = useAppDispatch();
   const workSpaceId = useAppSelector(
     (state) => state.workSpace.selectedWorkSpaceId,
   );
-  const addProjectHandler = () => {
+  const addProjectHandler = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!projectName.trim()) return;
     if (!workSpaceId) {
       alert("لطفا ابتدا یک ورک‌اسپیس انتخاب کنید");
       return;
@@ -26,6 +32,8 @@ function NewProject({ newProject, setNewProject }: NewProjectType) {
         workSpaceId,
       }),
     );
+    setProjectName("");
+    setNewProject(false);
   };
   return (
     <>
@@ -42,7 +50,10 @@ function NewProject({ newProject, setNewProject }: NewProjectType) {
               ساختن پروژه جدید‌
             </P>
           </div>
-          <form className="w-104 h-auto flex items-start justify-center flex-col gap-10">
+          <form
+            onSubmit={addProjectHandler}
+            className="w-104 h-auto flex items-start justify-center flex-col gap-10"
+          >
             <div>
               <label htmlFor="project" className="text-[14px]">
                 نام پروژه
@@ -55,7 +66,7 @@ function NewProject({ newProject, setNewProject }: NewProjectType) {
               />
             </div>
             <Button
-              onClick={() => addProjectHandler()}
+              type="submit"
               className="w-full h-10 bg-[#208D8E] rounded-md text-white cursor-pointer text-[14px] font-extrabold"
             >
               ادامه

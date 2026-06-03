@@ -12,6 +12,7 @@ import MoreDetails from "./MoreDetails";
 import MoreProjects from "./MoreProjects";
 
 function DropDown() {
+  const [projectName, setProjectName] = useState<string>("");
   const dispatch = useAppDispatch();
   const workSpaceItems = useAppSelector((state) => state.workSpace.items);
   const projects = useAppSelector((state) => state.projectSlice.items);
@@ -124,7 +125,12 @@ function DropDown() {
         </div>
       </div>
       <NewWorkSpace />
-      <NewProject newProject={newProject} setNewProject={setNewProject} />
+      <NewProject
+        newProject={newProject}
+        setNewProject={setNewProject}
+        projectName={projectName}
+        setProjectName={setProjectName}
+      />
       <MoreDetails
         openWorkSpace={moreWorkSpace}
         setOpenWorkSpace={setMoreWorkSpace}

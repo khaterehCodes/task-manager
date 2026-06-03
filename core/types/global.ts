@@ -19,6 +19,8 @@ export type PermissionsHeader = {
 export type NewProjectType = {
   newProject: boolean;
   setNewProject: (value: boolean) => void;
+  projectName: string;
+  setProjectName: (value: string) => void;
 };
 
 export type NavLinkType = {
