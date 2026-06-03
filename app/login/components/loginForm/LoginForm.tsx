@@ -3,6 +3,7 @@ import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
 import { useTheme } from "@/core/provider/ThemeContext";
+import { useUser } from "@/core/provider/UserProvider";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,6 +16,7 @@ const loginSchema = z.object({
 
 type loginFormData = z.infer<typeof loginSchema>;
 function LoginForm() {
+  const { setUser } = useUser();
   const router = useRouter();
   const {
     register,
@@ -29,6 +31,7 @@ function LoginForm() {
   });
   const { currentTheme } = useTheme();
   const formHandler = (data: loginFormData) => {
+    setUser({name:data.userName})
     console.log(data);
     router.push("/");
   };

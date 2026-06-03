@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import Terms from "../terms/Terms";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/core/provider/UserProvider";
 
 const signupSchema = z.object({
   userName: z.string().min(1, "وارد کردن نام کاربری الزامی است"),
@@ -30,11 +31,13 @@ function SignupForm() {
       password: "",
     },
   });
+  const { setUser } = useUser();
   const [showTerms, setShowTerms] = useState<boolean>(false);
   const router = useRouter();
   const formHandler = (data: signupFormData) => {
+    setUser({ name: data.userName });
     console.log(data);
-    router.push("/");
+    router.push("/profile/user");
   };
   return (
     <>

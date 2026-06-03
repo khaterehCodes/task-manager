@@ -1,11 +1,16 @@
-import Button from "@/components/ui/customButton/Button";
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import Link from "next/link";
 import { useDark } from "@/core/provider/DarkModeProvider";
+import { useUser } from "@/core/provider/UserProvider";
 
 function Profile() {
   const { darkMode, buttonDarkMode } = useDark();
+  const { user, logout } = useUser();
+  if (!user) {
+    window.location.href = "/signup";
+  }
+  console.log(user);
   return (
     <div className="w-full h-22 flex items-center justify-center absolute bottom-5">
       <div className="w-69 h-full flex flex-col justify-between">
@@ -18,7 +23,10 @@ function Profile() {
           <P className="font-medium">خاطره ناصری</P>
         </div>
         <div className="w-full h-9 flex items-center justify-between">
-          <div className="w-16 flex items-center justify-center gap-2 cursor-pointer text-[#818181] font-medium">
+          <div
+            onClick={logout}
+            className="w-16 flex items-center justify-center gap-2 cursor-pointer text-[#818181] font-medium"
+          >
             <Icon name="logout" />
             خروج
           </div>

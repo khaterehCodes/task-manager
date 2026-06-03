@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/core/provider/ThemeContext";
 import { CalendarProvider } from "@/core/provider/CalendarContext";
 import { WorkSpaceProvider } from "@/core/provider/WorkSpaceContext";
 import StoreProvider from "@/core/provider/StoreProvider";
+import { UserProvider } from "@/core/provider/UserProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,17 +36,19 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <StoreProvider>
-          <ThemeProvider>
-            <DarkModeProvider>
-              <CalendarProvider>
-                <WorkSpaceProvider>
-                  <Layout>{children}</Layout>
-                </WorkSpaceProvider>
-              </CalendarProvider>
-            </DarkModeProvider>
-          </ThemeProvider>
-        </StoreProvider>
+        <UserProvider>
+          <StoreProvider>
+            <ThemeProvider>
+              <DarkModeProvider>
+                <CalendarProvider>
+                  <WorkSpaceProvider>
+                    <Layout>{children}</Layout>
+                  </WorkSpaceProvider>
+                </CalendarProvider>
+              </DarkModeProvider>
+            </ThemeProvider>
+          </StoreProvider>
+        </UserProvider>
       </body>
     </html>
   );
