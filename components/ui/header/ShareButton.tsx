@@ -42,11 +42,11 @@ function ShareButton({ openShare, setOpenShare }: ShareButtonType) {
               </Button>
             </form>
             <div className="w-108 h-6 flex items-center justify-between">
-              <div className="w-fit h-full flex items-center gap-2 cursor-pointer">
+              <div className="w-fit h-full flex items-center gap-2 cursor-pointer justify-center">
                 <Icon name="link" />
                 <P className="text-[14px]">لینک خصوصی</P>
               </div>
-              <div className="w-19 h-full border border-[#E9EBF0] text-[12px] cursor-pointer rounded-md">
+              <div className="w-19 h-full border border-[#E9EBF0] text-[12px] cursor-pointer rounded-md flex items-center justify-center">
                 کپی لینک
               </div>
             </div>

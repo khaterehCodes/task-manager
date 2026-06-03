@@ -10,7 +10,7 @@ function InProgressCards() {
   );
   const wholeTasks = useAppSelector((state) => state.taskSlice.items);
   const tasks = wholeTasks.filter((t) => t.projectId === selectedProject);
-  const inProgressTasks = tasks.filter((t) => t.status === "done");
+  const inProgressTasks = tasks.filter((t) => t.status === "in-progress");
   const wholeProjects = useAppSelector((state) => state.projectSlice.items);
   const currentProject = wholeProjects.find((p) => p.id === selectedProject);
   const showPriorityIcon = (p: string) => {

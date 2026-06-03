@@ -6,7 +6,7 @@ import InProgressCards from "./(components)/InProgressCards";
 
 function BoardView() {
   return (
-    <div className="w-full h-148 p-5 relative">
+    <div className="w-full h-148 p-5 relative -z-10">
       <div className="absolute bottom-5 left-5">
         <AddTaskButton />
       </div>

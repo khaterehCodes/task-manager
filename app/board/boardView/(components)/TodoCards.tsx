@@ -10,7 +10,7 @@ function TodoCards() {
   );
   const wholeTasks = useAppSelector((state) => state.taskSlice.items);
   const tasks = wholeTasks.filter((t) => t.projectId === selectedProject);
-  const todoTasks = tasks.filter((t) => t.status === "done");
+  const todoTasks = tasks.filter((t) => t.status === "todo");
   const wholeProjects = useAppSelector((state) => state.projectSlice.items);
   const currentProject = wholeProjects.find((p) => p.id === selectedProject);
   const showPriorityIcon = (p: string) => {
