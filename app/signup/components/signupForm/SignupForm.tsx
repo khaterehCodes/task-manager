@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import Terms from "../terms/Terms";
 import { useRouter } from "next/navigation";
+import { fakeLogin } from "@/core/services/AuthService";
+import { useAuth } from "@/core/provider/AuthProvider";
 
 const signupSchema = z.object({
   userName: z.string().min(1, "وارد کردن نام کاربری الزامی است"),
@@ -18,6 +20,7 @@ const signupSchema = z.object({
 });
 type signupFormData = z.infer<typeof signupSchema>;
 function SignupForm() {
+  const { login } = useAuth();
   const {
     register,
     handleSubmit,
@@ -30,11 +33,11 @@ function SignupForm() {
       password: "",
     },
   });
-  // const { setUser } = useUser();
   const [showTerms, setShowTerms] = useState<boolean>(false);
   const router = useRouter();
-  const formHandler = (data: signupFormData) => {
-    // setUser({ name: data.userName });
+  const formHandler = async (data: signupFormData) => {
+    const values: any = await fakeLogin({ userName: data.userName });
+    login(values.token, values.role);
     console.log(data);
     router.push("/profile/user");
   };

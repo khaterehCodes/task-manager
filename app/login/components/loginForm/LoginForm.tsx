@@ -2,7 +2,9 @@
 import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
+import { useAuth } from "@/core/provider/AuthProvider";
 import { useTheme } from "@/core/provider/ThemeContext";
+import { fakeLogin } from "@/core/services/AuthService";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -15,8 +17,8 @@ const loginSchema = z.object({
 
 type loginFormData = z.infer<typeof loginSchema>;
 function LoginForm() {
-  // const { setUser } = useUser();
   const router = useRouter();
+  const { login } = useAuth();
   const {
     register,
     handleSubmit,
@@ -29,8 +31,9 @@ function LoginForm() {
     },
   });
   const { currentTheme } = useTheme();
-  const formHandler = (data: loginFormData) => {
-    // setUser({name:data.userName})
+  const formHandler = async (data: loginFormData) => {
+    const values: any = await fakeLogin({ userName: data.userName });
+    login(values.token, values.role);
     console.log(data);
     router.push("/");
   };
