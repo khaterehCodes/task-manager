@@ -139,3 +139,10 @@ export interface TasksHeadeType {
   id: number;
   title: string;
 }
+
+export interface User {
+  jwt?: string;
+  role?: string;
+  firstName?: string;
+  lastName?: string;
+}

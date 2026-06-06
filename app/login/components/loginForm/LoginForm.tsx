@@ -18,7 +18,7 @@ const loginSchema = z.object({
 type loginFormData = z.infer<typeof loginSchema>;
 function LoginForm() {
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, profileInfo } = useAuth();
   const {
     register,
     handleSubmit,
@@ -34,8 +34,8 @@ function LoginForm() {
   const formHandler = async (data: loginFormData) => {
     try {
       const values: any = await fakeLogin({ userName: data.userName });
-      login(values.jwt, values.role);
-      console.log(data);
+      login(values.jwt, values.role, values.firstName, values.lastName);
+      profileInfo({ firstName: values.firstName, lastName: values.lastName });
       router.push(values.role === "admin" ? "/" : "/board/listView");
     } catch {
       console.log("error in auth");

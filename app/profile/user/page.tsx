@@ -2,7 +2,10 @@
 import Button from "@/components/ui/customButton/Button";
 import Input from "@/components/ui/customInput/Input";
 import P from "@/components/ui/customP/P";
+import { useAuth } from "@/core/provider/AuthProvider";
+import { useTheme } from "@/core/provider/ThemeContext";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -20,6 +23,9 @@ const userInfoSchema = z.object({
 
 type userInfoType = z.infer<typeof userInfoSchema>;
 function UserInformation() {
+  const router = useRouter();
+  const { profileInfo, user } = useAuth();
+  const { currentTheme } = useTheme();
   const {
     handleSubmit,
     register,
@@ -32,9 +38,15 @@ function UserInformation() {
       phone: "",
     },
   });
-  const formHandler = () => {
+  const formHandler = (data: any) => {
+    profileInfo({ firstName: data.firstName, lastName: data.lastName });
+    router.push("/board/listView");
     alert("اطلاعات شما با موفقیت ثبت شد");
   };
+  const profileName =
+    user?.firstName && user.lastName
+      ? user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()
+      : ".";
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-[88%] h-auto">
@@ -42,10 +54,13 @@ function UserInformation() {
           <P className="text-[31px] font-bold">اطلاعات فردی</P>
           <div className="w-83 h-24 flex items-center justify-between">
             <div className="w-25 h-25 bg-pink-200 text-pink-500 rounded-full flex items-center justify-center text-[35px] font-medium">
-              KN
+              {profileName}
             </div>
             <div className="flex flex-col items-center gap-3">
-              <div className="w-53 h-12 rounded-lg border border-[#208D8E] text-[20px] flex items-center justify-center font-medium text-[#208D8E] cursor-pointer">
+              <div
+                style={{ borderColor: currentTheme, color: currentTheme }}
+                className="w-53 h-12 rounded-lg border text-[20px] flex items-center justify-center font-medium cursor-pointer"
+              >
                 ویرایش تصویر پروفایل
               </div>
               <P className="text-[12px] text-[#8A8989]">

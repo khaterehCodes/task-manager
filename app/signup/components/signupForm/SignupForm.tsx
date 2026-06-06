@@ -20,7 +20,7 @@ const signupSchema = z.object({
 });
 type signupFormData = z.infer<typeof signupSchema>;
 function SignupForm() {
-  const { login } = useAuth();
+  const { login, profileInfo } = useAuth();
   const {
     register,
     handleSubmit,
@@ -38,7 +38,8 @@ function SignupForm() {
   const formHandler = async (data: signupFormData) => {
     try {
       const values: any = await fakeLogin({ userName: data.userName });
-      login(values.jwt, values.role);
+      login(values.jwt, values.role, values.firstName, values.lastName);
+      profileInfo({ firstName: values.firstName, lastName: values.lastName });
       console.log(data);
       router.push(values.role === "admin" ? "/" : "/board/listView");
     } catch {

@@ -10,17 +10,22 @@ function Profile() {
   if (!user) {
     window.location.href = "/signup";
   }
-  console.log(user);
+  const fullName = `${user?.firstName ?? ""} ${user?.lastName ?? ""}`;
+  const profileName =
+    user?.firstName && user.lastName
+      ? user.firstName[0] + user.lastName[0]
+      : ".";
+  console.log(fullName, "name");
   return (
     <div className="w-full h-22 flex items-center justify-center absolute bottom-5">
       <div className="w-69 h-full flex flex-col justify-between">
         <div className="w-full h-9 flex items-center justify-start gap-2">
           <Link href={"/profile/user"}>
             <div className="w-9 h-9 rounded-full bg-pink-200 flex items-center justify-center">
-              <P className="text-pink-500 text-[12px]">KN</P>
+              <P className="text-pink-500 text-[12px]">{profileName}</P>
             </div>
           </Link>
-          <P className="font-medium">خاطره ناصری</P>
+          <P className="font-medium">{fullName}</P>
         </div>
         <div className="w-full h-9 flex items-center justify-between">
           <div
