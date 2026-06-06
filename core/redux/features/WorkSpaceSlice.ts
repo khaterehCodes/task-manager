@@ -10,6 +10,9 @@ const workSpaceSlice = createSlice({
   name: "workSpace",
   initialState,
   reducers: {
+    setWorkSpace: (_state, action: PayloadAction<WorkSpaceStateType>) => {
+      return action.payload;
+    },
     addWorkSpace: (state, action: PayloadAction<WorkSpaceType>) => {
       state.items.push(action.payload);
     },
@@ -49,5 +52,6 @@ export const {
   selectWorkSpace,
   changeWorkSpaceColor,
   editWorkSpaceName,
+  setWorkSpace,
 } = workSpaceSlice.actions;
 export default workSpaceSlice.reducer;

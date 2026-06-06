@@ -6,9 +6,9 @@ import InProgressCards from "./(components)/InProgressCards";
 
 function BoardView() {
   return (
-    <div className="w-full h-148 p-5 relative -z-10">
-      <div className="absolute bottom-5 left-5">
-        <AddTaskButton />
+    <div className="w-full h-148 p-5 relative">
+      <div className="absolute bottom-5 left-5 cursor-pointer">
+        <AddTaskButton/>
       </div>
       <div className="w-full h-full flex items-center justify-center gap-30">
         <TodoCards />

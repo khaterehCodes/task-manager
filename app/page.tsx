@@ -8,6 +8,7 @@ import React, { useState } from "react";
 export default function Home() {
   const workSpaces = useAppSelector((state) => state.workSpace.items);
   const projects = useAppSelector((state) => state.projectSlice.items);
+  const [projectName, setProjectName] = useState<string>("");
   const [newProject, setNewProject] = useState<boolean>(false);
   console.log(workSpaces);
   return (
@@ -44,7 +45,12 @@ export default function Home() {
           </React.Fragment>
         ))}
       </div>
-      <NewProject newProject={newProject} setNewProject={setNewProject} />
+      <NewProject
+        newProject={newProject}
+        setNewProject={setNewProject}
+        projectName={projectName}
+        setProjectName={setProjectName}
+      />
     </div>
   );
 }
