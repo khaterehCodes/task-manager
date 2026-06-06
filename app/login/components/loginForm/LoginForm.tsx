@@ -32,10 +32,14 @@ function LoginForm() {
   });
   const { currentTheme } = useTheme();
   const formHandler = async (data: loginFormData) => {
-    const values: any = await fakeLogin({ userName: data.userName });
-    login(values.token, values.role);
-    console.log(data);
-    router.push("/");
+    try {
+      const values: any = await fakeLogin({ userName: data.userName });
+      login(values.jwt, values.role);
+      console.log(data);
+      router.push(values.role === "admin" ? "/" : "/board/listView");
+    } catch {
+      console.log("error in auth");
+    }
   };
   return (
     <div className="w-160 h-106 bg-white shadow-2xl/30 absolute top-10 right-110 rounded-[20px] p-6 flex flex-col items-center justify-center">

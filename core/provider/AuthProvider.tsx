@@ -12,19 +12,19 @@ type AuthPropsType = {
 };
 
 interface User {
-  token: string;
+  jwt: string;
   role: string;
 }
 
 type AuthContextType = {
   user: User | null;
-  login: (token: string, role: string) => void;
+  login: (jwt: string, role: string) => void;
   logout: () => void;
 };
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
-  login: (toke: string, role: string) => {},
+  login: (jwt: string, role: string) => {},
   logout: () => {},
 });
 
@@ -36,8 +36,9 @@ export const AuthProvider = ({ children }: AuthPropsType) => {
       setUser(JSON.parse(saveUser));
     }
   }, []);
-  const login = (token: string, role: string) => {
-    const userData = { token, role };
+  const login = (jwt: string, role: string) => {
+    const userData = { jwt, role };
+    console.log('user test login');
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
   };

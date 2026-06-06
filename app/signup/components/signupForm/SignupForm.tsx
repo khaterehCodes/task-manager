@@ -36,10 +36,14 @@ function SignupForm() {
   const [showTerms, setShowTerms] = useState<boolean>(false);
   const router = useRouter();
   const formHandler = async (data: signupFormData) => {
-    const values: any = await fakeLogin({ userName: data.userName });
-    login(values.token, values.role);
-    console.log(data);
-    router.push("/profile/user");
+    try {
+      const values: any = await fakeLogin({ userName: data.userName });
+      login(values.jwt, values.role);
+      console.log(data);
+      router.push(values.role === "admin" ? "/" : "/board/listView");
+    } catch {
+      console.log("error in auth (signup)");
+    }
   };
   return (
     <>

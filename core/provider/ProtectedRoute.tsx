@@ -17,7 +17,8 @@ function ProtectedRoute({ children, role }: ProtectedPropsTypes) {
       router.push("/board/calendar");
     }
   }, [user, role, router]);
-  if (!user || user.role !== role) return null;
+  if (!user) return;
+  if (role && user.role !== role) return null;
   return children;
 }
 
