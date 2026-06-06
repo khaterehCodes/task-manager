@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   createContext,
   ReactNode,
@@ -22,7 +22,8 @@ const DarkModeContext = createContext<DarkModeType>({
 });
 
 export const DarkModeProvider = ({ children }: DarkModeprops) => {
- const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [hydrate, setHydarte] = useState<boolean>(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
       const saveMode = localStorage.getItem("darkMode");
@@ -31,8 +32,10 @@ export const DarkModeProvider = ({ children }: DarkModeprops) => {
         setDarkMode(isDark);
       }
     }
+    setHydarte(true);
   }, []);
   useEffect(() => {
+    if (!hydrate) return;
     if (darkMode) {
       document.body.classList.add("dark");
       localStorage.setItem("darkMode", "true");
@@ -40,7 +43,7 @@ export const DarkModeProvider = ({ children }: DarkModeprops) => {
       document.body.classList.remove("dark");
       localStorage.setItem("darkMode", "false");
     }
-  }, [darkMode]);
+  }, [darkMode,hydrate]);
 
   const buttonDarkMode = () => {
     setDarkMode((prev) => !prev);

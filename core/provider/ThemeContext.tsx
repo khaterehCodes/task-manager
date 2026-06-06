@@ -26,22 +26,21 @@ const ThemeContext = createContext<ThemeContextType>({
 
 export const ThemeProvider = ({ children }: ThemePropsType) => {
   const [selectedColor, setSelectedColor] = useState<number>(9);
+  const [hydrate, setHydrate] = useState<boolean>(false);
   const currentTheme =
     themes.find((c) => c.id === selectedColor)?.color || themes[0].color;
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const saveColor = localStorage.getItem("colortheme");
-      if (saveColor) {
-        setSelectedColor(Number(saveColor));
-      }
+    const saveColor = localStorage.getItem("colortheme");
+    if (saveColor) {
+      setSelectedColor(Number(saveColor));
     }
+    setHydrate(true);
   }, []);
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("colortheme", selectedColor.toString());
-      document.documentElement.style.setProperty("--theme-color", currentTheme);
-    }
-  }, [selectedColor, currentTheme]);
+    if (!hydrate) return;
+    localStorage.setItem("colortheme", selectedColor.toString());
+    document.documentElement.style.setProperty("--theme-color", currentTheme);
+  }, [selectedColor, currentTheme, hydrate]);
   return (
     <ThemeContext.Provider
       value={{ selectedColor, setSelectedColor, currentTheme }}
