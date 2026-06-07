@@ -1,5 +1,11 @@
 import { useCalendar } from "@/core/provider/CalendarContext";
-import { addDays, addWeeks, endOfWeek, format, isSameDay } from "date-fns-jalali";
+import {
+  addDays,
+  addWeeks,
+  endOfWeek,
+  format,
+  isSameDay,
+} from "date-fns-jalali";
 import P from "../customP/P";
 
 const startDates = [
@@ -22,20 +28,33 @@ const startDates = [
 ];
 
 function CalendarSideBar() {
-  const { setSelectedDate, setCurrentDate, selectedDate } = useCalendar();
+  const { endDate, setCurrentDate, startDate, setRange } = useCalendar();
   const selectDateHandler = (date: Date) => {
-    setSelectedDate(date);
+    const isToday = new Date();
+    if (isSameDay(date, isToday)) {
+      setRange(isToday, null);
+    } else {
+      setRange(isToday, date);
+    }
     setCurrentDate(date);
   };
   return (
     <div className="w-full h-full flex flex-col justify-around">
       {startDates.map((d) => {
         const date = d.getDate();
-        const isSelected = selectedDate && isSameDay(selectedDate, date);
+        const isSelected = endDate && isSameDay(endDate, date);
+        const isTodaySelect =
+          !endDate && startDate && isSameDay(startDate, date) && d.id === 1;
         return (
-          <div key={d.id} onClick={() => selectDateHandler(date)} className="flex items-center justify-between">
+          <div
+            key={d.id}
+            onClick={() => selectDateHandler(date)}
+            className={`flex items-center justify-between ${isSelected || isTodaySelect ? "bg-gray-100" : "hover:bg-gray-50"}`}
+          >
             <P className="font-medium text-[20px]">{d.dayName}</P>
-            <P className="font-medium text-[#868E96]">{format(date,'d MMMM')}</P>
+            <P className="font-medium text-[#868E96]">
+              {format(date, "d MMMM")}
+            </P>
           </div>
         );
       })}
