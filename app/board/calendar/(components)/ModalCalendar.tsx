@@ -7,7 +7,8 @@ import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
 import { useCalendar } from "@/core/provider/CalendarContext";
 import { useTheme } from "@/core/provider/ThemeContext";
 import { addProject } from "@/core/redux/features/ProjectSlice";
-import { CalendarNavType } from "@/core/types/global";
+import { addTask } from "@/core/redux/features/TaskSlice";
+import { CalendarNavType, TaskType } from "@/core/types/global";
 import { format } from "date-fns-jalali";
 import { faIR } from "date-fns-jalali/locale";
 import { useState } from "react";
@@ -16,19 +17,25 @@ function ModalCalendar({ modalCalandar, setModalCalendar }: CalendarNavType) {
   const selectedProject = useAppSelector(
     (state) => state.projectSlice.selectProjectId,
   );
+  const { selectedDate, setSelectedDate } = useCalendar();
   const [projectName, setProjectName] = useState<string>("");
   const dispatch = useAppDispatch();
-  const { selectedDate } = useCalendar();
   const { currentTheme } = useTheme();
-  const addTask = () => {
+  const addTaskHandler = () => {
     if (!projectName.trim()) return;
-    dispatch(
-      addProject({
-        id: Date.now().toString(),
-        name: projectName,
-        workSpaceId: selectedProject?.toString(),
-      }),
-    );
+    if (selectedProject) {
+      const newTask: TaskType = {
+        id: new Date().toString(),
+        projectId: selectedProject?.toString(),
+        title: projectName,
+        status: "in-progress",
+        priority: "فوری",
+        startDate: selectedDate
+          ? selectedDate.toString()
+          : new Date().toString(),
+      };
+      dispatch(addTask(newTask));
+    }
     setProjectName("");
     setModalCalendar(false);
   };
@@ -63,7 +70,7 @@ function ModalCalendar({ modalCalandar, setModalCalendar }: CalendarNavType) {
             )}
           </div>
           <Button
-            onClick={addTask}
+            onClick={addTaskHandler}
             className="w-32 h-8 rounded-lg cursor-pointer text-[12px] text-white"
           >
             ساختن تسک

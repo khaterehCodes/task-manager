@@ -6,6 +6,7 @@ import { useAuth } from "@/core/provider/AuthProvider";
 import { useTheme } from "@/core/provider/ThemeContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -24,6 +25,8 @@ const userInfoSchema = z.object({
 type userInfoType = z.infer<typeof userInfoSchema>;
 function UserInformation() {
   const router = useRouter();
+  const [image, setImage] = useState<File | null>(null);
+  const [prevIMG, setPrevIMG] = useState<string | null>(null);
   const { profileInfo, user } = useAuth();
   const { currentTheme } = useTheme();
   const {
@@ -38,6 +41,12 @@ function UserInformation() {
       phone: "",
     },
   });
+  const changeProfile = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const getFile = event.target.files?.[0];
+    if (!getFile) return;
+    setImage(getFile);
+    setPrevIMG(URL.createObjectURL(getFile));
+  };
   const formHandler = (data: any) => {
     profileInfo({ firstName: data.firstName, lastName: data.lastName });
     router.push("/board/listView");
@@ -60,12 +69,14 @@ function UserInformation() {
               {profileName}
             </div>
             <div className="flex flex-col items-center gap-3">
-              <div
+              <Input
+                placeholder=" ویرایش تصویر پروفایل"
                 style={{ borderColor: currentTheme, color: currentTheme }}
-                className="w-53 h-12 rounded-lg border text-[20px] flex items-center justify-center font-medium cursor-pointer"
-              >
-                ویرایش تصویر پروفایل
-              </div>
+                type="file"
+                accept="image/*"
+                onChange={changeProfile}
+                className="w-53 h-12 rounded-lg border text-[20px] flex items-center justify-center font-medium cursor-pointer p-3"
+              />
               <P className="text-[12px] text-[#8A8989]">
                 این تصویر برای عموم قابل نمایش است.
               </P>

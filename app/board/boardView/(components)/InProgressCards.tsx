@@ -3,7 +3,8 @@ import Icon from "@/components/ui/icons/Icon";
 import { priorityFlags } from "@/core/constants/global";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
 import React from "react";
-
+import { format } from "date-fns-jalali";
+import { faIR } from "date-fns-jalali/locale";
 function InProgressCards() {
   const selectedProject = useAppSelector(
     (state) => state.projectSlice.selectProjectId,
@@ -18,8 +19,8 @@ function InProgressCards() {
   };
   return (
     <div className="w-63 h-147 flex flex-col gap-4">
-      <div className="w-full h-10 rounded-2xl border-t-2 border-[#F92E8F] shadow-md/10 p-2">
-        <P className="font-medium">Todo</P>
+      <div className="w-full h-10 rounded-2xl border-t-2 border-[#4C6EF5] shadow-md/10 p-2">
+        <P className="font-medium">In Progress</P>
       </div>
       <div className="w-full h-auto flex flex-col gap-3">
         {inProgressTasks.map((ipt) => {
@@ -45,7 +46,12 @@ function InProgressCards() {
                   ) : (
                     <Icon name="grayFlagL" />
                   )}
-                  <P className="text-[12px] text-[#343434]">۵ مهر - فردا</P>
+                  <P className="text-[12px] text-[#343434]">
+                    {ipt.startDate &&
+                      format(new Date(ipt.startDate), "d MMMM", {
+                        locale: faIR,
+                      })}
+                  </P>
                   <div className="flex items-center gap-1">
                     <Icon name="littleTik" />
                     <P className="text-[#BDC0C6] text-[12px]">۲ / ۱۲</P>

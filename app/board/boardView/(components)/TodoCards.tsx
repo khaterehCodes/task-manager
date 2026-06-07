@@ -2,6 +2,8 @@ import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import { priorityFlags } from "@/core/constants/global";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
+import { format } from "date-fns-jalali";
+import { faIR } from "date-fns-jalali/locale";
 import React from "react";
 
 function TodoCards() {
@@ -45,7 +47,12 @@ function TodoCards() {
                   ) : (
                     <Icon name="grayFlagL" />
                   )}
-                  <P className="text-[12px] text-[#343434]">۵ مهر - فردا</P>
+                  <P className="text-[12px] text-[#343434]">
+                    {tt.startDate &&
+                      format(new Date(tt.startDate), "d MMMM", {
+                        locale: faIR,
+                      })}
+                  </P>
                   <div className="flex items-center gap-1">
                     <Icon name="littleTik" />
                     <P className="text-[#BDC0C6] text-[12px]">۲ / ۱۲</P>
