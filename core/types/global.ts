@@ -151,3 +151,8 @@ export type DescPropsType = {
   openDesc: boolean;
   setOpenDesc: (value: boolean) => void;
 };
+
+export type DatePropsType = {
+  openCal: boolean;
+  setOpenCal: (value: boolean) => void;
+};

@@ -19,6 +19,7 @@ import { priorityFlags } from "@/core/constants/global";
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import ChooseDate from "./ChooseDate";
 const taskTitleSchema = z.object({
   taskTitle: z.string().min(1, "عنوانی اضافه کنید"),
 });
@@ -43,6 +44,7 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
   const [openTag, setOpenTag] = useState<boolean>(false);
   const [taskTitle, setTaskTitle] = useState<string>("");
   const [taskDesc, setTaskDesc] = useState<string>("");
+  const [openCal, setOpenCal] = useState<boolean>(false);
   const [priority, setPriority] = useState<PriorityType>("بدون اولویت");
   const [status, setStatus] = useState<TaskStatusType>("done");
   const findPriority = priorityFlags.find((p) => p.title === priority);
@@ -136,7 +138,12 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
                     name={findPriority ? findPriority.finalFlag : "priority"}
                   />
                 </div>
-                <Icon name="calendarTask" />
+                <div
+                  onClick={() => setOpenCal(!openCal)}
+                  className="cursor-pointer"
+                >
+                  <Icon name="calendarTask" />
+                </div>
                 <div
                   onClick={() => setOpenTag(!openTag)}
                   className="cursor-pointer"
@@ -158,6 +165,7 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
           setOpenPriorities={setOpenPriorities}
           setPriority={setPriority}
         />
+        <ChooseDate openCal={openCal} setOpenCal={setOpenCal} />
         <TagsModal openTag={openTag} setOpenTag={setOpenTag} />
       </ModalHook>
     </div>
