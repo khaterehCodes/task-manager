@@ -53,7 +53,10 @@ function UserInformation() {
         <div className="w-89 h-129 flex flex-col items-start justify-between">
           <P className="text-[31px] font-bold">اطلاعات فردی</P>
           <div className="w-83 h-24 flex items-center justify-between">
-            <div className="w-25 h-25 bg-pink-200 text-pink-500 rounded-full flex items-center justify-center text-[35px] font-medium">
+            <div
+              style={{ backgroundColor: currentTheme }}
+              className="w-25 h-25 text-white rounded-full flex items-center justify-center text-[35px] font-medium"
+            >
               {profileName}
             </div>
             <div className="flex flex-col items-center gap-3">

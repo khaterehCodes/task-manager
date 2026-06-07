@@ -146,3 +146,8 @@ export interface User {
   firstName?: string;
   lastName?: string;
 }
+
+export type DescPropsType = {
+  openDesc: boolean;
+  setOpenDesc: (value: boolean) => void;
+};
