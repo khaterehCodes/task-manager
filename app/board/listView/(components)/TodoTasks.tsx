@@ -58,11 +58,11 @@ function TodoTasks() {
                       <div className="w-150 h-10 flex items-center justify-between">
                         <ProfileCard />
                         <P className="text-[12px]">
-                          {tt.startDate &&
-                            format(new Date(tt.startDate), "d MMMM", {
-                              locale: faIR,
-                            })}
-                        </P>
+                            {tt.startDate ?
+                              format(new Date(tt.startDate), "d MMMM", {
+                                locale: faIR,
+                              }):(<span>not set</span>)}
+                          </P>
                         <div className="w-18 flex items-center justify-center">
                           {sendPriority ? (
                             <Icon name={sendPriority.flag} />

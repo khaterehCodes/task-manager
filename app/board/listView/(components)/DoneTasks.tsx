@@ -64,7 +64,7 @@ function DoneTasks() {
                             {dt.startDate ?
                               format(new Date(dt.startDate), "d MMMM", {
                                 locale: faIR,
-                              }):(<span>mo</span>)}
+                              }):(<span>not set</span>)}
                           </P>
                           <div className="w-18 flex items-center justify-center">
                             {sendPriority ? (

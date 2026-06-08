@@ -48,23 +48,26 @@ function InProgressTasks() {
         {showinprogress && (
           <div className="w-full h-auto flex items-center justify-between mt-3">
             <div className="w-fit h-auto flex flex-col gap-3">
-              {inprogressTasks.map((tt) => {
-                const sendPriority = showPriorityIcon(tt.priority);
+              {inprogressTasks.map((ipt) => {
+                const sendPriority = showPriorityIcon(ipt.priority);
                 return (
-                  <React.Fragment key={tt.id}>
+                  <React.Fragment key={ipt.id}>
                     <div className="w-285 flex items-center justify-between">
                       <div className="w-fit h-fit flex items-center gap-2">
                         <div className="w-4 h-4 bg-[#FD7E14] rounded-sm"></div>
-                        <P className="text-[12px]">{tt.title}</P>
+                        <P className="text-[12px]">{ipt.title}</P>
                       </div>
                       <div className="w-155 h-10 flex items-center justify-between gap-2">
                         <div className="w-150 h-10 flex items-center justify-between">
                           <ProfileCard />
                           <P className="text-[12px]">
-                            {tt.startDate &&
-                              format(new Date(tt.startDate), "d MMMM", {
+                            {ipt.startDate ? (
+                              format(new Date(ipt.startDate), "d MMMM", {
                                 locale: faIR,
-                              })}
+                              })
+                            ) : (
+                              <span>not set</span>
+                            )}
                           </P>
                           <div className="w-18 flex items-center justify-center">
                             {sendPriority ? (
