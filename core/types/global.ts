@@ -156,3 +156,8 @@ export type DatePropsType = {
   openCal: boolean;
   setOpenCal: (value: boolean) => void;
 };
+
+export type FilterPropsType = {
+  openFilter: boolean;
+  setOpenFilter: (value: boolean) => void;
+};

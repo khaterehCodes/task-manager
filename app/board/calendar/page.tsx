@@ -1,5 +1,4 @@
 "use client";
-
 import ProtectedRoute from "@/core/provider/ProtectedRoute";
 import DatePicker from "./(components)/DatePicker";
 
