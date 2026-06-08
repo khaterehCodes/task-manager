@@ -1,5 +1,6 @@
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
+import ProfileCard from "@/components/ui/profileCard/ProfileCard";
 import TaskDesc from "@/components/ui/TaskDesc/TaskDesc";
 import { priorityFlags, tasksHead } from "@/core/constants/global";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
@@ -56,9 +57,7 @@ function DoneTasks() {
                       </div>
                       <div className="w-155 h-10 flex items-center justify-between gap-2">
                         <div className="w-150 h-10 flex items-center justify-between">
-                          <div className="w-9 h-9 rounded-full bg-pink-200 flex items-center justify-center">
-                            <P className="text-pink-500 text-[12px]">KN</P>
-                          </div>
+                         <ProfileCard/>
                           <P>۱۳ مهر</P>
                           <div className="w-18 flex items-center justify-center">
                             {sendPriority ? (
@@ -69,7 +68,7 @@ function DoneTasks() {
                           </div>
                           <div
                             onClick={() => setOpenDesc(!openDesc)}
-                            className="w-5 h-5 bg-pink-500 cursor-pointer"
+                            className="w-5 h-5 cursor-pointer"
                           >
                             <Icon name="desc" />
                           </div>

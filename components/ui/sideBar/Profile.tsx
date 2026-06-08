@@ -3,32 +3,23 @@ import Icon from "@/components/ui/icons/Icon";
 import Link from "next/link";
 import { useDark } from "@/core/provider/DarkModeProvider";
 import { useAuth } from "@/core/provider/AuthProvider";
-import { useTheme } from "@/core/provider/ThemeContext";
+import ProfileCard from "../profileCard/ProfileCard";
 
 function Profile() {
   const { darkMode, buttonDarkMode } = useDark();
-  const { currentTheme } = useTheme();
   const { user, logout } = useAuth();
   if (!user) {
     window.location.href = "/signup";
   }
   const fullName = `${user?.firstName ?? ""} ${user?.lastName ?? ""}`;
-  const profileName =
-    user?.firstName && user.lastName
-      ? user.firstName[0].toUpperCase() + user.lastName[0].toUpperCase()
-      : ".";
+
   console.log(fullName, "name");
   return (
     <div className="w-full h-22 flex items-center justify-center absolute bottom-5">
       <div className="w-69 h-full flex flex-col justify-between">
         <div className="w-full h-9 flex items-center justify-start gap-2">
           <Link href={"/profile/user"}>
-            <div
-              style={{ backgroundColor: currentTheme }}
-              className="w-9 h-9 rounded-full flex items-center justify-center"
-            >
-              <P className="text-white text-[12px]">{profileName}</P>
-            </div>
+            <ProfileCard />
           </Link>
           <P className="font-medium">{fullName}</P>
         </div>
