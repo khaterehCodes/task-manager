@@ -4,6 +4,8 @@ import ProfileCard from "@/components/ui/profileCard/ProfileCard";
 import TaskDesc from "@/components/ui/TaskDesc/TaskDesc";
 import { priorityFlags, tasksHead } from "@/core/constants/global";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
+import { format } from "date-fns-jalali";
+import { faIR } from "date-fns-jalali/locale";
 import React, { useState } from "react";
 
 function DoneTasks() {
@@ -46,19 +48,24 @@ function DoneTasks() {
         {showDone && (
           <div className="w-full h-auto flex items-center justify-between mt-3">
             <div className="w-fit h-auto flex flex-col gap-3">
-              {doneTasks.map((tt) => {
-                const sendPriority = showPriorityIcon(tt.priority);
+              {doneTasks.map((dt) => {
+                const sendPriority = showPriorityIcon(dt.priority);
                 return (
-                  <React.Fragment key={tt.id}>
+                  <React.Fragment key={dt.id}>
                     <div className="w-285 flex items-center justify-between">
                       <div className="w-fit h-fit flex items-center gap-2">
                         <div className="w-4 h-4 bg-[#40C057] rounded-sm"></div>
-                        <P className="text-[12px]">{tt.title}</P>
+                        <P className="text-[12px]">{dt.title}</P>
                       </div>
                       <div className="w-155 h-10 flex items-center justify-between gap-2">
                         <div className="w-150 h-10 flex items-center justify-between">
-                         <ProfileCard/>
-                          <P>۱۳ مهر</P>
+                          <ProfileCard />
+                          <P className="text-[12px]">
+                            {dt.startDate ?
+                              format(new Date(dt.startDate), "d MMMM", {
+                                locale: faIR,
+                              }):(<span>mo</span>)}
+                          </P>
                           <div className="w-18 flex items-center justify-center">
                             {sendPriority ? (
                               <Icon name={sendPriority.flag} />

@@ -3,6 +3,8 @@ import Icon from "@/components/ui/icons/Icon";
 import ProfileCard from "@/components/ui/profileCard/ProfileCard";
 import { priorityFlags, tasksHead } from "@/core/constants/global";
 import { useAppSelector } from "@/core/hooks/ReduxHook";
+import { format } from "date-fns-jalali";
+import { faIR } from "date-fns-jalali/locale";
 import React, { useState } from "react";
 
 function TodoTasks() {
@@ -55,7 +57,12 @@ function TodoTasks() {
                     <div className="w-155 h-10 flex items-center justify-between gap-2">
                       <div className="w-150 h-10 flex items-center justify-between">
                         <ProfileCard />
-                        <P>۱۳ مهر</P>
+                        <P className="text-[12px]">
+                          {tt.startDate &&
+                            format(new Date(tt.startDate), "d MMMM", {
+                              locale: faIR,
+                            })}
+                        </P>
                         <div className="w-18 flex items-center justify-center">
                           {sendPriority ? (
                             <Icon name={sendPriority.flag} />
