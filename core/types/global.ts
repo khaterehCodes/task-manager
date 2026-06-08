@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 export type ModalType = {
   children: ReactNode;
   openModal: boolean;
+  setOpenModal?: (value: boolean) => void;
 };
 
 export type ShareButtonType = {
@@ -160,4 +161,9 @@ export type DatePropsType = {
 export type FilterPropsType = {
   openFilter: boolean;
   setOpenFilter: (value: boolean) => void;
+};
+
+export type DetailPropsType = {
+  showDetail: boolean;
+  setShowDetail: (value: boolean) => void;
 };

@@ -1804,6 +1804,56 @@ function Icon({ name, style, ...props }: IconType) {
           />
         </svg>
       );
+    case "archive":
+      return (
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.6766 8.87019V2.67834"
+            stroke="#323232"
+            strokeWidth="1.20907"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M9.67659 8.8702L12.0957 6.45105L9.67659 8.8702Z"
+            stroke="#323232"
+            strokeWidth="1.20907"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M2.41914 12.0958H5.95271C6.25788 12.0958 6.5369 12.2681 6.67362 12.5409L7.03407 13.2626C7.17069 13.536 7.45014 13.7087 7.75578 13.7085H11.5966C11.9022 13.7087 12.1817 13.536 12.3183 13.2626L12.6788 12.5417C12.8154 12.2683 13.0948 12.0956 13.4005 12.0958H16.934"
+            stroke="#323232"
+            strokeWidth="1.20907"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M12.0957 2.41913H14.5149C15.8509 2.41913 16.934 3.50222 16.934 4.83828V14.5149C16.934 15.8509 15.8509 16.934 14.5149 16.934H4.83829C3.50223 16.934 2.41914 15.8509 2.41914 14.5149V4.83828C2.41914 3.50222 3.50223 2.41913 4.83829 2.41913H7.25744"
+            stroke="#323232"
+            strokeWidth="1.20907"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M7.25745 6.45105L9.67659 8.8702L7.25745 6.45105Z"
+            stroke="#323232"
+            strokeWidth="1.20907"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      );
   }
 }
 
