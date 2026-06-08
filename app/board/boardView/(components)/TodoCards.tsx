@@ -1,7 +1,7 @@
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import { priorityFlags } from "@/core/constants/global";
-import { useAppSelector } from "@/core/hooks/ReduxHook";
+import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
 import { format } from "date-fns-jalali";
 import { faIR } from "date-fns-jalali/locale";
 import React, { useState } from "react";
@@ -86,7 +86,11 @@ function TodoCards() {
           })}
         </div>
       </div>
-      <ColumnDetails setShowDetail={setShowDetail} showDetail={showDetail} />
+      <ColumnDetails
+        setShowDetail={setShowDetail}
+        showDetail={showDetail}
+        columnStatus="todo"
+      />
     </>
   );
 }

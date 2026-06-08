@@ -3,9 +3,14 @@ import Icon from "@/components/ui/icons/Icon";
 import SearchBar from "./SearchBar";
 import { useState } from "react";
 import Filters from "./Filters";
+import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
+import { restoreArchiveTasks } from "@/core/redux/features/TaskSlice";
 
 function SearchAndFilters() {
   const [openFilter, setOpenFilter] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const tasks = useAppSelector((state) => state.taskSlice.items);
+  const archivesTasks = tasks.some((t) => t.archive === true);
   return (
     <>
       <div className="w-full h-full flex items-center justify-between">
@@ -25,10 +30,15 @@ function SearchAndFilters() {
             </div>
           </div>
         </div>
-        <div className="w-50 h-7 border border-[#208D8E] flex items-center justify-center gap-2 cursor-pointer rounded-lg text-[12px]">
-          <Icon name="restore" />
-          بازگردانی تسک های آرشیو شده
-        </div>
+        {archivesTasks && (
+          <div
+            onClick={() => dispatch(restoreArchiveTasks())}
+            className="w-50 h-7 border border-[#208D8E] flex items-center justify-center gap-2 cursor-pointer rounded-lg text-[12px]"
+          >
+            <Icon name="restore" />
+            بازگردانی تسک های آرشیو شده
+          </div>
+        )}
       </div>
       <Filters openFilter={openFilter} setOpenFilter={setOpenFilter} />
     </>

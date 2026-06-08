@@ -72,6 +72,7 @@ export type TaskType = {
   startDate?: string;
   endDate?: string;
   tags?: string;
+  archive?: boolean;
 };
 
 export type TaskStateType = {
@@ -166,4 +167,5 @@ export type FilterPropsType = {
 export type DetailPropsType = {
   showDetail: boolean;
   setShowDetail: (value: boolean) => void;
+  columnStatus: "todo" | "in-progress" | "done";
 };

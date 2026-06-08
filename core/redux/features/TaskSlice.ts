@@ -27,8 +27,27 @@ const taskSlice = createSlice({
         findTask.status = action.payload.status;
       }
     },
+    archiveTask: (state, action: PayloadAction<string>) => {
+      state.items.forEach((t) => {
+        if (t.status === action.payload) {
+          t.archive = true;
+        }
+      });
+    },
+    restoreArchiveTasks: (state) => {
+      state.items.forEach((t) => {
+        t.archive = false;
+      });
+    },
   },
 });
 
-export const { addTask, removeTask, changeStatus ,setTasks} = taskSlice.actions;
+export const {
+  addTask,
+  removeTask,
+  changeStatus,
+  setTasks,
+  archiveTask,
+  restoreArchiveTasks,
+} = taskSlice.actions;
 export default taskSlice.reducer;
