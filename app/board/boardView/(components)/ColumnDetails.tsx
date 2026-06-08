@@ -12,7 +12,7 @@ function ColumnDetails({
 }: DetailPropsType) {
   const dispatch = useAppDispatch();
   const archiveHandler = () => {
-    dispatch(archiveTask("todo"));
+    dispatch(archiveTask(columnStatus));
     setShowDetail(false);
   };
   return (
@@ -27,9 +27,10 @@ function ColumnDetails({
             <Icon name="add" />
             <P className="text-[14px]">افزودن تسک</P>
           </div>
-          <div 
-          onClick={archiveHandler}
-          className="w-full h-8 flex items-center gap-2 cursor-pointer">
+          <div
+            onClick={archiveHandler}
+            className="w-full h-8 flex items-center gap-2 cursor-pointer"
+          >
             <Icon name="archive" />
             <P className="text-[14px]">آرشیو تمام تسک‌ها</P>
           </div>

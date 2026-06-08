@@ -13,7 +13,7 @@ function TodoCards() {
   );
   const wholeTasks = useAppSelector((state) => state.taskSlice.items);
   const tasks = wholeTasks.filter((t) => t.projectId === selectedProject);
-  const todoTasks = tasks.filter((t) => t.status === "todo");
+  const todoTasks = tasks.filter((t) => t.status === "todo" && !t.archive);
   const wholeProjects = useAppSelector((state) => state.projectSlice.items);
   const currentProject = wholeProjects.find((p) => p.id === selectedProject);
   const [showDetail, setShowDetail] = useState<boolean>(false);

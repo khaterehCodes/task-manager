@@ -5,12 +5,14 @@ import { useState } from "react";
 import Filters from "./Filters";
 import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
 import { restoreArchiveTasks } from "@/core/redux/features/TaskSlice";
+import { useTheme } from "@/core/provider/ThemeContext";
 
 function SearchAndFilters() {
   const [openFilter, setOpenFilter] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const tasks = useAppSelector((state) => state.taskSlice.items);
   const archivesTasks = tasks.some((t) => t.archive === true);
+  const { currentTheme } = useTheme();
   return (
     <>
       <div className="w-full h-full flex items-center justify-between">
@@ -33,7 +35,8 @@ function SearchAndFilters() {
         {archivesTasks && (
           <div
             onClick={() => dispatch(restoreArchiveTasks())}
-            className="w-50 h-7 border border-[#208D8E] flex items-center justify-center gap-2 cursor-pointer rounded-lg text-[12px]"
+            style={{ borderColor: currentTheme }}
+            className="w-50 h-7 border flex items-center justify-center gap-2 cursor-pointer rounded-lg text-[12px]"
           >
             <Icon name="restore" />
             بازگردانی تسک های آرشیو شده
