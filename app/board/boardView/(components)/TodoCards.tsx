@@ -28,7 +28,7 @@ function TodoCards() {
   };
   return (
     <>
-      <div className="w-63 h-147 flex flex-col gap-4">
+      <div className="w-70 h-147 flex flex-col gap-4">
         <div className="w-full h-10 rounded-2xl border-t-2 border-[#F92E8F] shadow-md/10 p-2 flex items-center justify-between">
           <P className="font-medium">Todo</P>
           <div
