@@ -7,8 +7,10 @@ import { faIR } from "date-fns-jalali/locale";
 import React, { useState } from "react";
 import ColumnDetails from "./ColumnDetails";
 import ProfileCard from "@/components/ui/profileCard/ProfileCard";
+import { useCalendar } from "@/core/provider/CalendarContext";
 
 function DoneCards() {
+  const { endDate } = useCalendar();
   const selectedProject = useAppSelector(
     (state) => state.projectSlice.selectProjectId,
   );
@@ -63,7 +65,11 @@ function DoneCards() {
                     </P>
                     <div className="flex items-center gap-1">
                       <Icon name="littleTik" />
-                      <P className="text-[#BDC0C6] text-[12px]">۲ / ۱۲</P>
+                      <P className="text-[#BDC0C6] text-[12px]">
+                        {endDate
+                          ? format(endDate, "d MMMM", { locale: faIR })
+                          : "بدون ددلاین"}
+                      </P>
                     </div>
                   </div>
                   <div className="w-full h-8 flex items-center gap-2">

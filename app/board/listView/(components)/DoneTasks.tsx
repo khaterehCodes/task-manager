@@ -61,10 +61,13 @@ function DoneTasks() {
                         <div className="w-150 h-10 flex items-center justify-between">
                           <ProfileCard />
                           <P className="text-[12px]">
-                            {dt.startDate ?
-                              format(new Date(dt.startDate), "d MMMM", {
+                            {dt.endDate ? (
+                              format(new Date(dt.endDate), "d MMMM", {
                                 locale: faIR,
-                              }):(<span>not set</span>)}
+                              })
+                            ) : (
+                              <span>not set</span>
+                            )}
                           </P>
                           <div className="w-18 flex items-center justify-center">
                             {sendPriority ? (
