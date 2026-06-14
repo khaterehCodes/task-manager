@@ -1,56 +1,49 @@
 import ModalHook from "@/core/hooks/ModalHook";
-import { NewProjectType } from "@/core/types/global";
-import P from "../customP/P";
-import Button from "../customButton/Button";
+import { ChangePNameType } from "@/core/types/global";
+import React, { useState } from "react";
 import Icon from "../icons/Icon";
+import P from "../customP/P";
 import Input from "../customInput/Input";
-import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
-import { addProject } from "@/core/redux/features/ProjectSlice";
-import React from "react";
+import Button from "../customButton/Button";
+import { useAppDispatch } from "@/core/hooks/ReduxHook";
+import { editProject } from "@/core/redux/features/ProjectSlice";
 
-function NewProject({
-  newProject,
-  setNewProject,
-  projectName,
-  setProjectName,
-}: NewProjectType) {
+function ChangePName({
+  openChangePName,
+  setOpenPName,
+  projectId,
+}: ChangePNameType) {
+  const [projectName, setProjectName] = useState<string>("");
   const dispatch = useAppDispatch();
-  const workSpaceId = useAppSelector(
-    (state) => state.workSpace.selectedWorkSpaceId,
-  );
-  const addProjectHandler = (event: React.SubmitEvent) => {
+  const editProjectName = (event: React.SubmitEvent) => {
     event.preventDefault();
-    if (!projectName.trim()) return;
-    if (!workSpaceId) {
-      return;
-    }
+    if (!projectName.trim() || !projectId) return;
     dispatch(
-      addProject({
-        id: Date.now().toString(),
+      editProject({
+        id: projectId,
         name: projectName,
-        workSpaceId,
       }),
     );
     setProjectName("");
-    setNewProject(false);
+    setOpenPName(false);
   };
   return (
-    <>
-      <ModalHook openModal={newProject}>
+    <div>
+      <ModalHook openModal={openChangePName}>
         <div className="w-125 h-67 rounded-lg p-5 bg-white flex flex-col items-center justify-evenly">
           <div className="w-113 h-8 flex items-center">
             <div
-              onClick={() => setNewProject(false)}
+              onClick={() => setOpenPName(false)}
               className="w-7 h-7 cursor-pointer flex items-center justify-center"
             >
               <Icon name="closeTerms" />
             </div>
             <P className="text-[24px] font-extrabold w-[90%] flex items-center justify-center">
-              ساختن پروژه جدید‌
+              ویرایش نام پروژه
             </P>
           </div>
           <form
-            onSubmit={addProjectHandler}
+            onSubmit={editProjectName}
             className="w-104 h-auto flex items-start justify-center flex-col gap-10"
           >
             <div>
@@ -68,13 +61,13 @@ function NewProject({
               type="submit"
               className="w-full h-10 rounded-md text-white cursor-pointer text-[14px] font-extrabold"
             >
-              ادامه
+              تایید
             </Button>
           </form>
         </div>
       </ModalHook>
-    </>
+    </div>
   );
 }
 
-export default NewProject;
+export default ChangePName;
