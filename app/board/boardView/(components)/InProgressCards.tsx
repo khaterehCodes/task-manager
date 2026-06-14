@@ -8,8 +8,11 @@ import { faIR } from "date-fns-jalali/locale";
 import ColumnDetails from "./ColumnDetails";
 import ProfileCard from "@/components/ui/profileCard/ProfileCard";
 import { useCalendar } from "@/core/provider/CalendarContext";
+import TaskDesc from "@/components/ui/TaskDesc/TaskDesc";
 function InProgressCards() {
   const { endDate } = useCalendar();
+  const [openDesc, setOpenDesc] = useState<boolean>(false);
+  const [selectedTask, setSelectedTask] = useState<any>(null);
   const selectedProject = useAppSelector(
     (state) => state.projectSlice.selectProjectId,
   );
@@ -50,7 +53,15 @@ function InProgressCards() {
                   </div>
                   <div className="flex items-center gap-2">
                     <P className="text-[12px]">{ipt.title}</P>
-                    <Icon name="desc" />
+                    <div
+                      onClick={() => {
+                        setSelectedTask(ipt);
+                        setOpenDesc(!openDesc);
+                      }}
+                      className="w-5 h-5 cursor-pointer"
+                    >
+                      <Icon name="desc" />
+                    </div>
                   </div>
                   <div className="h-10 flex items-center gap-1">
                     {priorityIcon ? (
@@ -96,6 +107,11 @@ function InProgressCards() {
         setShowDetail={setShowDetail}
         showDetail={showDetail}
         columnStatus="in-progress"
+      />
+      <TaskDesc
+        openDesc={openDesc}
+        setOpenDesc={setOpenDesc}
+        selectedTask={selectedTask}
       />
     </>
   );

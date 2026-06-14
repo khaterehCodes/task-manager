@@ -17,8 +17,8 @@ function InProgressTasks() {
   const inprogressTasks = tasks.filter((t) => t.status === "in-progress");
   const inprogressLength = inprogressTasks.length;
   const [openDesc, setOpenDesc] = useState<boolean>(false);
-  const [showinprogress, setInprogress] = useState<boolean>(false);
   const [selectedTask, setSelectedTask] = useState<any>(null);
+  const [showinprogress, setInprogress] = useState<boolean>(false);
   const showPriorityIcon = (p: string) => {
     return priorityFlags.find((f) => f.title === p);
   };

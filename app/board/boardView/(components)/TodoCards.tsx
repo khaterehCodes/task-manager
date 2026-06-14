@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import ColumnDetails from "./ColumnDetails";
 import ProfileCard from "@/components/ui/profileCard/ProfileCard";
 import { useCalendar } from "@/core/provider/CalendarContext";
+import TaskDesc from "@/components/ui/TaskDesc/TaskDesc";
 
 function TodoCards() {
   const { endDate } = useCalendar();
@@ -19,6 +20,8 @@ function TodoCards() {
   const todoTasks = tasks.filter((t) => t.status === "todo" && !t.archive);
   const wholeProjects = useAppSelector((state) => state.projectSlice.items);
   const currentProject = wholeProjects.find((p) => p.id === selectedProject);
+  const [openDesc, setOpenDesc] = useState<boolean>(false);
+  const [selectedTask, setSelectedTask] = useState<any>(null);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const showPriorityIcon = (p: string) => {
     return priorityFlags.find((f) => f.title === p);
@@ -49,7 +52,15 @@ function TodoCards() {
                   </div>
                   <div className="flex items-center gap-2">
                     <P className="text-[12px]">{tt.title}</P>
-                    <Icon name="desc" />
+                    <div
+                      onClick={() => {
+                        setSelectedTask(tt);
+                        setOpenDesc(!openDesc);
+                      }}
+                      className="w-5 h-5 cursor-pointer"
+                    >
+                      <Icon name="desc" />
+                    </div>
                   </div>
                   <div className="h-10 flex items-center gap-1">
                     {priorityIcon ? (
@@ -95,6 +106,11 @@ function TodoCards() {
         setShowDetail={setShowDetail}
         showDetail={showDetail}
         columnStatus="todo"
+      />
+      <TaskDesc
+        openDesc={openDesc}
+        setOpenDesc={setOpenDesc}
+        selectedTask={selectedTask}
       />
     </>
   );
