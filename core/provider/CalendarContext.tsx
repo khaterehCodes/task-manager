@@ -37,7 +37,6 @@ export const CalendarProvider = ({ children }: CalendarPropsType) => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [startDate, setStartDate] = useState<Date | null>(null);
   const [endDate, setEndDate] = useState<Date | null>(null);
-  const firstDay = getDay(startOfMonth(currentDate));
   const prevMonth = () => setCurrentDate(subMonths(currentDate, 1));
   const nextMonth = () => setCurrentDate(addMonths(currentDate, 1));
   const setRange = (start: Date | null, end: Date | null) => {
