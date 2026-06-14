@@ -152,6 +152,7 @@ export interface User {
 export type DescPropsType = {
   openDesc: boolean;
   setOpenDesc: (value: boolean) => void;
+  selectedTask:any
 };
 
 export type DatePropsType = {

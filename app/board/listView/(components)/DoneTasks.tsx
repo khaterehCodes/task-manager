@@ -18,6 +18,7 @@ function DoneTasks() {
   const inprogressLength = doneTasks.length;
   const [showDone, setShowDone] = useState<boolean>(false);
   const [openDesc, setOpenDesc] = useState<boolean>(false);
+  const [selectedTask, setSelectedTask] = useState<any>(null);
   const showPriorityIcon = (p: string) => {
     return priorityFlags.find((f) => f.title === p);
   };
@@ -77,7 +78,10 @@ function DoneTasks() {
                             )}
                           </div>
                           <div
-                            onClick={() => setOpenDesc(!openDesc)}
+                            onClick={() => {
+                              setSelectedTask(dt);
+                              setOpenDesc(!openDesc);
+                            }}
                             className="w-5 h-5 cursor-pointer"
                           >
                             <Icon name="desc" />
@@ -92,7 +96,11 @@ function DoneTasks() {
           </div>
         )}
       </div>
-      <TaskDesc openDesc={openDesc} setOpenDesc={setOpenDesc} />
+      <TaskDesc
+        openDesc={openDesc}
+        setOpenDesc={setOpenDesc}
+        selectedTask={selectedTask}
+      />
     </>
   );
 }
