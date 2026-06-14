@@ -175,3 +175,9 @@ export type ChangeWSNameTypes = {
   setOpenChangeWSName: (value: boolean) => void;
   selectWorkSpaceId: string | null;
 };
+
+export type ChangeWSColorTypes = {
+  changeWSColor: boolean;
+  setChangeWSColor: (value: boolean) => void;
+  selectWorkSpaceId: string | null;
+};

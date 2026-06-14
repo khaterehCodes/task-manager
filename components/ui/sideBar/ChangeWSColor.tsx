@@ -1,19 +1,23 @@
 import ModalHook from "@/core/hooks/ModalHook";
-import P from "../customP/P";
-import Icon from "../icons/Icon";
-import { workSpaceColor } from "@/core/constants/global";
-import React from "react";
-import FinalInformation from "./FinalInformation";
+import { ChangeWSColorTypes } from "@/core/types/global";
 import Button from "../customButton/Button";
+import Icon from "../icons/Icon";
+import P from "../customP/P";
 import { useWorkSpace } from "@/core/provider/WorkSpaceContext";
+import { workSpaceColor } from "@/core/constants/global";
+import { changeWorkSpaceColor } from "@/core/redux/features/WorkSpaceSlice";
+import { useAppDispatch } from "@/core/hooks/ReduxHook";
+import React from "react";
 
-function SelectColorWorkSpace() {
+function ChangeWSColor({
+  changeWSColor,
+  setChangeWSColor,
+  selectWorkSpaceId,
+}: ChangeWSColorTypes) {
+  const dispatch = useAppDispatch();
   const {
     workSpaceName,
     workspaceColor,
-    setWorkspaceColor,
-    openInfo,
-    setOpenInfo,
     selectWorkSpaceColor,
     setSelectWorkSpaceColor,
   } = useWorkSpace();
@@ -28,28 +32,32 @@ function SelectColorWorkSpace() {
       .join(" ")
       .toUpperCase();
   };
-
-  const getColor = () => {
-    setOpenInfo(!openInfo);
+  const changeColor = () => {
+    if (selectWorkSpaceId) {
+      dispatch(
+        changeWorkSpaceColor({
+          id: selectWorkSpaceId,
+          color: selectWorkSpaceColor,
+        }),
+      );
+    }
+    setChangeWSColor(false);
   };
+
   return (
-    <>
-      <ModalHook openModal={workspaceColor}>
+    <div>
+      <ModalHook openModal={changeWSColor}>
         <div className="w-125 h-72 bg-white rounded-lg p-5 flex flex-col items-center justify-center gap-10">
           <div className="w-full h-10 flex items-center justify-between mb-3">
             <div
-              onClick={() => setWorkspaceColor(false)}
+              onClick={() => setChangeWSColor(false)}
               className="w-10 h-10 flex items-center justify-center cursor-pointer"
             >
               <Icon name="closeTerms" />
             </div>
-            <P className="text-[24px] font-extrabold">انتخاب رنگ ورک‌اسپیس</P>
-            <div
-              onClick={() => setWorkspaceColor(false)}
-              className="w-10 h-10 flex items-center justify-center cursor-pointer"
-            >
-              <Icon name="backIcon" />
-            </div>
+            <P className="text-[24px] font-extrabold w-80">
+              ویرایش رنگ ورک‌اسپیس
+            </P>
           </div>
           <div className="w-104 h-22 flex items-center justify-start gap-5">
             <div
@@ -91,16 +99,15 @@ function SelectColorWorkSpace() {
             </div>
           </div>
           <Button
-            onClick={() => getColor()}
+            onClick={changeColor}
             className="w-104 h-10 rounded-md text-white cursor-pointer"
           >
-            ادامه
+            تایید
           </Button>
         </div>
       </ModalHook>
-      <FinalInformation />
-    </>
+    </div>
   );
 }
 
-export default SelectColorWorkSpace;
+export default ChangeWSColor;

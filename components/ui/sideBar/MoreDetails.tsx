@@ -6,14 +6,10 @@ import ShareButton from "../header/ShareButton";
 import { useState } from "react";
 import Button from "../customButton/Button";
 import { useAppDispatch } from "@/core/hooks/ReduxHook";
-import {
-  changeWorkSpaceColor,
-  deleteWorkSpace,
-  editWorkSpaceName,
-} from "@/core/redux/features/WorkSpaceSlice";
+import { deleteWorkSpace } from "@/core/redux/features/WorkSpaceSlice";
 import NewProject from "./NewProject";
-import { addProject } from "@/core/redux/features/ProjectSlice";
 import ChangeWSName from "./ChangeWSName";
+import ChangeWSColor from "./ChangeWSColor";
 
 function MoreDetails({
   openWorkSpace,
@@ -22,35 +18,13 @@ function MoreDetails({
 }: WorkSpaceDtailProps) {
   const [projectName, setProjectName] = useState<string>("");
   const [openShare, setOpenShare] = useState<boolean>(false);
-  const [newColor, setNewColor] = useState<string>("");
   const [newProject, setNewProject] = useState<boolean>(false);
   const [openChangeWSName, setOpenChangeWSName] = useState<boolean>(false);
+  const [changeWSColor, setChangeWSColor] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const deleteHandler = () => {
     if (selectWorkSpaceId) {
       dispatch(deleteWorkSpace(selectWorkSpaceId));
-    }
-    setOpenWorkSpace(false);
-  };
-  const editNameHandler = () => {
-    if (selectWorkSpaceId) {
-      dispatch(
-        changeWorkSpaceColor({ id: selectWorkSpaceId, color: newColor }),
-      );
-    }
-    setOpenWorkSpace(false);
-  };
-
-  const createNewProject = () => {
-    if (selectWorkSpaceId) {
-      dispatch(
-        addProject({
-          id: Date.now().toString(),
-          name: projectName,
-          workSpaceId: selectWorkSpaceId,
-        }),
-      );
-      setNewProject(true);
     }
     setOpenWorkSpace(false);
   };
@@ -59,7 +33,7 @@ function MoreDetails({
       <ModalHook openModal={openWorkSpace} setOpenModal={setOpenWorkSpace}>
         <div className="w-50 h-60 rounded-lg bg-white p-3 flex flex-col items-center justify-evenly">
           <div
-            onClick={() => createNewProject()}
+            onClick={() => setNewProject(true)}
             className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer"
           >
             <Icon name="add" />
@@ -74,6 +48,7 @@ function MoreDetails({
           </div>
           <div
             className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer"
+            onClick={() => setChangeWSColor(true)}
           >
             <Icon name="editColor" />
             <P className="text-[14px]">ویرایش رنگ</P>
@@ -108,6 +83,11 @@ function MoreDetails({
       <ChangeWSName
         openChangeWSName={openChangeWSName}
         setOpenChangeWSName={setOpenChangeWSName}
+        selectWorkSpaceId={selectWorkSpaceId}
+      />
+      <ChangeWSColor
+        changeWSColor={changeWSColor}
+        setChangeWSColor={setChangeWSColor}
         selectWorkSpaceId={selectWorkSpaceId}
       />
     </div>

@@ -22,7 +22,6 @@ function NewProject({
     event.preventDefault();
     if (!projectName.trim()) return;
     if (!workSpaceId) {
-      alert("لطفا ابتدا یک ورک‌اسپیس انتخاب کنید");
       return;
     }
     dispatch(
