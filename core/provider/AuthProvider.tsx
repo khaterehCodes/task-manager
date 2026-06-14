@@ -12,9 +12,10 @@ type AuthPropsType = {
   children: ReactNode;
 };
 
-
 type AuthContextType = {
   user: User | null;
+  profileIMG: string | null;
+  updateProfile: (img: string) => void;
   login: (
     jwt: string,
     role: string,
@@ -27,6 +28,8 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType>({
   user: null,
+  profileIMG: null,
+  updateProfile: (img: string) => {},
   login: (jwt: string, role: string, firstName: string, lastName: string) => {},
   logout: () => {},
   profileInfo: (info: { firstName: string; lastName: string }) => {},
@@ -34,10 +37,15 @@ const AuthContext = createContext<AuthContextType>({
 
 export const AuthProvider = ({ children }: AuthPropsType) => {
   const [user, setUser] = useState<User | null>(null);
+  const [profileIMG, setProfileIMG] = useState<string | null>(null);
   useEffect(() => {
     const saveUser = localStorage.getItem("user");
+    const saveIMG = localStorage.getItem("IMG");
     if (saveUser) {
       setUser(JSON.parse(saveUser));
+    }
+    if (saveIMG) {
+      setProfileIMG(saveIMG);
     }
   }, []);
   const login = (
@@ -62,8 +70,15 @@ export const AuthProvider = ({ children }: AuthPropsType) => {
       localStorage.setItem("user", JSON.stringify(updateUser));
     }
   };
+
+  const updateProfile = (img: string) => {
+    setProfileIMG(img);
+    localStorage.setItem("IMG", img);
+  };
   return (
-    <AuthContext.Provider value={{ user, login, logout, profileInfo }}>
+    <AuthContext.Provider
+      value={{ user, login, logout, profileInfo, profileIMG, updateProfile }}
+    >
       {children}
     </AuthContext.Provider>
   );

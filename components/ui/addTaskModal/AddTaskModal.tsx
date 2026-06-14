@@ -67,7 +67,7 @@ function AddTaskModal({ newTaskModal, setNewTaskModal }: TasksModalType) {
   };
   return (
     <div>
-      <ModalHook openModal={newTaskModal}>
+      <ModalHook openModal={newTaskModal} setOpenModal={setNewTaskModal}>
         <form onSubmit={handleSubmit(addTaskHandler)}>
           <div className="w-290 h-160 bg-white rounded-lg flex flex-col items-center justify-center gap-9 p-5 relative">
             <div className="w-full h-9 flex items-center justify-between">
