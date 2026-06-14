@@ -169,3 +169,9 @@ export type DetailPropsType = {
   setShowDetail: (value: boolean) => void;
   columnStatus: "todo" | "in-progress" | "done";
 };
+
+export type ChangeWSNameTypes = {
+  openChangeWSName: boolean;
+  setOpenChangeWSName: (value: boolean) => void;
+  selectWorkSpaceId: string | null;
+};

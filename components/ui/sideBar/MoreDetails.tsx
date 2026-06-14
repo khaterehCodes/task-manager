@@ -13,6 +13,7 @@ import {
 } from "@/core/redux/features/WorkSpaceSlice";
 import NewProject from "./NewProject";
 import { addProject } from "@/core/redux/features/ProjectSlice";
+import ChangeWSName from "./ChangeWSName";
 
 function MoreDetails({
   openWorkSpace,
@@ -21,9 +22,9 @@ function MoreDetails({
 }: WorkSpaceDtailProps) {
   const [projectName, setProjectName] = useState<string>("");
   const [openShare, setOpenShare] = useState<boolean>(false);
-  const [changeWSName, setChangeWSName] = useState<string>("");
   const [newColor, setNewColor] = useState<string>("");
   const [newProject, setNewProject] = useState<boolean>(false);
+  const [openChangeWSName, setOpenChangeWSName] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const deleteHandler = () => {
     if (selectWorkSpaceId) {
@@ -39,13 +40,7 @@ function MoreDetails({
     }
     setOpenWorkSpace(false);
   };
-  const changeName = () => {
-    if (selectWorkSpaceId) {
-      dispatch(
-        editWorkSpaceName({ id: selectWorkSpaceId, name: changeWSName }),
-      );
-    }
-  };
+
   const createNewProject = () => {
     if (selectWorkSpaceId) {
       dispatch(
@@ -61,7 +56,7 @@ function MoreDetails({
   };
   return (
     <div>
-      <ModalHook openModal={openWorkSpace}>
+      <ModalHook openModal={openWorkSpace} setOpenModal={setOpenWorkSpace}>
         <div className="w-50 h-60 rounded-lg bg-white p-3 flex flex-col items-center justify-evenly">
           <div
             onClick={() => createNewProject()}
@@ -71,14 +66,13 @@ function MoreDetails({
             <P className="text-[14px]">ساختن پروژه جدید</P>
           </div>
           <div
-            onClick={() => changeName()}
+            onClick={() => setOpenChangeWSName(!openChangeWSName)}
             className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer"
           >
             <Icon name="edit" />
             <P className="text-[14px]">ویرایش نام ورک‌اسپیس</P>
           </div>
           <div
-            onClick={() => editNameHandler()}
             className="w-full h-5 flex items-center justify-start gap-1 cursor-pointer"
           >
             <Icon name="editColor" />
@@ -110,6 +104,11 @@ function MoreDetails({
         setNewProject={setNewProject}
         projectName={projectName}
         setProjectName={setProjectName}
+      />
+      <ChangeWSName
+        openChangeWSName={openChangeWSName}
+        setOpenChangeWSName={setOpenChangeWSName}
+        selectWorkSpaceId={selectWorkSpaceId}
       />
     </div>
   );

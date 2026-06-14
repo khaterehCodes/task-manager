@@ -28,7 +28,7 @@ function MoreProjects({
   };
   return (
     <div>
-      <ModalHook openModal={moreProjects}>
+      <ModalHook openModal={moreProjects} setOpenModal={setMoreProjects}>
         <div className="w-46 h-51 bg-white flex flex-col items-center justify-between p-3 rounded-lg">
           <div
             onClick={() => createNewTask()}

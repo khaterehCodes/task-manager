@@ -6,6 +6,7 @@ import Button from "../customButton/Button";
 import { workSpaceColor } from "@/core/constants/global";
 import { useAppDispatch } from "@/core/hooks/ReduxHook";
 import { addWorkSpace } from "@/core/redux/features/WorkSpaceSlice";
+import ProfileCard from "../profileCard/ProfileCard";
 
 function FinalInformation() {
   const dispatch = useAppDispatch();
@@ -67,9 +68,7 @@ function FinalInformation() {
             </div>
             <div className="w-full flex items-center justify-between">
               <P className="text-[14px] font-extrabold">اعضا</P>
-              <div className="w-9 h-9 rounded-full bg-pink-200 flex items-center justify-center">
-                <P className="text-pink-500 text-[12px]">KN</P>
-              </div>
+              <ProfileCard />
             </div>
           </div>
           <Button
