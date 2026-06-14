@@ -33,7 +33,7 @@ function DoneTasks() {
             >
               <Icon name="dropDown" />
             </div>
-            <div className="bg-[#40C057] rounded-sm text-[#D3F9D8] font-medium w-24 h-8 flex items-center justify-center">
+            <div className="bg-[#40C057] rounded-sm text-[#D3F9D8] font-medium w-15 h-8 flex items-center justify-center">
               Done
             </div>
             <P className="text-[12px]">{inprogressLength} تسک</P>

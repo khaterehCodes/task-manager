@@ -2,16 +2,22 @@
 import P from "@/components/ui/customP/P";
 import Icon from "@/components/ui/icons/Icon";
 import NewProject from "@/components/ui/sideBar/NewProject";
-import { useAppSelector } from "@/core/hooks/ReduxHook";
+import { useAppDispatch, useAppSelector } from "@/core/hooks/ReduxHook";
 import ProtectedRoute from "@/core/provider/ProtectedRoute";
+import { selectWorkSpace } from "@/core/redux/features/WorkSpaceSlice";
 import React, { useState } from "react";
 
 export default function Home() {
+  const dispatch = useAppDispatch();
   const workSpaces = useAppSelector((state) => state.workSpace.items);
   const projects = useAppSelector((state) => state.projectSlice.items);
   const [projectName, setProjectName] = useState<string>("");
   const [newProject, setNewProject] = useState<boolean>(false);
   console.log(workSpaces);
+  const projectHandler = (id: string) => {
+    dispatch(selectWorkSpace(id));
+    setNewProject(true);
+  };
   return (
     <ProtectedRoute role="admin">
       <div className="w-full h-auto flex items-center justify-center">
@@ -33,7 +39,7 @@ export default function Home() {
                       </div>
                     ))}
                   <div
-                    onClick={() => setNewProject(!newProject)}
+                    onClick={() => projectHandler(w.id)}
                     style={{ borderColor: w.color }}
                     className="w-50 h-20 rounded-lg border-4 flex items-center justify-center cursor-pointer gap-1"
                   >
