@@ -6,13 +6,16 @@ import React, { useState } from "react";
 import { format } from "date-fns-jalali";
 import { faIR } from "date-fns-jalali/locale";
 import ColumnDetails from "./ColumnDetails";
+import ProfileCard from "@/components/ui/profileCard/ProfileCard";
 function InProgressCards() {
   const selectedProject = useAppSelector(
     (state) => state.projectSlice.selectProjectId,
   );
   const wholeTasks = useAppSelector((state) => state.taskSlice.items);
   const tasks = wholeTasks.filter((t) => t.projectId === selectedProject);
-  const inProgressTasks = tasks.filter((t) => t.status === "in-progress" && !t.archive);
+  const inProgressTasks = tasks.filter(
+    (t) => t.status === "in-progress" && !t.archive,
+  );
   const wholeProjects = useAppSelector((state) => state.projectSlice.items);
   const currentProject = wholeProjects.find((p) => p.id === selectedProject);
   const [showDetail, setShowDetail] = useState<boolean>(false);
@@ -24,7 +27,7 @@ function InProgressCards() {
       <div className="w-63 h-147 flex flex-col gap-4">
         <div className="w-full h-10 rounded-2xl border-t-2 border-[#4C6EF5] shadow-md/10 p-2 flex items-center justify-between">
           <P className="font-medium">In Progress</P>
-           <div
+          <div
             onClick={() => setShowDetail(!showDetail)}
             className="cursor-pointer"
           >
@@ -41,9 +44,7 @@ function InProgressCards() {
                     <P className="text-[#534D60] text-[12px]">
                       {currentProject ? currentProject.name : ""}
                     </P>
-                    <div className="w-6 h-6 rounded-full bg-pink-200 flex items-center justify-center">
-                      <P className="text-pink-500 text-[9px]">KN</P>
-                    </div>
+                    <ProfileCard />
                   </div>
                   <div className="flex items-center gap-2">
                     <P className="text-[12px]">{ipt.title}</P>

@@ -7,7 +7,7 @@ import ProfileCard from "../profileCard/ProfileCard";
 
 function Profile() {
   const { darkMode, buttonDarkMode } = useDark();
-  const { user, logout,profileIMG } = useAuth();
+  const { user, logout } = useAuth();
   if (!user) {
     window.location.href = "/signup";
   }

@@ -1,6 +1,5 @@
 import { useAuth } from "@/core/provider/AuthProvider";
 import { useTheme } from "@/core/provider/ThemeContext";
-import P from "../customP/P";
 import IMG from "../customIMG/IMG";
 
 function ProfileCard() {

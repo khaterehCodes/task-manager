@@ -6,6 +6,7 @@ import { format } from "date-fns-jalali";
 import { faIR } from "date-fns-jalali/locale";
 import React, { useState } from "react";
 import ColumnDetails from "./ColumnDetails";
+import ProfileCard from "@/components/ui/profileCard/ProfileCard";
 
 function TodoCards() {
   const selectedProject = useAppSelector(
@@ -42,9 +43,7 @@ function TodoCards() {
                     <P className="text-[#534D60] text-[12px]">
                       {currentProject ? currentProject.name : ""}
                     </P>
-                    <div className="w-6 h-6 rounded-full bg-pink-200 flex items-center justify-center">
-                      <P className="text-pink-500 text-[9px]">KN</P>
-                    </div>
+                    <ProfileCard />
                   </div>
                   <div className="flex items-center gap-2">
                     <P className="text-[12px]">{tt.title}</P>
