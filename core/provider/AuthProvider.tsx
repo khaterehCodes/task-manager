@@ -61,7 +61,9 @@ export const AuthProvider = ({ children }: AuthPropsType) => {
   };
   const logout = () => {
     setUser(null);
+    setProfileIMG(null);
     localStorage.removeItem("user");
+    localStorage.removeItem("IMG");
   };
   const profileInfo = (info: { firstName: string; lastName: string }) => {
     if (user) {
