@@ -1,6 +1,5 @@
 "use client";
-
-import React, { ReactNode } from "react";
+import { ReactNode } from "react";
 import Header from "../../ui/header/Header";
 import { usePathname } from "next/navigation";
 import RegistrationHeader from "../../ui/registrationHeader/RegistrationHeader";
@@ -21,9 +20,7 @@ function Layout({ children }: LayoutPropsType) {
   return (
     <>
       <div className="w-full h-screen flex overflow-hidden">
-        {registerPage ? (
-          ""
-        ) : (
+        {registerPage && (
           <div className="w-85 h-screen">
             <SideBar />
           </div>
